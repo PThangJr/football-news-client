@@ -1,0 +1,14 @@
+@keyframes animateSkeleton {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.skeleton {
+    border-radius: 8px;
+    background: var(--bg-skeleton);
+    animation: animateSkeleton 1s ease-in-out infinite;
+}

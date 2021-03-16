@@ -1,0 +1,21 @@
+@import "../../assets/scss/generals/mixins";
+.body {
+    width: 100%;
+    font-size: 1.6rem;
+    // margin-top: 80px;
+    min-height: 1000px;
+    .main-top {
+        padding: 10px 0;
+        height: 450px;
+        box-shadow: 2px 8px 12px var(--rgba-bsd), inset 0 0 10px var(--rgba-bsd);
+        &__box {
+        }
+    }
+    .main-body {
+        // position: relative;
+    }
+    .main-footer {
+        margin: 50px 0;
+        @include flex(center);
+    }
+}

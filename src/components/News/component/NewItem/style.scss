@@ -1,0 +1,120 @@
+@import "../../../../assets/scss/responsive/responsive";
+@import "../../../../assets/scss/generals/variables";
+@import "../../../../assets/scss/generals/mixins";
+@import "../../../../assets/scss/base/base";
+.card {
+    // border: 1px solid;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 4px 6px 8px var(--rgba-bsd);
+    position: relative;
+    transition: transform 0.3s;
+    @include mobile {
+        height: auto;
+    }
+    &:hover {
+        transform: translateY(-5px);
+        opacity: 0.9;
+        // img {
+        //     transform: scale(1.06);
+        // }
+    }
+    &-box {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        @include mobile {
+            flex-direction: row;
+        }
+    }
+    &__image {
+        height: 100%;
+        position: relative;
+        &-title {
+            position: absolute;
+            right: 5px;
+            top: 8px;
+            color: $color-white;
+            z-index: 2;
+            display: block;
+            min-width: 80px;
+            height: 25px;
+            line-height: 25px;
+            padding: 0px 8px;
+            text-align: center;
+            background: rgba(255, 212, 36, 0.9);
+            // opacity: 0.5;
+            font-size: 1.6rem;
+            border-radius: 5px;
+        }
+    }
+    &__img {
+        width: 100%;
+        height: 160px;
+        object-fit: fill;
+        transition: transform 0.5s;
+        border-radius: 3px;
+        @include mobile {
+            height: 100px;
+        }
+    }
+    &__content {
+        margin: 0 10px;
+        color: var(--color-text);
+        &-description {
+            word-break: break-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            @include mobile {
+                -webkit-line-clamp: 3;
+            }
+        }
+    }
+    //Card__top
+    &__top {
+        width: 100%;
+        @include mobile {
+            width: 35%;
+        }
+    }
+    //Card__body
+    &__body {
+        position: relative;
+        flex: 1;
+        width: 100%;
+        margin-top: 10px;
+
+        @include mobile {
+            width: 65%;
+        }
+        overflow: hidden;
+    }
+    //Card__view
+    &__views {
+        color: var(--color-text);
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        .icon-views {
+            margin: 0 5px;
+        }
+        &-post {
+        }
+        &-numb {
+            .icon-views {
+                color: $color-grey-1;
+            }
+        }
+        &-liked {
+            .icon-views {
+                color: #1877f2;
+            }
+        }
+    }
+}

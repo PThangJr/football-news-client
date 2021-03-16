@@ -1,0 +1,50 @@
+@import "../../assets/scss/responsive/responsive";
+@import "../../assets/scss/generals/variables";
+@import "../../assets/scss/generals/mixins";
+.result {
+    padding: 0 20px;
+    @include mobile {
+        height: 190px;
+        overflow-y: scroll;
+    }
+    &__heading {
+        margin: 10px 0;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        font-size: 2.1rem;
+    }
+    &__list {
+        @include flex(center);
+        flex-direction: column;
+        color: $text-black;
+        @include mobile-tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        @include mobile {
+            justify-content: center;
+        }
+    }
+    &__top {
+        @include laptop {
+            flex-direction: row;
+        }
+    }
+    &__item {
+        display: flex;
+        margin: 8px 0;
+        width: 260px;
+        &-link {
+            color: var(--color-text);
+        }
+        @include laptop {
+            flex-direction: row;
+        }
+    }
+    &__link {
+        font-size: 1.8rem;
+        display: inline-block;
+    }
+}

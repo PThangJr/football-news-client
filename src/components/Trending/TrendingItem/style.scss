@@ -1,0 +1,16 @@
+@import "../../../assets/scss/generals/mixins";
+.trending-item {
+    // border: 1px solid;
+    width: 100%;
+    height: 400px;
+    box-shadow: inset 0 0 10px var(--rgba-bsd), 4px 8px 15px var(--rgba-bsd);
+    border-radius: 5px;
+    &-img {
+        @include full-size();
+        object-fit: fill;
+        pointer-events: none;
+        border-radius: 5px;
+        box-shadow: inset 0 0 10px var(--rgba-bsd), 4px 8px 15px var(--rgba-bsd);
+        border-radius: 5px;
+    }
+}

@@ -1,0 +1,20 @@
+@import "../../assets/scss/generals/mixins";
+@import "../../assets/scss/generals/variables";
+.pagination {
+    &-list {
+        @include flex(center);
+    }
+    &-item {
+        $length: 35px;
+        width: $length;
+        height: $length;
+        background: $color-grey-1;
+        border-radius: 4px;
+        @include flex(center);
+        color: $color-white;
+        margin: 0 10px;
+        &--active {
+            background: #48dbfb;
+        }
+    }
+}
