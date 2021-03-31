@@ -1,0 +1,11 @@
+@import "../../../assets/scss/generals/mixins";
+
+.sidebar__item {
+    .sidebar__link {
+        @include flex("");
+    }
+    .sidebar__logo {
+        height: 20px;
+        margin-right: 8px;
+    }
+}

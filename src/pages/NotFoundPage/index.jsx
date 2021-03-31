@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './style.scss';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import 'sweetalert2/src/sweetalert2.scss';
 const NotFoundPage = ({ message }) => {
-  Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: message,
-    footer: '<a href="/">Quay lại trang chủ</a>',
-  });
+  // Swal.fire({
+  //   icon: 'error',
+  //   title: 'Oops...',
+  //   text: message,
+  //   footer: '<a href="/">Quay lại trang chủ</a>',
+  // });
   return (
     <div className="not-found">
       <div className="not-found-box">

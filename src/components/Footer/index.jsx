@@ -1,35 +1,42 @@
 import React from 'react';
 import './style.scss';
-const Footer = () => {
+const Footer2 = () => {
   return (
     <div className="footer" id="footer">
-      <div className="profile-box">
-        <div className="profile">
-          <h3 className="profile__heading">Profile</h3>
-          <div className="profile__social">
-            <a href="https://www.youtube.com/channel/UC9xeuekJd88ku9LDcmGdUOA" className="profile__link">
-              <span className="icon-social icon-social--youtube">
-                <i className=" fab fa-youtube" />
-              </span>
-              <span className="profile__link-name">Youtube</span>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=100006001683557" className="profile__link">
-              <span className="icon-social icon-social--facebook">
-                <i className=" fab fa-facebook-square" />
-              </span>
-              <span className="profile__link-name">Facebook</span>
-            </a>
-            <a href="https://www.instagram.com/" className="profile__link">
-              <span className="icon-social icon-social--instagram">
-                <i className=" fab fa-instagram-square" />
-              </span>
-              <span className="profile__link-name">Instagram</span>
-            </a>
-          </div>
+      <div className="footer-content">
+        <h3 className="footer-content__heading">
+          <span className="text">F</span>
+          <span className="text">O</span>
+          <span className="text">O</span>
+          <span className="text">T</span>
+          <span className="text">B</span>
+          <span className="text">A</span>
+          <span className="text">L</span>
+          <span className="text">L</span>
+          <span className="text">N</span>
+          <span className="text">E</span>
+          <span className="text">W</span>
+          <span className="text">S</span>
+        </h3>
+        <div className="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=100006001683557" className="social social--facebook">
+            <i className="fab fa-facebook-square"></i>
+          </a>
+
+          <a href="https://www.instagram.com/" className="social social--instagram">
+            <i className="fab fa-instagram-square"></i>
+          </a>
+          <a href="https://github.com/PThangJr" className="social social--github">
+            <i className="fab fa-git-square"></i>
+          </a>
+        </div>
+        <div className="copy-right">
+          Copyright © 2021 Goal (English) All rights reserved. The information contained in Goal (English) may not be
+          published, broadcast, rewritten, or redistributed without the prior written authority of Goal (English)
         </div>
       </div>
     </div>
   );
 };
 
-export default Footer;
+export default Footer2;

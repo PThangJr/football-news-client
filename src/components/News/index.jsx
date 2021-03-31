@@ -50,7 +50,7 @@ const News = () => {
 
   const dataNews = useSelector((state) => state.dataNews);
   const { data, loading } = dataNews;
-  const displaySkeleton = () => {
+  const renderNewItem = () => {
     if (loading) {
       const array = [];
       for (let i = 0; i < 8; i++) {
@@ -60,13 +60,31 @@ const News = () => {
         return (
           <div key={index} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
             <div className="card">
-              <SkeletonElement cName="image" type="rect" style={{ width: '100%', height: '160px' }} />
-              <SkeletonElement cName="description" type="rect" style={{ width: '95%', height: '35px' }} />
-              <SkeletonElement cName="views" type="rect" style={{ width: '100px', height: '25px' }} />
+              <SkeletonElement
+                cName="image"
+                type="rect"
+                style={{ width: '100%', height: '160px', marginBottom: '5px' }}
+              />
+              <SkeletonElement
+                cName="description"
+                type="rect"
+                style={{ width: '100%', height: '35px', marginBottom: '5px' }}
+              />
+              <SkeletonElement
+                cName="views"
+                type="rect"
+                style={{ width: '100px', height: '25px', marginBottom: '5px', float: 'right' }}
+              />
             </div>
           </div>
         );
       });
+    } else {
+      if (data.length > 0) {
+        return data.map((item) => {
+          return <NewItem key={item._id} col="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12" dataNews={item} />;
+        });
+      }
     }
   };
   return (
@@ -75,13 +93,7 @@ const News = () => {
         <a href="abc" className="news__link">
           <h3 className="news__heading">{newHeading || 'News'}</h3>
         </a>
-        <div className="row">
-          {displaySkeleton()}
-          {!loading &&
-            data.map((item) => {
-              return <NewItem key={item._id} col="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12" dataNews={item} />;
-            })}
-        </div>
+        <div className="row">{renderNewItem()}</div>
       </div>
       <div className="news-pagination">
         <Pagination page={page} pageItem={5} currentPage={currentPage || 1} />

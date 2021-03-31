@@ -1,9 +1,9 @@
 import React from 'react';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
-
+import PropTypes from 'prop-types';
 import './style.scss';
-const AccountSetting = () => {
+const AccountSetting = ({ infoUser = {} }) => {
   const handleLogout = () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -36,5 +36,7 @@ const AccountSetting = () => {
     </ul>
   );
 };
-
+AccountSetting.propTypes = {
+  infoUser: PropTypes.object,
+};
 export default AccountSetting;

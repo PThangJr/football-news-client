@@ -14,7 +14,6 @@ const Sidebar = () => {
     dispatchTournament();
   }, [dispatch]);
   const { data, loading } = useSelector((state) => state.dataTournaments);
-
   const renderTournaments = () => {
     if (loading) {
       const arr = [];
@@ -45,6 +44,9 @@ const Sidebar = () => {
       <ul className="sidebar__list">
         <li className="sidebar__item">
           <NavLink to="/" exact activeClassName="sidebar__link--active" className="sidebar__link ">
+            <span className="sidebar__logo">
+              <i className="fas fa-house-user"></i>
+            </span>
             News / Trang chủ
           </NavLink>
         </li>

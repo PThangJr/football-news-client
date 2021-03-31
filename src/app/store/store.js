@@ -5,6 +5,7 @@ import newDetailReducer from '../../components/News/pages/NewDetail/newDetailSli
 import loginReducer from '../../features/Auth/Login/loginSlice';
 import authReducer from '../../features/Auth/authSlice';
 import tournamentReducer from '../../features/Sidebar/tournamentSlice';
+import infoUserReducer from '../../components/Header/components/infoUserSlice';
 const store = configureStore({
   reducer: {
     dataNews: newsReducer,
@@ -13,6 +14,7 @@ const store = configureStore({
     dataLogin: loginReducer,
     authForm: authReducer,
     dataTournaments: tournamentReducer,
+    infoUser: infoUserReducer,
   },
 });
 export default store;
