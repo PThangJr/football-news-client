@@ -1,3 +1,4 @@
+@import "../../assets/scss/generals/variables";
 .trending {
     &-list {
         width: 100%;
@@ -5,17 +6,20 @@
         border-radius: 5px;
     }
     button.slick-arrow {
-        $length: 50px;
-        width: $length;
-        height: $length;
         z-index: 5;
+        &:hover {
+            &::before {
+                color: rgb(202, 202, 202);
+            }
+        }
         &::before {
+            transition: all 0.4s;
             font-size: 4rem;
-            color: black;
+            color: $color-white;
         }
     }
     .slick-next {
-        right: 5px;
+        right: 25px;
     }
     .slick-prev {
         left: 5px;

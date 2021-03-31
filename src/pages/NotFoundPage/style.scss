@@ -1,0 +1,22 @@
+@import "../../assets/scss/generals/mixins";
+.not-found {
+    @include flex(center);
+    align-items: flex-start;
+    text-align: center;
+    margin-top: 150px;
+    height: 500px;
+    &__heading {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    &__status {
+        font-size: 6.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    i.fas.fa-house-user {
+        margin-right: 8px;
+    }
+}

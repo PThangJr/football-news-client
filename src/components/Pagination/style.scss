@@ -17,4 +17,24 @@
             background: #48dbfb;
         }
     }
+    .previous-page,
+    .next-page {
+        @include flex(center);
+        color: var(--text-color);
+        font-size: 2.5rem;
+    }
+    .previous-page {
+        margin-right: 10px;
+        &.page-active {
+            color: $color-grey-2;
+            cursor: default;
+        }
+    }
+    .next-page {
+        margin-left: 10px;
+        &.page-active {
+            color: $color-grey-2;
+            cursor: default;
+        }
+    }
 }

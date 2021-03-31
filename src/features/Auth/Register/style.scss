@@ -1,0 +1,38 @@
+@import "../../../assets/scss/generals/variables";
+@import "../../../assets/scss/generals/mixins";
+.auth__box-register {
+    // display: none;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 20px 40px;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: $color-white;
+    border-radius: 5px;
+}
+.auth__rules {
+    margin: 12px 0;
+    font-size: 1.5rem;
+    color: $color-black;
+    .form-check {
+        display: flex;
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 1px solid red;
+            cursor: pointer;
+        }
+    }
+    &-text {
+        margin: 0 5px;
+        &--error {
+            color: red;
+            a {
+                color: red;
+            }
+        }
+    }
+    &-link {
+        margin: 0 5px;
+    }
+}

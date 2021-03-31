@@ -1,22 +1,24 @@
-import queryString from 'query-string';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Switch, useLocation, useRouteMatch } from 'react-router';
+import { Route, Switch, useRouteMatch } from 'react-router';
 import tournaments from '../../constants/tournaments';
 import NotFoundPage from '../../pages/NotFoundPage';
 import News from '../News';
-import Pagination from '../Pagination';
+import NewDetail from '../News/pages/NewDetail';
 import Result from '../Results';
 import Trending from '../Trending';
 import './style.scss';
 const Body = () => {
   const match = useRouteMatch();
   // console.log(Object.keys(tournaments));
-  const { total } = useSelector((state) => state.dataNews);
-  const location = useLocation();
-  const { _page } = queryString.parse(location.search);
-  const currentPage = parseInt(_page);
-  const page = Math.ceil(total / 3);
+  const dataTournaments = useSelector((state) => state.dataTournaments);
+  const renderRoutes = () => {
+    if (dataTournaments.data.length > 0) {
+      return dataTournaments.data.map((item) => {
+        return <Route key={item._id} path={`${match.url}news/${item.slug}`} component={News} />;
+      });
+    }
+  };
   return (
     <main className="body">
       <div className="main-top">
@@ -35,14 +37,13 @@ const Body = () => {
       <div className="main-body">
         <Switch>
           <Route path={`${match.url}`} exact component={News} />
-          {Object.keys(tournaments).map((item, index) => {
+          {/* {Object.keys(tournaments).map((item, index) => {
             return <Route key={index} path={`${match.url}news/${item}`} component={News} />;
-          })}
+          })} */}
+          {renderRoutes()}
+          <Route path={`${match.url}new-detail`} component={NewDetail} />
           <Route component={NotFoundPage} />
         </Switch>
-      </div>
-      <div className="main-footer">
-        <Pagination page={page} pageItem={5} currentPage={currentPage || 1} />
       </div>
     </main>
   );

@@ -1,0 +1,64 @@
+@import "../../../../assets/scss/generals/mixins";
+.detail {
+    font-size: 1.6rem;
+    margin: 30px 0;
+    min-height: 500px;
+    &-header {
+        margin-bottom: 20px;
+        @include flex(space-between);
+        &-info {
+        }
+        &-like {
+            $length: 45px;
+            display: inline-block;
+            width: $length;
+            height: $length;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            @include flex(center);
+            .icon-like {
+                color: grey;
+                font-size: 3rem;
+                transition: all 0.5s;
+                &--active {
+                    color: rgb(36, 184, 204);
+                    animation: animateLikeBtn 0.5s ease-in-out;
+                }
+            }
+        }
+    }
+    &-body {
+        min-height: 700px;
+        padding: 0 15px;
+        p {
+            word-break: break-word;
+        }
+    }
+    &-views {
+        margin: 10px 0;
+        span {
+            margin-right: 5px;
+        }
+    }
+    &__heading {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+    &__created {
+        color: #999;
+    }
+    .new-suggestion {
+        .card {
+            height: auto;
+            margin-bottom: 15px;
+            &__img {
+                height: 100px;
+            }
+        }
+        &__heading {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+    }
+}

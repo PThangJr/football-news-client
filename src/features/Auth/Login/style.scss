@@ -1,0 +1,10 @@
+@import "../../../assets/scss/generals/variables";
+.auth__box-login {
+    min-width: 100%;
+    min-height: 100%;
+    padding: 20px 40px;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: $color-white;
+    border-radius: 5px;
+}

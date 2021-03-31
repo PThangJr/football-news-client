@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 const SkeletonElement = (props) => {
-  const { width, height, cName } = props;
-  return <div className={`skeleton ${cName}`} style={{ width, height }}></div>;
+  const { cName, style } = props;
+  return <div className={`skeleton skeleton--${cName}`} style={style}></div>;
 };
 
 SkeletonElement.propTypes = {

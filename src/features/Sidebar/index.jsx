@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import SkeletonElement from '../../components/Loading/Skeleton/SkeletonElement';
+import SidebarItem from './SidebarItem';
 import './style.scss';
+import { fetchTournament } from './tournamentSlice';
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const dispatchTournament = async () => {
+      await dispatch(fetchTournament());
+    };
+    dispatchTournament();
+  }, [dispatch]);
+  const { data, loading } = useSelector((state) => state.dataTournaments);
+
+  const renderTournaments = () => {
+    if (loading) {
+      const arr = [];
+      for (let i = 0; i < 8; i++) {
+        arr.push(i);
+      }
+      return arr.map((item) => {
+        return (
+          <SkeletonElement key={item} cName="tournament" style={{ width: '100%', height: '45px', margin: '5px 0px' }} />
+        );
+      });
+    } else {
+      if (data.length > 0) {
+        return data.map((item) => {
+          return <SidebarItem data={item} key={item._id} />;
+        });
+      }
+    }
+  };
   return (
     <aside className="sidebar">
       <h2 className="sidebar__heading">
@@ -16,41 +48,7 @@ const Sidebar = () => {
             News / Trang chủ
           </NavLink>
         </li>
-        <li className="sidebar__item">
-          <NavLink to="/news/premier-league" activeClassName="sidebar__link--active" className="sidebar__link">
-            Premier League
-          </NavLink>
-        </li>
-        <li className="sidebar__item">
-          <NavLink to="/news/la-liga" activeClassName="sidebar__link--active" className="sidebar__link">
-            La Liga
-          </NavLink>
-        </li>
-        <li className="sidebar__item">
-          <NavLink to="/news/serie-a" activeClassName="sidebar__link--active" className="sidebar__link">
-            Serie A
-          </NavLink>
-        </li>
-        <li className="sidebar__item">
-          <NavLink to="/news/bundesliga" activeClassName="sidebar__link--active" className="sidebar__link">
-            Bundesliga
-          </NavLink>
-        </li>
-        <li className="sidebar__item">
-          <NavLink to="/news/ligue-1" activeClassName="sidebar__link--active" className="sidebar__link">
-            Ligue 1
-          </NavLink>
-        </li>
-        <li className="sidebar__item">
-          <NavLink to="/news/UEFA-champion-league" activeClassName="sidebar__link--active" className="sidebar__link ">
-            UEFA Champion League
-          </NavLink>
-        </li>
-        <li className="sidebar__item">
-          <NavLink to="/news/UEFA-europa-league" activeClassName="sidebar__link--active" className="sidebar__link">
-            UEFA Europa League
-          </NavLink>
-        </li>
+        {renderTournaments()}
       </ul>
     </aside>
   );

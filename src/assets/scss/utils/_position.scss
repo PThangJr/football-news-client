@@ -1,0 +1,17 @@
+@for $i from 2 through 40 {
+    .mt-#{$i} {
+        @include margin(top, #{$i}px);
+    }
+}
+
+@for $i from 2 through 40 {
+    .mb-#{$i} {
+        @include margin(bottom, #{$i}px);
+    }
+}
+
+@for $i from 2 through 40 {
+    .mr-#{$i} {
+        @include margin(right, #{$i}px);
+    }
+}

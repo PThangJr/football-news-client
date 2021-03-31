@@ -1,0 +1,19 @@
+.loading {
+    width: 100%;
+    height: 5px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    &--linear {
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 100%;
+            right: auto;
+            left: 0;
+            background: rgb(56, 56, 248);
+            animation: animateLoadingLinear 1s forwards infinite;
+        }
+    }
+}

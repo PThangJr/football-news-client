@@ -12,3 +12,9 @@
     background: var(--bg-skeleton);
     animation: animateSkeleton 1s ease-in-out infinite;
 }
+.skeleton-box {
+    border-radius: 10px;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 8px;
+}
