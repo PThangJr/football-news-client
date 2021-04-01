@@ -1,0 +1,90 @@
+@import '../../assets/scss/generals/variables';
+@import '../../assets/scss/generals/mixins';
+
+.info {
+    &--user {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 300px;
+        height: 100vh;
+        z-index: 101;
+        background: var(--color-page-background); // background: #8d8c8c
+
+    }
+
+    &-content {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin-left: 30px;
+
+
+        p {
+            @include flex(flex-start);
+            color: var(--color-text);
+            margin-bottom: 20px;
+
+            .icon-box {
+                font-size: 2rem;
+                margin-right: 12px;
+            }
+        }
+    }
+
+    .icon-box {
+        color: var(--color-text);
+    }
+
+    &__heading {
+        text-align: center;
+        font-size: 2.3rem;
+        padding: 20px 0;
+        border-bottom: 1px solid $color-grey-3;
+    }
+
+    &-avatar {
+
+        margin: 30px auto;
+
+        @include flex(center);
+        flex-direction: column;
+
+        &__img {
+            // border-radius: 50%;
+            border-radius: 8px;
+            $length: 150px;
+            border: 1px solid $color-grey-3;
+            border-radius: 8px;
+            width: $length;
+            height: $length;
+
+        }
+
+        .form-upload {
+
+            &__avatar {
+                display: none;
+            }
+
+            .btn {
+                &--upload {}
+            }
+
+            label[for="avatar"] {
+                margin-top: 15px;
+                border: 1px solid;
+                font-size: 1.3rem;
+                font-weight: bold;
+                @include flex(space-evenly);
+                cursor: pointer;
+                text-align: center;
+                color: var(--color-text);
+
+                .icon-box {
+                    color: var(--color-text);
+
+                }
+            }
+        }
+    }
+}

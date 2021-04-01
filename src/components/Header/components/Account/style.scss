@@ -1,5 +1,11 @@
 @import "../../../../assets/scss/generals/mixins";
+
 .account {
     @include flex(flex-start);
     position: relative;
+
+    .avatar {
+        height: 100%;
+        border-radius: 50%;
+    }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router';
-import tournaments from '../../constants/tournaments';
 import NotFoundPage from '../../pages/NotFoundPage';
 import News from '../News';
 import NewDetail from '../News/pages/NewDetail';

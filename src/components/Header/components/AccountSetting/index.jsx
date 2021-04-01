@@ -1,9 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
-import PropTypes from 'prop-types';
+import { fetchLoginAuth } from '../../../../features/Auth/authoSlice';
 import './style.scss';
 const AccountSetting = ({ infoUser = {} }) => {
+  const dispatch = useDispatch();
   const handleLogout = () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -16,7 +19,8 @@ const AccountSetting = ({ infoUser = {} }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire('Đăng xuất thành công', '', 'success');
-        localStorage.clear();
+        // dispatch(isLogout());
+        dispatch(fetchLoginAuth.rejected());
       }
     });
   };

@@ -2,6 +2,7 @@
 @import "../../assets/scss/generals/mixins";
 @import "../../assets/scss/generals/variables";
 @import "../../assets/scss/generals/animation";
+
 .auth {
     // display: none;
     $wd: 500px;
@@ -14,15 +15,7 @@
     height: 100%;
     z-index: 500;
     font-size: 1.6rem;
-    &__overlay {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.2);
-        z-index: 10;
-    }
+
     &__flex {
         position: absolute;
         width: 100%;
@@ -31,6 +24,7 @@
         z-index: 20;
         animation: animateZoomIn 0.4s forwards;
     }
+
     &__box {
         background: $color-white;
         min-width: $wd;
@@ -41,9 +35,11 @@
         transition: transform 0.4s;
         position: relative;
         box-shadow: inset 0 0 20px $rgba-bsd;
+
         @include mobile {
             min-width: 90%;
         }
+
         &::before {
             content: "";
             position: absolute;
@@ -55,33 +51,39 @@
             border-bottom: 20px solid $color-white;
         }
     }
+
     &__header {
         @include flex(space-between);
         font-size: 2.2rem;
         margin-top: 30px;
         margin-bottom: 20px;
         color: $color-black;
+
         .btn {
             &--login {
                 color: #009432;
                 font-weight: bold;
             }
+
             &--register {
                 font-weight: bold;
                 color: #ff361f;
             }
         }
     }
+
     &__support {
         @include flex(flex-end);
         margin: 15px 0 25px 0;
         color: $color-black;
         font-size: 1.5rem;
+
         span {
             margin-right: 10px;
             cursor: pointer;
         }
     }
+
     .icon-close {
         position: absolute;
         right: 8px;

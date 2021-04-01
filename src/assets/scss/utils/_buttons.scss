@@ -9,37 +9,52 @@
     color: $color-white;
     font-size: 1.8rem;
     display: inline-block;
+
+    &--sm {
+        padding: 5px 8px;
+
+    }
+
     &:hover {
         opacity: 0.8;
     }
+
     &--primary {
         background: #dcdde1;
     }
+
     &--green {
         background: #009432;
     }
+
     &--orange {
         background: #ff361f;
     }
+
     &--full-wd {
         width: 100%;
     }
+
     &--disabled {
         background: grey;
         cursor: default;
+
         &:hover {
             opacity: 1;
         }
     }
+
     &--default {
         background: none;
         outline: none;
         cursor: pointer;
         border: none;
+
         &:hover {
             background: transparent;
         }
     }
+
     &--go-back {
         margin-top: 30px;
         background-color: #00a8ff;

@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { displayAuthForm } from '../../../../features/Auth/authSlice';
-import AccountSetting from '../AccountSetting';
-import { fetchInfoUser } from '../infoUserSlice';
+import { displayAuthForm } from '../../../../features/Auth/authFormSlice';
+import { fetchLoginAuth } from '../../../../features/Auth/authoSlice';
+import { changeDisplayForm } from '../../../../pages/HomePage/displayFormSlice';
 import './style.scss';
 const Account = () => {
   const dispatch = useDispatch();
-  const [statusUser, setStatusUser] = useState('');
-  const user = JSON.parse(localStorage.getItem('user'));
+  const infoUser = useSelector((state) => state.dataAuth).user;
   useEffect(() => {
-    dispatch(fetchInfoUser());
+    dispatch(fetchLoginAuth.fulfilled());
   }, [dispatch]);
-  const infoUser = useSelector((state) => state.infoUser).infoUser;
-  console.log(infoUser?.username);
+
   const handleAuthForm = () => {
-    dispatch(displayAuthForm('login'));
+    dispatch(changeDisplayForm('login'));
+  };
+  const handleInfoUser = () => {
+    dispatch(changeDisplayForm('infoUser'));
   };
   const renderAccount = () => {
     if (!infoUser?.username) {
@@ -28,12 +29,15 @@ const Account = () => {
       );
     } else {
       return (
-        <div className="account">
+        <div className="account" onClick={handleInfoUser}>
           <span className="account__logo">
-            <i className="icon-views fas fa-user" />
+            {infoUser?.avatar?.secure_url && (
+              <img src={`${infoUser?.avatar.secure_url}`} alt="avatar" className="avatar" />
+            )}
+            {!infoUser?.avatar.secure_url && <i className="icon-views fas fa-user" />}
           </span>
           <button className="btn--default sign-in">{infoUser.username}</button>
-          <AccountSetting infoUser={infoUser} />
+          {/* <AccountSetting infoUser={infoUser} /> */}
         </div>
       );
     }

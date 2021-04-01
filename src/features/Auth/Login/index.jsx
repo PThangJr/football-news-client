@@ -3,17 +3,18 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import * as yup from 'yup';
 import InputControl from '../../../components/Form/form-controls/InputControl';
 import LoadingLinear from '../../../components/Loading/LoadingLinear';
-import { fetchLogin } from './loginSlice';
+import { fetchLoginAuth } from '../authoSlice';
 import './style.scss';
 
 const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   const dispatch = useDispatch();
+  const dataAuth = useSelector((state) => state.dataAuth);
   const [message, setMessage] = useState({});
   const schema = yup.object().shape({
     username: yup
@@ -40,14 +41,15 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
 
   const handleSubmit = async (values) => {
     try {
-      const action = await dispatch(fetchLogin(values));
+      const action = await dispatch(fetchLoginAuth(values));
       unwrapResult(action);
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
-        showConfirmButton: true,
-        timer: 3000,
+        showConfirmButton: false,
+        timer: 2500,
         timerProgressBar: true,
+        onClose: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer);
           toast.addEventListener('mouseleave', Swal.resumeTimer);

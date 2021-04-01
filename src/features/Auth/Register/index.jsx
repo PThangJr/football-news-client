@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 import * as yup from 'yup';
 import CheckboxControl from '../../../components/Form/form-controls/CheckboxControl';
 import InputControl from '../../../components/Form/form-controls/InputControl';
 import LoadingLinear from '../../../components/Loading/LoadingLinear';
-import { fetchRegister } from './registerSlice';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import 'sweetalert2/src/sweetalert2.scss';
+import { fetchRegisterAuth } from '../authoSlice';
 import './style.scss';
 const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   const dispatch = useDispatch();
@@ -49,9 +49,9 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
 
   const handleSubmit = async (values) => {
     try {
-      console.log(values);
+      // console.log(values);
       const { rePassword, rules, ...data } = values;
-      const action = await dispatch(fetchRegister(data));
+      const action = await dispatch(fetchRegisterAuth(data));
       unwrapResult(action);
 
       const Toast = Swal.mixin({

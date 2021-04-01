@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   form: null,
 };
-const authSlice = createSlice({
+const authFormSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -12,6 +12,6 @@ const authSlice = createSlice({
     },
   },
 });
-const { reducer, actions } = authSlice;
+const { reducer, actions } = authFormSlice;
 export const { displayAuthForm } = actions;
 export default reducer;

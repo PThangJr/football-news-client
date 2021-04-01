@@ -1,6 +1,6 @@
 import React from 'react';
-import './style.scss';
 import Account from './components/Account';
+import './style.scss';
 const Header = () => {
   return (
     <header id="header" className="header">
