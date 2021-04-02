@@ -57,16 +57,17 @@ a {
     top: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.4);
-    z-index: 100;
+    z-index: 10;
 }
 
 .icon-box {
-    width: 20px;
-    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
     border-radius: 50%;
     @include flex(center);
     color: white;
     font-size: 1.3rem;
+    display: inline;
     // margin-right: 8px;
 
     &--success {

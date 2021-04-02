@@ -1,15 +1,19 @@
 @import "../../assets/scss/generals/mixins";
+
 .body {
     width: 100%;
     font-size: 1.6rem;
     // margin-top: 80px;
     min-height: 1000px;
+    overflow: hidden;
+
     .main-top {
         padding: 10px 0;
         box-shadow: 2px 8px 12px var(--rgba-bsd), inset 0 0 10px var(--rgba-bsd);
-        &__box {
-        }
+
+        &__box {}
     }
+
     .main-body {
         // position: relative;
         margin-top: 30px;

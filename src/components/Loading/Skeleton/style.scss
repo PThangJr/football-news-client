@@ -2,6 +2,7 @@
     0% {
         opacity: 0.1;
     }
+
     100% {
         opacity: 1;
     }
@@ -10,11 +11,39 @@
 .skeleton {
     border-radius: 8px;
     background: var(--bg-skeleton);
-    animation: animateSkeleton 1s ease-in-out infinite;
+    // animation: animateSkeleton 1s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 50%;
+        height: 100%;
+        background: rgba(255, 255, 255, .2);
+        transform: skewX(-30deg);
+        animation: animateSkeletonLoading 1s linear infinite;
+        animation-delay: .5s;
+    }
 }
+
 .skeleton-box {
     border-radius: 10px;
     box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     padding: 8px;
+}
+
+@keyframes animateSkeletonLoading {
+    0% {
+        transform: translateX(-250%) skewX(-30deg);
+
+    }
+
+    100% {
+        transform: translateX(250%) skewX(-30deg);
+    }
 }

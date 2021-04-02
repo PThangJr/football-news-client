@@ -32,7 +32,7 @@ const newsSlice = createSlice({
       state.loading = false;
     },
     [fetchNewsTrending.rejected](state, action) {
-      state.loading = false;
+      state.loading = true;
     },
   },
 });

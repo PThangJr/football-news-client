@@ -5,12 +5,16 @@ import Body from '../../components/Body';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import InfoUser from '../../components/InfoUser';
+import Modal from '../../components/Modal';
 import Auth from '../../features/Auth';
+import ChangePassword from '../../features/Auth/ChangePassword';
 import Sidebar from '../../features/Sidebar';
 import { darkMode, toggleSidebar } from '../../js/script';
 import './style.scss';
+
 const HomePage = () => {
-  const authForm = useSelector((state) => state.authForm);
+  const modal = useSelector((state) => state.modal);
+  console.log(modal);
 
   useEffect(() => {
     darkMode();
@@ -30,8 +34,21 @@ const HomePage = () => {
         <Footer />
       </aside>
       <div className="modal-exit d-none"> </div>
-      {(displayForm === 'login' || displayForm === 'register') && <Auth />}
-      {displayForm === 'infoUser' && <InfoUser />}
+      {modal.includes('auth') && (
+        <Modal>
+          <Auth />
+        </Modal>
+      )}
+      {modal.includes('infoUser') && (
+        <Modal closeForm="infoUser" zIndex="100" position="right">
+          <InfoUser />
+        </Modal>
+      )}
+      {modal.includes('changePassword') && (
+        <Modal closeForm="changePassword" zIndex="200" type="rect">
+          <ChangePassword />
+        </Modal>
+      )}
     </div>
   );
 };

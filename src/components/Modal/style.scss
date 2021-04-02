@@ -1,0 +1,54 @@
+.modal {
+    position: absolute;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+
+    &--center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 50;
+        background: var(--color-page-background);
+        animation: animateZoomIn 0.4s forwards;
+        border-radius: 10px;
+        display: block;
+    }
+
+    &--rect {
+        min-width: 350px;
+        min-height: 200px;
+        transform: translate(-50%, -50%);
+
+        // border-radius: 10px;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+
+    }
+
+    &--right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        min-width: 200px;
+        animation: animateRight 0.15s linear;
+        z-index: 50;
+        background: var(--color-page-background);
+    }
+}
+
+@keyframes animateRight {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}

@@ -10,7 +10,7 @@ import * as yup from 'yup';
 import CheckboxControl from '../../../components/Form/form-controls/CheckboxControl';
 import InputControl from '../../../components/Form/form-controls/InputControl';
 import LoadingLinear from '../../../components/Loading/LoadingLinear';
-import { fetchRegisterAuth } from '../authoSlice';
+import { fetchRegisterAuth } from '../authSlice';
 import './style.scss';
 const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   const dispatch = useDispatch();

@@ -3,9 +3,11 @@
 @import "../../assets/scss/generals/mixins";
 @import "../../assets/scss/generals/animation";
 @import "../../assets/scss/generals/mixins";
+
 .header {
     font-size: 1.6rem;
     height: 80px;
+
     .container {
         height: 100%;
     }
@@ -22,28 +24,34 @@
         left: 240px;
         top: 0;
         right: 20px;
-        z-index: 100;
+        z-index: 9;
         box-shadow: 2px 10px 18px var(--rgba-bsd), inset 0 0 5px var(--rgba-bsd);
         background-color: var(--color-page-background);
+
         @include mobile-tablet {
             left: 0px;
             right: 0;
         }
+
         &__left {
             flex: 2;
             @include flex(flex-start);
+
             @include tablet {
                 justify-content: space-around;
             }
         }
+
         &__menu {
             -webkit-tap-highlight-color: transparent;
             font-size: 3rem;
             cursor: pointer;
             display: none;
+
             @include mobile {
                 flex: 1;
             }
+
             @include mobile-tablet {
                 display: block;
             }
@@ -51,6 +59,7 @@
             &-icon {
                 padding: 3px;
                 margin: 0 5px;
+
                 &:last-child {
                     @include tablet-laptop {
                         display: none;
@@ -58,20 +67,24 @@
                 }
             }
         }
+
         .header__logo {
             padding: 0 20px;
             margin-right: 30px;
             // margin-left: 40px;
             @include flex(center);
+
             @include mobile {
                 flex: 1;
                 margin: 0;
                 padding: 0;
                 margin: 0;
             }
+
             @include tablet {
                 display: none;
             }
+
             &-link {
                 display: inline-block;
             }
@@ -93,6 +106,7 @@
             box-sizing: border-box;
             box-shadow: 2px 5px 5px var(--rgba-bsd);
             background: $color-white;
+
             @include mobile {
                 position: absolute;
                 // width: 100%;
@@ -102,10 +116,12 @@
                 display: none;
                 transition: all 0.5s;
             }
+
             &--show-on-mobile {
                 display: flex;
                 animation: animateSearch 0.5s ease-in-out forwards;
             }
+
             .icon--search {
                 color: $color-grey-1;
                 cursor: pointer;
@@ -135,23 +151,22 @@
             }
 
             &__history {
-                &-item {
-                }
+                &-item {}
 
-                &-link {
-                }
+                &-link {}
             }
         }
 
         .menu {
             height: 40%;
             @include flex(flex-start);
+
             //Responsive
             @include mobile-tablet {
                 display: none;
             }
-            &-item {
-            }
+
+            &-item {}
 
             &-link {
                 display: block;
@@ -175,13 +190,16 @@
             margin: 0 10px;
             @include flex(flex-start);
             cursor: pointer;
+
             @include mobile {
                 flex: 1;
                 margin: 0;
             }
+
             .account {
                 @include flex(flex-start);
                 position: relative;
+
                 &__logo {
                     $length-accounts__logo: 30px;
                     width: $length-accounts__logo;
@@ -191,6 +209,7 @@
                     background-color: $color-grey-2;
                     color: $color-white;
                     margin-right: 10px;
+
                     &--active {
                         background: rgb(6, 124, 192);
                     }
@@ -208,9 +227,11 @@
                 font-size: 1.6rem;
                 color: var(--color-text);
                 padding: 5px;
+
                 &:hover {
                     background: $color-grey-3;
                 }
+
                 @include mobile-tablet {
                     display: none;
                 }
@@ -225,9 +246,11 @@
         .dark-mode {
             @include flex(flex-start);
             margin: 0 10px;
+
             @include mobile-tablet {
                 // display: none;
             }
+
             &__box {
                 font-weight: bold;
                 $length-dark-mode__icon: 30px;
@@ -242,15 +265,18 @@
                 box-shadow: inset 0 0 1px var(--rgba-bsd), 2px 4px 6px var(--rgba-bsd);
                 position: relative;
                 transition: transform 0.5s;
-                .icon-dark-mode {
-                }
+
+                .icon-dark-mode {}
+
                 &:hover {
                     transform: scale(1.1);
-                    .icon-dark-mode {
-                    }
+
+                    .icon-dark-mode {}
                 }
+
                 &--active {
                     background-color: #f9ca24;
+
                     &::before {
                         content: "";
                         display: block;
@@ -265,12 +291,15 @@
                     }
                 }
             }
+
             &__name {
                 font-weight: bold;
+
                 @include mobile-tablet {
                     display: none;
                 }
             }
+
             .btn--dark-mode {
                 $wd-btn--dark-mode: 40px;
                 $hg-btn--dark-mode: 20px;

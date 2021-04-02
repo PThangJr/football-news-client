@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { displayAuthForm } from '../../../../features/Auth/authFormSlice';
-import { fetchLoginAuth } from '../../../../features/Auth/authoSlice';
-import { changeDisplayForm } from '../../../../pages/HomePage/displayFormSlice';
+import { fetchLoginAuth } from '../../../../features/Auth/authSlice';
+import { displayModal } from '../../../../pages/HomePage/modalSlice';
 import './style.scss';
 const Account = () => {
   const dispatch = useDispatch();
   const infoUser = useSelector((state) => state.dataAuth).user;
+
   useEffect(() => {
     dispatch(fetchLoginAuth.fulfilled());
   }, [dispatch]);
 
   const handleAuthForm = () => {
-    dispatch(changeDisplayForm('login'));
+    dispatch(displayModal('auth'));
   };
   const handleInfoUser = () => {
-    dispatch(changeDisplayForm('infoUser'));
+    // dispatch(changeDisplayForm({ infoUser: true }));
+    dispatch(displayModal('infoUser'));
   };
   const renderAccount = () => {
     if (!infoUser?.username) {

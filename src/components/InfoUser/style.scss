@@ -3,19 +3,16 @@
 
 .info {
     &--user {
-        position: absolute;
-        right: 0;
-        top: 0;
+        position: relative;
         width: 300px;
         height: 100vh;
-        z-index: 101;
         background: var(--color-page-background); // background: #8d8c8c
-
+        // animation: animateInfoUser .15s linear;
     }
 
     &-content {
         font-size: 1.8rem;
-        font-weight: 400;
+        // font-weight: 400;
         margin-left: 30px;
 
 
@@ -27,13 +24,30 @@
             .icon-box {
                 font-size: 2rem;
                 margin-right: 12px;
+                color: var(--color-text);
             }
         }
     }
 
-    .icon-box {
-        color: var(--color-text);
+
+    &-buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .btn {
+            margin-bottom: 15px;
+
+        }
+
+        .icon-box {
+            font-size: 1.7rem;
+            margin-right: 10px;
+            color: var(--color-text-reverse);
+        }
     }
+
 
     &__heading {
         text-align: center;
@@ -82,9 +96,18 @@
 
                 .icon-box {
                     color: var(--color-text);
-
                 }
             }
         }
+    }
+}
+
+@keyframes animateInfoUser {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0)
     }
 }

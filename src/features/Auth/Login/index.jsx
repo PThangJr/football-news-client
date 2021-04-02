@@ -3,18 +3,18 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import * as yup from 'yup';
 import InputControl from '../../../components/Form/form-controls/InputControl';
 import LoadingLinear from '../../../components/Loading/LoadingLinear';
-import { fetchLoginAuth } from '../authoSlice';
+import { hideModal } from '../../../pages/HomePage/modalSlice';
+import { fetchLoginAuth } from '../authSlice';
 import './style.scss';
 
 const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   const dispatch = useDispatch();
-  const dataAuth = useSelector((state) => state.dataAuth);
   const [message, setMessage] = useState({});
   const schema = yup.object().shape({
     username: yup
@@ -60,7 +60,8 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
         icon: 'success',
         title: 'Đăng nhập thành công',
       });
-      dispatch(handleChangeAuthForm(null));
+      // dispatch(handleChangeAuthForm(null));
+      dispatch(hideModal('auth'));
     } catch (error) {
       setMessage(error.data);
     }

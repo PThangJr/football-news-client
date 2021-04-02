@@ -29,7 +29,7 @@ const tournamentSlice = createSlice({
       state.loading = false;
     },
     [fetchTournament.rejected](state, action) {
-      state.loading = false;
+      state.loading = true;
     },
   },
 });

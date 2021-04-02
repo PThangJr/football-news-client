@@ -20,7 +20,7 @@ const InputGroup = (props) => {
     }
   };
   return (
-    <div className={`input-group input-group--${status}`}>
+    <div className={`input-group input-group--${status} input-group--${cName}`}>
       <div className="input-box">
         <InputField
           onChange={onChange}
