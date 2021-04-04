@@ -15,7 +15,6 @@ const Account = () => {
     dispatch(displayModal('auth'));
   };
   const handleInfoUser = () => {
-    // dispatch(changeDisplayForm({ infoUser: true }));
     dispatch(displayModal('infoUser'));
   };
   const renderAccount = () => {
@@ -46,6 +45,7 @@ const Account = () => {
   return (
     <>
       {renderAccount()}
+
       {/* <HeaderSetting accountDisplay={accountDisplay} handleLogout={handleLogout} /> */}
     </>
   );

@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import InputGroup from '../form-groups/InputGroup';
 const InputControl = (props) => {
-  const { type, name, placeholder, cName, message, form } = props;
+  const { type, name, placeholder, cName, message, form, disabled } = props;
   // console.log(form.formState.dirtyFields);
   const hasError = form?.errors?.[name];
   // const hasSuccess = form.formState.touched?.[name];
@@ -38,6 +38,7 @@ const InputControl = (props) => {
             // status={displayStatus()}
             message={hasError?.message || message?.[name] || ''}
             cName={cName}
+            disabled={disabled}
           />
         );
       }}
@@ -51,5 +52,6 @@ InputControl.propTypes = {
   cName: PropTypes.string,
   status: PropTypes.string,
   message: PropTypes.object,
+  disabled: PropTypes.bool,
 };
 export default InputControl;

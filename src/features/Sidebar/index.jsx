@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import CustomLink from '../../components/CustomLink';
 import SkeletonElement from '../../components/Loading/Skeleton/SkeletonElement';
 import SidebarItem from './SidebarItem';
 import './style.scss';
@@ -41,16 +42,28 @@ const Sidebar = () => {
           <i className="fas fa-times" />
         </span>
       </h2>
-      <ul className="sidebar__list">
+      <ul className="sidebar__list ">
         <li className="sidebar__item">
-          <NavLink to="/" exact activeClassName="sidebar__link--active" className="sidebar__link ">
-            <span className="sidebar__logo">
-              <i className="fas fa-house-user"></i>
-            </span>
-            News / Trang chủ
-          </NavLink>
+          <div className="dropdown-menu open">
+            <CustomLink to="/" activeOnlyWhenExact={true} caretDown cNameLink="sidebar__link">
+              <span className="sidebar__logo">
+                <i className="fas fa-house-user"></i>
+              </span>
+              News / Trang chủ
+            </CustomLink>
+            {/* <i className="fas fa-caret-down"></i> */}
+          </div>
+          <ul className="sidebar__list-sub">{renderTournaments()}</ul>
         </li>
-        {renderTournaments()}
+
+        <li className="sidebar__item">
+          <CustomLink to="/result" activeOnlyWhenExact={true} caretDown cName="sidebar__item" cNameLink="sidebar__link">
+            <span className="sidebar__logo">
+              <i className="fas fa-table"></i>
+            </span>
+            Kết quả trận đấu
+          </CustomLink>
+        </li>
       </ul>
     </aside>
   );

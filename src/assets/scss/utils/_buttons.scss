@@ -41,7 +41,7 @@
 
     &--disabled {
         background: grey;
-        cursor: default;
+        cursor: progress;
 
         &:hover {
             opacity: 1;

@@ -1,0 +1,67 @@
+@import '../../assets/scss/generals/mixins';
+@import '../../assets/scss/generals/variables';
+
+.comments {
+    min-height: 600px;
+
+    &__heading {
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    &-header {
+        @include flex(flex-start);
+        border-bottom: 1px solid $color-grey-2;
+        // border-top: 1px solid $color-grey-2;
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+
+    &-avatar {
+        align-self: flex-start;
+        display: inline-block;
+        $length: 50px;
+        width: $length;
+        height: $length;
+        border-radius: 50%;
+        object-fit: fill;
+        margin-right: 22px;
+    }
+
+    &-form {
+        flex: 1;
+
+        .comments-textarea {
+            height: auto;
+            max-width: 100%;
+            height: auto;
+            min-height: 32px;
+            width: 100%;
+            min-width: 0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &-list {}
+
+    &-item {
+        @include flex(flex-start);
+        padding: 20px 0;
+    }
+
+    &-username {
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    &-content {
+        padding: 10px 0;
+    }
+
+    &-time {
+        font-style: italic;
+        font-size: 1.4rem;
+    }
+}

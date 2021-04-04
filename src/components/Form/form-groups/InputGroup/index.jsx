@@ -3,22 +3,22 @@ import InputField from '../../form-fields/InputField';
 import PropTypes from 'prop-types';
 import './style.scss';
 const InputGroup = (props) => {
-  const { onChange, onBlur, type, name, placeholder, cName, message = '', status } = props;
-  const renderStatusIcon = () => {
-    if (status === 'success') {
-      return (
-        <span className="icon-box icon-box--success">
-          <i className="fas fa-check"></i>
-        </span>
-      );
-    } else if (status === 'error') {
-      return (
-        <span className="icon-box icon-box--error">
-          <i className="fas fa-times"></i>
-        </span>
-      );
-    }
-  };
+  const { onChange, onBlur, type, name, placeholder, cName, message = '', status, disabled } = props;
+  // const renderStatusIcon = () => {
+  //   if (status === 'success') {
+  //     return (
+  //       <span className="icon-box icon-box--success">
+  //         <i className="fas fa-check"></i>
+  //       </span>
+  //     );
+  //   } else if (status === 'error') {
+  //     return (
+  //       <span className="icon-box icon-box--error">
+  //         <i className="fas fa-times"></i>
+  //       </span>
+  //     );
+  //   }
+  // };
   return (
     <div className={`input-group input-group--${status} input-group--${cName}`}>
       <div className="input-box">
@@ -29,6 +29,7 @@ const InputGroup = (props) => {
           name={name}
           placeholder={placeholder}
           cName={cName}
+          disabled={disabled}
         />
         {/* {renderStatusIcon()} */}
         {status && (
@@ -55,5 +56,6 @@ InputGroup.propTypes = {
   cName: PropTypes.string,
   status: PropTypes.string,
   message: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 export default InputGroup;

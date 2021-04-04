@@ -9,6 +9,7 @@ a {
     align-items: flex-start;
     flex-direction: column;
     margin: 10px 0;
+    overflow: hidden;
 
     .form-field {
         width: 100%;
@@ -61,21 +62,28 @@ a {
 }
 
 .icon-box {
-    min-width: 20px;
-    min-height: 20px;
+
     border-radius: 50%;
-    @include flex(center);
     color: white;
     font-size: 1.3rem;
-    display: inline;
-    // margin-right: 8px;
+    margin-right: 8px;
 
     &--success {
         background: #009432;
+        @include flex(center);
+        $length: 23px;
+        min-width: $length;
+        min-height: $length;
+
     }
 
     &--error {
         background: red;
+        @include flex(center);
+        $length: 23px;
+        min-width: $length;
+        min-height: $length;
+        animation: animateShowUp .5s ease-in-out;
     }
 }
 

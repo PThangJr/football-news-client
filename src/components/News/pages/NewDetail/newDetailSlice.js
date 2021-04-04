@@ -30,7 +30,7 @@ const newDetailSlice = createSlice({
     },
     [fetchNewBySlug.rejected](state, action) {
       console.log(action);
-      state.loading = false;
+      state.loading = true;
       state.errors = action.payload.data.error;
     },
   },

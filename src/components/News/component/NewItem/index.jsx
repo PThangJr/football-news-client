@@ -1,11 +1,9 @@
-import React from 'react';
-import { NavLink, useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './style.scss';
 const NewItem = ({ dataNews = {}, col = '' }) => {
   const { topic, thumbnail, title, views, likes, slug, tournament } = dataNews;
-  const match = useRouteMatch();
-  let url = match.url === '/' ? '' : match.url;
   const fallBackImage = (e) => {
     if (e) {
       e.target.src = 'http://placehold.it/285x125';
@@ -41,7 +39,7 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
               </span>
               <span className="card__views-liked">
                 <i className="icon-views fas fa-thumbs-up" />
-                {/* {likes.length} */}
+                {likes.length}
               </span>
             </div>
           </div>

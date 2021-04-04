@@ -1,11 +1,12 @@
 .modal {
-    position: absolute;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-
+    overflow: hidden;
+    z-index: 1000;
+    cursor: default;
 
     &--center {
         position: absolute;
@@ -13,10 +14,13 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 50;
-        background: var(--color-page-background);
+        // background: var(--color-page-background);
         animation: animateZoomIn 0.4s forwards;
         border-radius: 10px;
         display: block;
+        overflow: hidden;
+
+
     }
 
     &--rect {

@@ -4,7 +4,7 @@ import { Route, Switch, useRouteMatch } from 'react-router';
 import NotFoundPage from '../../pages/NotFoundPage';
 import News from '../News';
 import NewDetail from '../News/pages/NewDetail';
-import Result from '../Results';
+import Results from '../Results';
 import Trending from '../Trending';
 import './style.scss';
 const Body = () => {
@@ -27,7 +27,7 @@ const Body = () => {
               <Trending />
             </div>
             <div className="col-xl-4 col-lg-4 col-12">
-              <Result />
+              <Results />
             </div>
           </div>
         </div>
@@ -41,6 +41,7 @@ const Body = () => {
           })} */}
           {renderRoutes()}
           <Route path={`${match.url}new-detail`} component={NewDetail} />
+          <Route path={`${match.url}result`} component={Results} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

@@ -13,5 +13,9 @@ const authAPI = {
     const url = '/auth/information';
     return axiosClient.get(url);
   },
+  changePassword(data) {
+    const url = '/auth/password';
+    return axiosClient.put(url, data);
+  },
 };
 export default authAPI;

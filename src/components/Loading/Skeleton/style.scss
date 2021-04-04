@@ -25,7 +25,7 @@
         height: 100%;
         background: rgba(255, 255, 255, .2);
         transform: skewX(-30deg);
-        animation: animateSkeletonLoading 1s linear infinite;
+        animation: animateSkeletonLoading .5s linear infinite;
         animation-delay: .5s;
     }
 }

@@ -3,6 +3,7 @@ import parseHTML from 'react-html-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import NotFoundPage from '../../../../pages/NotFoundPage';
+import Comments from '../../../Comments';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
 import NewItem from '../../component/NewItem';
 import { fetchNews } from '../../newsSlice';
@@ -13,26 +14,19 @@ const NewDetail = () => {
   const dispatch = useDispatch();
   const urlSplit = location.pathname.split('/');
   const slug = urlSplit[urlSplit.length - 1];
-  const tournament = urlSplit[urlSplit.length - 2];
+  // const tournament = urlSplit[urlSplit.length - 2];
   // console.log(slug);
 
   useEffect(() => {
-    const fetchNewDetailData = async () => {
-      try {
-        await dispatch(fetchNewBySlug(slug));
-        await dispatch(
-          fetchNews({
-            pagination: {
-              _limit: 6,
-              _page: 1,
-            },
-          })
-        );
-      } catch (error) {
-        console.log('Has errors : ', error);
-      }
-    };
-    fetchNewDetailData();
+    dispatch(fetchNewBySlug(slug));
+    dispatch(
+      fetchNews({
+        pagination: {
+          _limit: 6,
+          _page: 1,
+        },
+      })
+    );
   }, [dispatch, slug]);
   const { data, loading, errors } = useSelector((state) => state.dataNewDetail);
   const dataNews = useSelector((state) => state.dataNews);
@@ -88,6 +82,12 @@ const NewDetail = () => {
             <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '100px' }} />
             <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '300px' }} />
           </div>
+          <div className="col-xl-3 col-lg-12 col-md-12">
+            <div className="new-suggestion">
+              <h3 className="new-suggestion__heading">Bài viết khác</h3>
+              <div className="row">{renderNewSuggestion()}</div>
+            </div>
+          </div>
         </div>
       );
     } else {
@@ -113,7 +113,9 @@ const NewDetail = () => {
                 </div>
               </div>
               <div className="detail-body">{parseHTML(content)}</div>
-              <div className="detail-footer"></div>
+              <div className="detail-footer">
+                <Comments />
+              </div>
             </div>
           </div>
           <div className="col-xl-3 col-lg-12 col-md-12">

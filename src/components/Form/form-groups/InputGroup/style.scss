@@ -1,20 +1,26 @@
 @import "../../../../assets/scss/generals/variables";
 @import "../../../../assets/scss/generals/mixins";
+
 .input-group {
     @include flex(center);
     align-items: flex-start;
     flex-direction: column;
     margin: 10px 0;
+
     &.input-group--error {
         .input-box {
+            overflow: hidden;
+
             border: 3px solid red;
         }
     }
+
     &.input-group--success {
         .input-box {
             border: 3px solid green;
         }
     }
+
     .input-box {
         width: 100%;
         @include flex(flex-start);
@@ -22,6 +28,7 @@
         border: 2px solid $color-grey-1;
         border-radius: 5px;
     }
+
     .form-message {
         font-size: 1.4rem;
         font-style: italic;

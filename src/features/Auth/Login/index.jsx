@@ -38,30 +38,32 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
   });
-
+  const { isSubmitting } = form.formState;
   const handleSubmit = async (values) => {
     try {
       const action = await dispatch(fetchLoginAuth(values));
-      unwrapResult(action);
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 2500,
-        timerProgressBar: true,
-        onClose: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
-        },
-      });
+      const result = unwrapResult(action);
+      if (result) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+          timerProgressBar: true,
+          onClose: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
 
-      Toast.fire({
-        icon: 'success',
-        title: 'Đăng nhập thành công',
-      });
-      // dispatch(handleChangeAuthForm(null));
-      dispatch(hideModal('auth'));
+        Toast.fire({
+          icon: 'success',
+          title: 'Đăng nhập thành công',
+        });
+        // dispatch(handleChangeAuthForm(null));
+        dispatch(hideModal('auth'));
+      }
     } catch (error) {
       setMessage(error.data);
     }
@@ -74,17 +76,36 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   };
   return (
     <form className="auth__box-login" onSubmit={form.handleSubmit(handleSubmit)}>
-      {form.formState.isSubmitting && <LoadingLinear />}
+      {isSubmitting && <LoadingLinear />}
 
       <div className="auth__header">
         <h3 className="auth__heading">Đăng nhập</h3>
-        <button type="button" className="btn btn--auth btn--register" onClick={onHandleChangeAuthForm}>
+        <button
+          disabled={isSubmitting}
+          type="button"
+          className="btn btn--auth btn--register"
+          onClick={onHandleChangeAuthForm}
+        >
           Đăng ký
         </button>
       </div>
       <div className="auth__form auth__from--login">
-        <InputControl message={message} form={form} placeholder="Tên tài khoản..." type="text" name="username" />
-        <InputControl message={message} form={form} placeholder="Mật khẩu..." type="password" name="password" />
+        <InputControl
+          message={message}
+          form={form}
+          placeholder="Tên tài khoản..."
+          type="text"
+          name="username"
+          disabled={isSubmitting}
+        />
+        <InputControl
+          message={message}
+          form={form}
+          placeholder="Mật khẩu..."
+          type="password"
+          name="password"
+          disabled={isSubmitting}
+        />
       </div>
       <div className="auth__support">
         <span className="auth__forgot-pass cl-danger">Quên mật khẩu?</span>
@@ -92,9 +113,9 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
       </div>
       <div className="auth__btn">
         <button
-          disabled={form.formState.isSubmitting}
+          disabled={isSubmitting}
           type="submit"
-          className={`btn btn--green btn--submit btn--full-wd ${form.formState.isSubmitting && 'btn--disabled'}`}
+          className={`btn btn--green btn--submit btn--full-wd ${isSubmitting && 'btn--disabled'}`}
         >
           Đăng nhập
         </button>

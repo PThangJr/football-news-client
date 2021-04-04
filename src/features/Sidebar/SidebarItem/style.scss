@@ -1,11 +1,58 @@
 @import "../../../assets/scss/generals/mixins";
+@import "../../../assets/scss/generals/variables";
+@import "../../../assets/scss/generals/mixins";
 
-.sidebar__item {
-    .sidebar__link {
-        @include flex("");
-    }
-    .sidebar__logo {
+.sidebar {
+
+    &__logo {
         height: 20px;
         margin-right: 8px;
+    }
+
+    .dropdown-menu {
+        @include flex(flex-start);
+
+        .fa-caret-down {
+            font-size: 2.5rem;
+            color: var(--color-text-reverse);
+            height: 100%;
+            cursor: copy;
+            border-left: 1px solid rgb(255, 255, 255);
+            background: rgb(33, 231, 6)
+        }
+    }
+
+
+    &__item {
+        box-shadow: inset 0 0 3px var(--rgba-bsd);
+
+
+
+        div.active {
+            box-shadow: inset 0 0 5px var(--rgba-bsd), inset 0 0 15px var(--rgba-bsd);
+            background: #2f3640;
+            border-left: 4px solid #e74c3c;
+            width: 100%;
+
+            a {
+                color: $color-white;
+            }
+        }
+    }
+
+    &__link {
+        color: var(--color-text);
+        font-weight: 500;
+        @include flex(flex-start);
+        width: 100%;
+        transition: padding-left 0.3s;
+        padding: 12px 15px;
+
+        &:hover {
+            padding-left: 4px;
+            opacity: 0.8;
+        }
+
+
     }
 }

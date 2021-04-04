@@ -14,13 +14,14 @@ export const fetchLoginAuth = createAsyncThunk('/loginAuth', async (payload, thu
     localStorage.setItem('user', JSON.stringify(response.user));
     return response;
   } catch (error) {
-    return error;
+    const { rejectWithValue } = thunkAPI;
+    return rejectWithValue(error);
   }
 });
 export const fetchRegisterAuth = createAsyncThunk('/registerAuth', async (payload, thunkAPI) => {
   try {
     const response = await authAPI.register(payload);
-    console.log(response);
+    // console.log(response);
     localStorage.setItem('access_token', response.access_token);
     localStorage.setItem('user', JSON.stringify(response.user));
     return response;
@@ -46,7 +47,7 @@ const authoSlice = createSlice({
         state.user = action.payload?.user;
       }
       state.loading = false;
-      console.log(action);
+      // console.log(action);
     },
     [fetchLoginAuth.rejected](state, action) {
       console.log(action);
@@ -66,10 +67,10 @@ const authoSlice = createSlice({
         state.user = action.payload?.user;
       }
       state.loading = false;
-      console.log(action);
+      // console.log(action);
     },
     [fetchRegisterAuth.rejected](state, action) {
-      console.log(action);
+      // console.log(action);
       localStorage.clear();
       state.loading = false;
       state.user = null;

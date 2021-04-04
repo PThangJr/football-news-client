@@ -6,19 +6,25 @@ import fallbackAvatar from '../../assets/img/fallback_avatar.png';
 import { fetchLoginAuth } from '../../features/Auth/authSlice';
 import { displayModal, hideModal } from '../../pages/HomePage/modalSlice';
 import './style.scss';
-const InfoUser = ({ handleDisplayChangePassword }) => {
+const InfoUser = ({ close }) => {
   const dispatch = useDispatch();
   const infoUser = useSelector((state) => state.dataAuth).user;
+  const modal = useSelector((state) => state.modal);
   const fallbackImage = (e) => {
     if (e) {
       e.target.src = fallbackAvatar;
     }
   };
+
   const handleKeyDown = (e) => {
     if (e.keyCode === 27) {
-      handleCloseInfoUser();
+      if (modal.length === 1) {
+        // console.log(modal);
+        // handleCloseInfoUser();
+      }
     }
   };
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -62,12 +68,15 @@ const InfoUser = ({ handleDisplayChangePassword }) => {
   };
   return (
     <>
-      {/* <Modal position="right" handleCloseModal={handleCloseModal}> */}
-      {/* <div className="overlay" onClick={handleCloseInfoUser} onKeyDown={handleKeyDown}></div> */}
       <div className="info info--user">
         <h3 className="info__heading">Thông tin tài khoản</h3>
         <div className="info-avatar">
-          <img src={infoUser?.avatar.secure_url} onError={fallbackImage} alt="avatar" className="info-avatar__img" />
+          <img
+            src={infoUser?.avatar.secure_url || ''}
+            onError={fallbackImage}
+            alt="avatar"
+            className="info-avatar__img"
+          />
           <form action="" className="form-upload">
             <input type="file" name="avatar" id="avatar" className="form-upload__avatar" />
             <label htmlFor="avatar" className="btn btn--sm btn--upload">
@@ -117,7 +126,6 @@ const InfoUser = ({ handleDisplayChangePassword }) => {
           </button>
         </div>
       </div>
-      {/* </Modal> */}
     </>
   );
 };

@@ -43,4 +43,5 @@ const toggleSidebar = () => {
   iconCloseSideBar.addEventListener('click', exitSidebar);
   modalExit.addEventListener('click', exitSidebar);
 };
+
 export { darkMode, toggleSidebar };

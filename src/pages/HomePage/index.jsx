@@ -10,18 +10,18 @@ import Auth from '../../features/Auth';
 import ChangePassword from '../../features/Auth/ChangePassword';
 import Sidebar from '../../features/Sidebar';
 import { darkMode, toggleSidebar } from '../../js/script';
+import NotFoundPage from '../NotFoundPage';
 import './style.scss';
 
 const HomePage = () => {
   const modal = useSelector((state) => state.modal);
-  console.log(modal);
 
   useEffect(() => {
     darkMode();
     toggleSidebar();
   }, []);
-  const displayForm = useSelector((state) => state.displayForm);
-  console.log(displayForm);
+
+  // console.log(modal);
   return (
     <div className="wrapper">
       <Sidebar />
@@ -29,11 +29,12 @@ const HomePage = () => {
         <Header />
         <Switch>
           <Route path="/" component={Body} />
-          {/* <Route component={NotFoundPage} /> */}
+          <Route component={NotFoundPage} />
         </Switch>
         <Footer />
       </aside>
       <div className="modal-exit d-none"> </div>
+
       {modal.includes('auth') && (
         <Modal>
           <Auth />
@@ -45,7 +46,7 @@ const HomePage = () => {
         </Modal>
       )}
       {modal.includes('changePassword') && (
-        <Modal closeForm="changePassword" zIndex="200" type="rect">
+        <Modal zIndex="200" type="rect">
           <ChangePassword />
         </Modal>
       )}

@@ -46,7 +46,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
     },
     resolver: yupResolver(schema),
   });
-
+  const { isSubmitting } = form.formState;
   const handleSubmit = async (values) => {
     try {
       // console.log(values);
@@ -77,19 +77,45 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   };
   return (
     <form className="auth__box-register rotate-y-180" onSubmit={form.handleSubmit(handleSubmit)}>
-      {form.formState.isSubmitting && <LoadingLinear />}
+      {isSubmitting && <LoadingLinear />}
 
       <div className="auth__header">
         <h3 className="auth__heading">Đăng ký</h3>
-        <button type="button" className="btn btn--auth btn--login" onClick={() => handleChangeAuthForm('login')}>
+        <button
+          disabled={isSubmitting}
+          type="button"
+          className="btn btn--auth btn--login"
+          onClick={() => handleChangeAuthForm('login')}
+        >
           Đăng nhập
         </button>
       </div>
       <div className="auth__form auth__form--register">
-        <InputControl message={message} form={form} name="username" type="text" placeholder="Username..." />
+        <InputControl
+          message={message}
+          form={form}
+          name="username"
+          type="text"
+          placeholder="Username..."
+          disabled={isSubmitting}
+        />
         <InputControl message={message} form={form} name="email" type="email" placeholder="Email..." />
-        <InputControl message={message} form={form} name="password" type="password" placeholder="Passowrd..." />
-        <InputControl message={message} form={form} name="rePassword" type="password" placeholder="Re-Password..." />
+        <InputControl
+          message={message}
+          form={form}
+          name="password"
+          type="password"
+          placeholder="Passowrd..."
+          disabled={isSubmitting}
+        />
+        <InputControl
+          message={message}
+          form={form}
+          name="rePassword"
+          type="password"
+          placeholder="Re-Password..."
+          disabled={isSubmitting}
+        />
       </div>
       <div className="auth__rules">
         <div className="form-check">
@@ -109,9 +135,9 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
       </div>
       <div className="auth__btn">
         <button
-          disabled={form.formState.isSubmitting}
+          disabled={isSubmitting}
           type="submit"
-          className={`btn btn--green btn--submit btn--full-wd ${form.formState.isSubmitting && 'btn--disabled'}`}
+          className={`btn btn--green btn--submit btn--full-wd ${isSubmitting && 'btn--disabled'}`}
         >
           Đăng ký
         </button>
