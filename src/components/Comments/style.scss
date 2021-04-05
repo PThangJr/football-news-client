@@ -46,22 +46,5 @@
 
     &-list {}
 
-    &-item {
-        @include flex(flex-start);
-        padding: 20px 0;
-    }
 
-    &-username {
-        font-weight: bold;
-        display: inline-block;
-    }
-
-    &-content {
-        padding: 10px 0;
-    }
-
-    &-time {
-        font-style: italic;
-        font-size: 1.4rem;
-    }
 }

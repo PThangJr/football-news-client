@@ -1,13 +1,3 @@
-@keyframes animateSkeleton {
-    0% {
-        opacity: 0.1;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 .skeleton {
     border-radius: 8px;
     background: var(--bg-skeleton);
@@ -28,13 +18,21 @@
         animation: animateSkeletonLoading .5s linear infinite;
         animation-delay: .5s;
     }
+
+    &--rect {}
+
+    &--circle {
+        border-radius: 50%;
+    }
 }
 
 .skeleton-box {
     border-radius: 10px;
-    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    padding: 8px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 4px 6px 8px var(--rgba-bsd);
+    position: relative;
+    transition: transform 0.3s;
 }
 
 @keyframes animateSkeletonLoading {

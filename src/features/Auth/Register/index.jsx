@@ -47,6 +47,8 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
     resolver: yupResolver(schema),
   });
   const { isSubmitting } = form.formState;
+  const { errors } = form;
+  console.log(errors);
   const handleSubmit = async (values) => {
     try {
       // console.log(values);
@@ -75,6 +77,10 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
       setMessage(error?.data?.error.message);
     }
   };
+  const onHandleChangeAuthForm = () => {
+    handleChangeAuthForm('login');
+    form.clearErrors();
+  };
   return (
     <form className="auth__box-register rotate-y-180" onSubmit={form.handleSubmit(handleSubmit)}>
       {isSubmitting && <LoadingLinear />}
@@ -85,7 +91,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
           disabled={isSubmitting}
           type="button"
           className="btn btn--auth btn--login"
-          onClick={() => handleChangeAuthForm('login')}
+          onClick={onHandleChangeAuthForm}
         >
           Đăng nhập
         </button>
@@ -137,7 +143,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
         <button
           disabled={isSubmitting}
           type="submit"
-          className={`btn btn--green btn--submit btn--full-wd ${isSubmitting && 'btn--disabled'}`}
+          className={`btn btn--orange btn--submit btn--full-wd ${isSubmitting && 'btn--disabled'}`}
         >
           Đăng ký
         </button>

@@ -1,9 +1,13 @@
 @import "../../assets/scss/generals/mixins";
 @import "../../assets/scss/generals/variables";
+
 .pagination {
+    margin-top: 30px;
+
     &-list {
         @include flex(center);
     }
+
     &-item {
         $length: 35px;
         width: $length;
@@ -13,25 +17,31 @@
         @include flex(center);
         color: $color-white;
         margin: 0 10px;
+
         &--active {
             background: #48dbfb;
         }
     }
+
     .previous-page,
     .next-page {
         @include flex(center);
         color: var(--text-color);
         font-size: 2.5rem;
     }
+
     .previous-page {
         margin-right: 10px;
+
         &.page-active {
             color: $color-grey-2;
             cursor: default;
         }
     }
+
     .next-page {
         margin-left: 10px;
+
         &.page-active {
             color: $color-grey-2;
             cursor: default;

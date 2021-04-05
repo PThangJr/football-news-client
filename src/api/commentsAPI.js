@@ -11,5 +11,10 @@ const commentsAPI = {
     const url = `/comments/${slugNew}`;
     return axiosClient.post(url, data);
   },
+  deleteCommentById(payload) {
+    const { commentId } = payload;
+    const url = `/comments/${commentId}`;
+    return axiosClient.delete(url);
+  },
 };
 export default commentsAPI;

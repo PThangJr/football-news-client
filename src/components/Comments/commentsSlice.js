@@ -3,6 +3,7 @@ import commentsAPI from '../../api/commentsAPI';
 
 const initialState = {
   loading: null,
+  total: 1,
   comments: [],
   errors: null,
 };
@@ -18,9 +19,16 @@ export const fetchCommentBySlugNew = createAsyncThunk('/comments/slugNew', async
 export const fetchPostComment = createAsyncThunk('/comments/post', async (payload, thunkAPI) => {
   try {
     const response = await commentsAPI.postCommentBySlugNew(payload);
-    if (response) {
-      thunkAPI.dispatch(fetchCommentBySlugNew(payload));
-    }
+
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+export const fetchDeleteCommentById = createAsyncThunk('/comments/delete', async (payload, thunkAPI) => {
+  try {
+    const response = await commentsAPI.deleteCommentById(payload);
+
     return response;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -34,24 +42,27 @@ const commentsSlice = createSlice({
       state.loading = true;
     },
     [fetchCommentBySlugNew.fulfilled](state, action) {
-      console.log(action);
+      // console.log(state);
       state.loading = false;
       state.comments = action.payload.commentBySlug;
+      state.total = action.payload.total;
     },
     [fetchCommentBySlugNew.rejected](state, action) {
       state.loading = true;
     },
     [fetchPostComment.fulfilled](state, action) {
+      state.comments.unshift(action.payload.newComment);
+    },
+    [fetchPostComment.rejected](state, action) {
       console.log(action);
-      // state.comments = action.payload.commentBySlug;
-      // newComment.comments.unshift(action.payload.newComment);
-      // const newDataComments = {
-      //   ...state,
-      // };
-      // console.log(newDataComments);
-      // newDataComments.comments.unshift(action.payload.newComment);
-      // // return newDataComments;
-      // console.log(newDataComments);
+      state.loading = false;
+    },
+    [fetchDeleteCommentById.fulfilled](state, action) {
+      console.log(state, action);
+
+      const newState = { ...state };
+      newState.comments = newState.comments.filter((item) => item._id !== action.payload.commentDeleted._id);
+      return newState;
     },
   },
 });

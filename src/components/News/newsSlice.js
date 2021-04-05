@@ -5,6 +5,7 @@ const initialState = {
   total: null,
   loading: null,
   errors: {},
+  pagination: {},
 };
 
 export const fetchNews = createAsyncThunk('/news', async (payload, thunkAPI) => {
@@ -29,6 +30,7 @@ const newsSlice = createSlice({
       // console.log(action);
       state.data = action.payload.data;
       state.total = action.payload.total;
+      state.pagination = action.payload.pagination;
       state.loading = false;
     },
     [fetchNews.rejected](state, action) {

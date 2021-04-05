@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import CustomLink from '../../components/CustomLink';
 import SkeletonElement from '../../components/Loading/Skeleton/SkeletonElement';
 import SidebarItem from './SidebarItem';
@@ -22,9 +21,7 @@ const Sidebar = () => {
         arr.push(i);
       }
       return arr.map((item) => {
-        return (
-          <SkeletonElement key={item} cName="tournament" style={{ width: '100%', height: '45px', margin: '5px 0px' }} />
-        );
+        return <SkeletonElement key={item} style={{ width: '100%', height: '45px', margin: '5px 0px' }} />;
       });
     } else {
       if (data.length > 0) {

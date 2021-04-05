@@ -2,6 +2,7 @@ import queryString from 'query-string';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import SkeletonBox from '../Loading/Skeleton/SkeletonBox';
 import SkeletonElement from '../Loading/Skeleton/SkeletonElement';
 import Pagination from '../Pagination';
 import NewItem from './component/NewItem';
@@ -49,7 +50,8 @@ const News = () => {
   }, [dispatch, url, _page, _limit, currentPage]);
 
   const dataNews = useSelector((state) => state.dataNews);
-  const { data, loading } = dataNews;
+  const { data, loading, pagination } = dataNews;
+  console.log(pagination);
   const renderNewItem = () => {
     if (loading) {
       const array = [];
@@ -59,23 +61,11 @@ const News = () => {
       return array.map((item, index) => {
         return (
           <div key={index} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
-            <div className="card">
-              <SkeletonElement
-                cName="image"
-                type="rect"
-                style={{ width: '100%', height: '160px', marginBottom: '5px' }}
-              />
-              <SkeletonElement
-                cName="description"
-                type="rect"
-                style={{ width: '100%', height: '35px', marginBottom: '5px' }}
-              />
-              <SkeletonElement
-                cName="views"
-                type="rect"
-                style={{ width: '100px', height: '25px', marginBottom: '5px', float: 'right' }}
-              />
-            </div>
+            <SkeletonBox style={{}}>
+              <SkeletonElement style={{ height: '140px', width: '100%', marginBottom: '5px' }} />
+              <SkeletonElement style={{ height: '42px', marginBottom: '5px' }} />
+              <SkeletonElement style={{ width: '100px', height: '25px', marginBottom: '5px', float: 'right' }} />
+            </SkeletonBox>
           </div>
         );
       });
@@ -96,7 +86,7 @@ const News = () => {
         <div className="row">{renderNewItem()}</div>
       </div>
       <div className="news-pagination">
-        <Pagination page={page} pageItem={5} currentPage={currentPage || 1} />
+        <Pagination page={pagination?.totalPage} pageItem={5} currentPage={currentPage || 1} />
       </div>
     </div>
   );

@@ -228,10 +228,6 @@
                 color: var(--color-text);
                 padding: 5px;
 
-                &:hover {
-                    background: $color-grey-3;
-                }
-
                 @include mobile-tablet {
                     display: none;
                 }

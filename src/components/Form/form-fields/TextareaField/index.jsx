@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
 const TextareaField = (props) => {
-  const [values, setValues] = useState('');
   const handleChange = (e) => {
-    setValues(e.target.value);
-    handleValues(e.target.value);
+    handleGetValues(e.target.value);
   };
-  const { placeholder, id, name, maxLength, rows, max, cName, disabled, value, handleValues } = props;
+
+  const { placeholder, id, name, maxLength, rows, max, cName, disabled, value, handleGetValues } = props;
   return (
     <textarea
       placeholder={placeholder}
@@ -19,7 +18,7 @@ const TextareaField = (props) => {
       max={max || 20}
       className={'textarea-field ' + cName}
       disabled={disabled}
-      value={values}
+      value={value}
       onChange={handleChange}
     />
   );

@@ -1,0 +1,42 @@
+@import '../../../../assets/scss/generals/mixins';
+@import '../../../../assets/scss/generals/variables';
+
+.comments {
+    &-item {
+        @include flex(flex-start);
+        padding: 20px 0;
+    }
+
+    &-username {
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    &-box {
+        width: 100%;
+
+    }
+
+    &-content {
+        padding: 10px 0;
+        @include flex(space-between);
+
+        .icon--delete {
+            color: $color-grey-2;
+            font-size: 2.3rem;
+            cursor: pointer;
+            padding: 5px 12px;
+            transition: all .3s;
+
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &-time {
+        font-style: italic;
+        font-size: 1.4rem;
+    }
+}

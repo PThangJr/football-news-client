@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './style.scss';
-const Pagination = ({ pageItem, page, currentPage }) => {
+const Pagination = ({ pageItem, page, currentPage = 1 }) => {
   // console.log(currentPage, pageItem, page);
   let listPage = [];
   const [startPage, setStartPage] = useState(0);
@@ -32,31 +32,33 @@ const Pagination = ({ pageItem, page, currentPage }) => {
 
   return (
     <div className="pagination">
-      <ul className="pagination-list">
-        <Link
-          to={`?_page=${currentPage === 1 ? 1 : currentPage - 1}`}
-          className={currentPage === 1 ? 'previous-page page-active' : 'previous-page'}
-        >
-          <i className="fas fa-chevron-left"></i>
-        </Link>
-        {listPage.map((item, index) => {
-          return (
-            <NavLink
-              key={index}
-              to={`?_page=${item}`}
-              className={currentPage === item ? 'pagination-item pagination-item--active' : 'pagination-item'}
-            >
-              {item}
-            </NavLink>
-          );
-        })}
-        <Link
-          to={`?_page=${currentPage === page ? page : currentPage + 1}`}
-          className={currentPage === page ? 'next-page page-active' : 'next-page'}
-        >
-          <i className="fas fa-chevron-right"></i>
-        </Link>
-      </ul>
+      {listPage.length > 0 && (
+        <ul className="pagination-list">
+          <Link
+            to={`?_page=${currentPage === 1 ? 1 : currentPage - 1}`}
+            className={currentPage === 1 ? 'previous-page page-active' : 'previous-page'}
+          >
+            <i className="fas fa-chevron-left"></i>
+          </Link>
+          {listPage.map((item, index) => {
+            return (
+              <NavLink
+                key={index}
+                to={`?_page=${item}`}
+                className={currentPage === item ? 'pagination-item pagination-item--active' : 'pagination-item'}
+              >
+                {item}
+              </NavLink>
+            );
+          })}
+          <Link
+            to={`?_page=${currentPage === page ? page : currentPage + 1}`}
+            className={currentPage === page ? 'next-page page-active' : 'next-page'}
+          >
+            <i className="fas fa-chevron-right"></i>
+          </Link>
+        </ul>
+      )}
     </div>
   );
 };

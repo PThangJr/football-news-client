@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import NotFoundPage from '../../../../pages/NotFoundPage';
 import Comments from '../../../Comments';
+import LoadingDotCircle from '../../../Loading/LoadingDotCircle';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
 import NewItem from '../../component/NewItem';
 import { fetchNews } from '../../newsSlice';
+import NewDetailComments from '../NewDetailComments';
 import { fetchNewBySlug } from './newDetailSlice';
 import './style.scss';
 const NewDetail = () => {
@@ -22,7 +24,7 @@ const NewDetail = () => {
     dispatch(
       fetchNews({
         pagination: {
-          _limit: 6,
+          _limit: 10,
           _page: 1,
         },
       })
@@ -114,7 +116,7 @@ const NewDetail = () => {
               </div>
               <div className="detail-body">{parseHTML(content)}</div>
               <div className="detail-footer">
-                <Comments />
+                <NewDetailComments />
               </div>
             </div>
           </div>

@@ -6,18 +6,19 @@
 .auth {
     // display: none;
     $wd: 500px;
-    $hg: 420px;
+    $hg: 500px;
+    // $hg: 520px;
     $pd-box: 40px;
 
-    @include flex(center);
-    z-index: 20;
+    min-height: 510px;
+    max-height: $hg;
+    position: relative;
     // animation: animateZoomIn 0.4s forwards;
 
-
     &__box {
-        background: $color-white;
-        min-width: $wd;
-        min-height: $hg;
+        // background: $color-white;
+        width: $wd;
+        // min-height: 420px;
         border-radius: 5px;
         perspective: 1000px;
         transform-style: preserve-3d;
@@ -25,8 +26,9 @@
         position: relative;
         box-shadow: inset 0 0 20px $rgba-bsd;
 
+
         @include mobile {
-            min-width: 90%;
+            width: 350px;
         }
 
         &::before {
