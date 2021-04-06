@@ -22,19 +22,19 @@ const NewDetailComments = (props) => {
   useEffect(() => {
     const config = {
       pagination: {
-        _limit: search._limit || 3,
-        _page: search._page || 1,
+        limit: search.limit || 5,
+        page: search.page || 1,
       },
       slugNew,
     };
     dispatch(fetchCommentBySlugNew(config));
-  }, [dispatch, slugNew, search._limit, search._page]);
+  }, [dispatch, slugNew, search.limit, search.page]);
   const dataComments = useSelector((state) => state.dataComments);
   const infoUser = useSelector((state) => state.dataAuth).user;
 
-  const { comments, total, loading } = dataComments;
-  const page = Math.ceil(total / 3);
-  const currentPage = search._page;
+  const { comments, loading, pagination } = dataComments;
+  console.log(comments);
+  const currentPage = search.page;
   const onHandleSubmit = async (values) => {
     console.log('values Submit', values);
     if (values.trim()) {
@@ -45,8 +45,8 @@ const NewDetailComments = (props) => {
           data,
           slugNew,
           pagination: {
-            _limit: 3,
-            _page: 1,
+            limit: 3,
+            page: 1,
           },
         };
         setIsSubmitting(true);
@@ -60,6 +60,7 @@ const NewDetailComments = (props) => {
         console.log(error);
         setIsSubmitting(null);
         dispatch(displayModal('auth'));
+        localStorage.clear();
       }
     }
   };
@@ -93,7 +94,7 @@ const NewDetailComments = (props) => {
       <Comments>
         <CommentForm avatarUser={infoUser?.avatar.secure_url} onHandleSubmit={onHandleSubmit} disabled={disabled} />
         <CommentList comments={comments} loading={loading} infoUser={infoUser} handleDeleteItem={handleDeleteItem}>
-          <Pagination page={page} pageItem={3} currentPage={currentPage} />
+          <Pagination totalPage={pagination.totalPage} pageRangeDisplay={5} currentPage={currentPage} />
         </CommentList>
       </Comments>
     </>

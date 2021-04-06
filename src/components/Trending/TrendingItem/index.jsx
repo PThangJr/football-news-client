@@ -12,7 +12,7 @@ const TrendingItem = ({ trendingData }) => {
   return (
     <li className={`trending-item`}>
       <NavLink to={`/new-detail/${slug}`} className="trending-link">
-        <img onError={fallBackImage} className="trending-item__img" src={thumbnail.secure_url} alt="" />
+        <img onError={fallBackImage} className="trending-item__img" src={thumbnail?.secure_url} alt="" />
         <div className="trending-item__description">
           <h3 className="trending-item__title">{topic}</h3>
           <span className="trending-item__content">{title}</span>

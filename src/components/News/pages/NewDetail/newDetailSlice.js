@@ -1,7 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import newsAPI from '../../../../api/newsAPI';
 const initialState = {
-  data: null,
+  data: {
+    title: '',
+    description: '',
+    content: '',
+    created_at: '',
+    views: '',
+    likes: '',
+    _id: '',
+  },
   loading: null,
   errors: null,
 };

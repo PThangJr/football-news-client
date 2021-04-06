@@ -14,8 +14,6 @@
         margin-bottom: 20px;
         @include flex(space-between);
 
-        &-info {}
-
         &-like {
             $length: 45px;
             display: inline-block;
@@ -48,6 +46,11 @@
         }
     }
 
+    &-description {
+        margin-bottom: 20px;
+        font-size: 1.6rem;
+    }
+
     &-views {
         margin: 10px 0;
 
@@ -68,9 +71,18 @@
     .new-suggestion {
         width: 100%;
 
+        // Card Item
         .card {
             height: auto;
             margin-bottom: 15px;
+
+            &__image {
+                &-topic {
+                    font-size: 1.3rem;
+                    top: 1px;
+                    right: 2px;
+                }
+            }
 
             &__img {
                 height: 100px;

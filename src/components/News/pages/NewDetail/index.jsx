@@ -3,8 +3,6 @@ import parseHTML from 'react-html-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import NotFoundPage from '../../../../pages/NotFoundPage';
-import Comments from '../../../Comments';
-import LoadingDotCircle from '../../../Loading/LoadingDotCircle';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
 import NewItem from '../../component/NewItem';
 import { fetchNews } from '../../newsSlice';
@@ -24,8 +22,8 @@ const NewDetail = () => {
     dispatch(
       fetchNews({
         pagination: {
-          _limit: 10,
-          _page: 1,
+          limit: 10,
+          page: 1,
         },
       })
     );
@@ -33,9 +31,7 @@ const NewDetail = () => {
   const { data, loading, errors } = useSelector((state) => state.dataNewDetail);
   const dataNews = useSelector((state) => state.dataNews);
   // console.log(errors);
-  if (data) {
-    var { description, content, created_at, views, likes, _id } = data;
-  }
+  const { title, description, content, created_at, views, likes, _id } = data;
   const handleLikeNew = async () => {
     try {
       console.log('click');
@@ -99,7 +95,7 @@ const NewDetail = () => {
             <div className="detail-left">
               <div className="detail-header">
                 <div className="detail-header-info">
-                  <h3 className="detail__heading">{description}</h3>
+                  <h3 className="detail__heading">{title}</h3>
                   <p className="detail__created">{created_at}</p>
                   <p className="detail-views">
                     <span>Views: </span>
@@ -108,13 +104,16 @@ const NewDetail = () => {
                     <span>{likes?.length}</span>
                   </p>
                 </div>
-                <div className="detail-header-like" onClick={handleLikeNew}>
+                {/* <div className="detail-header-like" onClick={handleLikeNew}>
                   <span className={'icon-like icon-like--active'}>
                     <i className="fas fa-thumbs-up"></i>
                   </span>
-                </div>
+                </div> */}
               </div>
-              <div className="detail-body">{parseHTML(content)}</div>
+              <div className="detail-body">
+                <h4 className="detail-description">{description}</h4>
+                {parseHTML(content)}
+              </div>
               <div className="detail-footer">
                 <NewDetailComments />
               </div>

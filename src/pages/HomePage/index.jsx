@@ -29,6 +29,7 @@ const HomePage = () => {
         <Header />
         <Switch>
           <Route path="/" component={Body} />
+          <Route path="/not-found" component={NotFoundPage} />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />

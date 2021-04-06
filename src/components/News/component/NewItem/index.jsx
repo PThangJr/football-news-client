@@ -15,13 +15,13 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
         <NavLink to={`/new-detail/news/${tournament?.slug}/${slug}`} className="card-box">
           <div className="card__top">
             <div className="card__image">
-              <h3 className="card__image-title">{topic}</h3>
+              <h3 className="card__image-topic">{topic}</h3>
               <img src={thumbnail?.secure_url || 'error'} onError={fallBackImage} alt="news1" className="card__img" />
             </div>
           </div>
           <div className="card__body">
             <div className="card__content">
-              <p className="card__content-description">
+              <p className="card__content-title">
                 {title}
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero asperiores nesciunt eos delectus, ipsam
                 corporis commodi? Maxime magni, delectus officiis expedita laboriosam distinctio itaque magnam error
@@ -39,7 +39,7 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
               </span>
               <span className="card__views-liked">
                 <i className="icon-views fas fa-thumbs-up" />
-                {likes.length}
+                {likes?.length}
               </span>
             </div>
           </div>

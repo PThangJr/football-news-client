@@ -12,12 +12,10 @@ const News = () => {
   // const dataNews = {};
   const dispatch = useDispatch();
   const location = useLocation();
-  const { _limit, _page } = queryString.parse(location.search);
+  const { limit, page } = queryString.parse(location.search, { parseNumbers: true });
 
   // *** Phân trang
-  const { total } = useSelector((state) => state.dataNews);
-  const currentPage = parseInt(_page);
-  const page = Math.ceil(total / 8);
+  const currentPage = parseInt(page);
   // ***
   const dataTournaments = useSelector((state) => state.dataTournaments);
   //Get slug tournament from url
@@ -30,6 +28,9 @@ const News = () => {
     }
     return acc + (result || '');
   }, '');
+
+  const dataNews = useSelector((state) => state.dataNews);
+  const { data, loading, pagination, errors } = dataNews;
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
@@ -37,21 +38,20 @@ const News = () => {
           fetchNews({
             tournament: `/${url}`,
             pagination: {
-              _limit: _limit || 8,
-              _page: _page || 1,
+              limit: limit || 8,
+              page: page || 1,
             },
           })
         );
       } catch (error) {
-        console.log(error);
+        console.log('hasError', error);
       }
     };
     fetchNewsData();
-  }, [dispatch, url, _page, _limit, currentPage]);
+  }, [dispatch, url, page, limit, currentPage]);
 
-  const dataNews = useSelector((state) => state.dataNews);
-  const { data, loading, pagination } = dataNews;
-  console.log(pagination);
+  // console.log(errors);
+
   const renderNewItem = () => {
     if (loading) {
       const array = [];
@@ -86,7 +86,7 @@ const News = () => {
         <div className="row">{renderNewItem()}</div>
       </div>
       <div className="news-pagination">
-        <Pagination page={pagination?.totalPage} pageItem={5} currentPage={currentPage || 1} />
+        <Pagination currentPage={currentPage} totalPage={pagination?.totalPage} pageRangeDisplay={5} />
       </div>
     </div>
   );

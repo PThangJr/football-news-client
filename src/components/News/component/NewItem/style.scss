@@ -40,7 +40,7 @@
         height: 100%;
         position: relative;
 
-        &-title {
+        &-topic {
             position: absolute;
             right: 5px;
             top: 8px;
@@ -75,7 +75,7 @@
         margin: 0 10px;
         color: var(--color-text);
 
-        &-description {
+        &-title {
             word-break: break-all;
             display: -webkit-box;
             -webkit-line-clamp: 2;

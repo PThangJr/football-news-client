@@ -3,9 +3,12 @@ import commentsAPI from '../../api/commentsAPI';
 
 const initialState = {
   loading: null,
-  total: 1,
   comments: [],
   errors: null,
+  pagination: {
+    totalPage: 1,
+    totalItem: 1,
+  },
 };
 
 export const fetchCommentBySlugNew = createAsyncThunk('/comments/slugNew', async (payload, thunkAPI) => {
@@ -44,8 +47,9 @@ const commentsSlice = createSlice({
     [fetchCommentBySlugNew.fulfilled](state, action) {
       // console.log(state);
       state.loading = false;
-      state.comments = action.payload.commentBySlug;
-      state.total = action.payload.total;
+      state.comments = action.payload.comments;
+      state.pagination.totalItem = action.payload.pagination.totalItem;
+      state.pagination.totalPage = action.payload.pagination.totalPage;
     },
     [fetchCommentBySlugNew.rejected](state, action) {
       state.loading = true;

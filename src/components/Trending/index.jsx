@@ -15,8 +15,8 @@ const Trending = () => {
         await dispatch(
           fetchNewsTrending({
             pagination: {
-              _limit: 6,
-              _page: 1,
+              limit: 6,
+              page: 1,
             },
           })
         );
