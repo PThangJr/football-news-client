@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import Comments from '../../../Comments';
-import Pagination from '../../../Pagination';
-import { useLocation } from 'react-router';
-import queryString from 'query-string';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCommentBySlugNew, fetchDeleteCommentById, fetchPostComment } from '../../../Comments/commentsSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
-import CommentForm from '../../../Comments/components/CommentForm';
-import CommentList from '../../../Comments/components/CommentList';
+import queryString from 'query-string';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { displayModal } from '../../../../pages/HomePage/modalSlice';
-
+import Comments from '../../../Comments';
+import { fetchCommentBySlugNew, fetchDeleteCommentById, fetchPostComment } from '../../../Comments/commentsSlice';
+import CommentForm from '../../../Comments/components/CommentForm';
+import CommentList from '../../../Comments/components/CommentList';
+import Pagination from '../../../Pagination';
 const NewDetailComments = (props) => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -19,6 +17,7 @@ const NewDetailComments = (props) => {
   const slugNew = pathnameSplit[pathnameSplit.length - 1];
   const search = queryString.parse(location.search, { parseNumbers: true });
   const [isSubmitting, setIsSubmitting] = useState(null);
+
   useEffect(() => {
     const config = {
       pagination: {
@@ -30,10 +29,11 @@ const NewDetailComments = (props) => {
     dispatch(fetchCommentBySlugNew(config));
   }, [dispatch, slugNew, search.limit, search.page]);
   const dataComments = useSelector((state) => state.dataComments);
-  const infoUser = useSelector((state) => state.dataAuth).user;
+  const { infoUser } = useSelector((state) => state.dataInfoUser);
 
   const { comments, loading, pagination } = dataComments;
-  console.log(comments);
+  // console.log(comments);
+
   const currentPage = search.page;
   const onHandleSubmit = async (values) => {
     console.log('values Submit', values);

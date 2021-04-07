@@ -19,6 +19,7 @@
 
     &-content {
         @include flex(space-between);
+        margin: 8px 0;
 
         .icon--delete {
             color: $color-grey-2;

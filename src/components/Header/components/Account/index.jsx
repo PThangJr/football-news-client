@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLoginAuth } from '../../../../features/Auth/authSlice';
 import { displayModal } from '../../../../pages/HomePage/modalSlice';
+import { fetchInfoUser } from '../../../InfoUser/infoUserSlice';
+import LoadingDotCircle from '../../../Loading/LoadingDotCircle';
 import './style.scss';
 const Account = () => {
   const dispatch = useDispatch();
-  const infoUser = useSelector((state) => state.dataAuth).user;
+  const dataInfoUser = useSelector((state) => state.dataInfoUser);
+  // const [imageHash, setImageHash]
+  const { infoUser, loading } = dataInfoUser;
+  console.log(dataInfoUser);
+  const token = localStorage.getItem('access_token');
 
   useEffect(() => {
-    dispatch(fetchLoginAuth.fulfilled());
+    dispatch(fetchInfoUser());
   }, [dispatch]);
 
   const handleAuthForm = () => {
@@ -18,7 +23,7 @@ const Account = () => {
     dispatch(displayModal('infoUser'));
   };
   const renderAccount = () => {
-    if (!infoUser?.username) {
+    if (!infoUser?.username && !loading) {
       return (
         <div className="account" onClick={handleAuthForm}>
           <span className="account__logo">
@@ -28,18 +33,19 @@ const Account = () => {
         </div>
       );
     } else {
-      return (
-        <div className="account" onClick={handleInfoUser}>
-          <span className="account__logo">
-            {infoUser?.avatar?.secure_url && (
-              <img src={`${infoUser?.avatar.secure_url}`} alt="avatar" className="avatar" />
-            )}
-            {!infoUser?.avatar.secure_url && <i className="icon-views fas fa-user" />}
-          </span>
-          <button className="btn--default sign-in">{infoUser.username}</button>
-          {/* <AccountSetting infoUser={infoUser} /> */}
-        </div>
-      );
+      if (loading) {
+        return <LoadingDotCircle style={{ marginRight: '50px' }} />;
+      } else {
+        return (
+          <div className="account" onClick={handleInfoUser}>
+            <span className="account__logo">
+              <img src={`${infoUser?.avatar?.secure_url}#${new Date().getTime()}`} alt="avatar" className="avatar" />
+              {!infoUser?.avatar?.secure_url && <i className="icon-views fas fa-user" />}
+            </span>
+            <button className="btn--default sign-in">{infoUser?.username}</button>
+          </div>
+        );
+      }
     }
   };
   return (

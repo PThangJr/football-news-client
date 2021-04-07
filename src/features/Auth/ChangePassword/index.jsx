@@ -77,7 +77,7 @@ const ChangePassword = () => {
 
       {isSubmitting && <LoadingLinear />}
       <form onSubmit={form.handleSubmit(handleSubmit)} className="update">
-        <div className="update-passord">
+        <div className="update-password">
           <h3 className="update__heading">Cập nhật thông tin</h3>
           <InputControl
             message={message}

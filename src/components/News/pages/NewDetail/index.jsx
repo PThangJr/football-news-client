@@ -30,8 +30,10 @@ const NewDetail = () => {
   }, [dispatch, slug]);
   const { data, loading, errors } = useSelector((state) => state.dataNewDetail);
   const dataNews = useSelector((state) => state.dataNews);
-  // console.log(errors);
+  // console.log(dataNews);
+
   const { title, description, content, created_at, views, likes, _id } = data;
+  // console.log(data);
   const handleLikeNew = async () => {
     try {
       console.log('click');

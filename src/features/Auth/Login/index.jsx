@@ -8,6 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import * as yup from 'yup';
 import InputControl from '../../../components/Form/form-controls/InputControl';
+import { fetchInfoUser } from '../../../components/InfoUser/infoUserSlice';
 import LoadingLinear from '../../../components/Loading/LoadingLinear';
 import { hideModal } from '../../../pages/HomePage/modalSlice';
 import { fetchLoginAuth } from '../authSlice';
@@ -62,6 +63,7 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
           title: 'Đăng nhập thành công',
         });
         // dispatch(handleChangeAuthForm(null));
+        dispatch(fetchInfoUser());
         dispatch(hideModal('auth'));
       }
     } catch (error) {

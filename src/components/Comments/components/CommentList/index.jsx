@@ -7,6 +7,7 @@ const CommentList = (props) => {
   const { children, comments, loading, infoUser, handleDeleteItem } = props;
   // console.log('loading', loading);
   // console.log('comments', comments);
+
   const renderCommentItem = () => {
     if (!loading) {
       if (comments?.length > 0) {

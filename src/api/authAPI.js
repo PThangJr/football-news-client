@@ -1,5 +1,5 @@
 import axiosClient from './axiosClient';
-
+import axios from 'axios';
 const authAPI = {
   login(data) {
     const url = '/auth/login';
@@ -16,6 +16,17 @@ const authAPI = {
   changePassword(data) {
     const url = '/auth/password';
     return axiosClient.put(url, data);
+  },
+  updateAvatar(data) {
+    const url = `/auth/information`;
+    console.log(data);
+    return axiosClient.put(url, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    // const url = 'https://httpbin.org/anything';
+    // return axios.put(url, data);
   },
 };
 export default authAPI;

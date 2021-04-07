@@ -1,15 +1,20 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import avatar from '../../../../assets/img/fallback_avatar.png';
 import './style.scss';
-
 const CommentItem = ({ comments, infoUser, handleDeleteItem }) => {
   const fallbackImage = (e) => {
     if (e) {
       e.target.src = avatar;
     }
   };
+  //Format Times
+  const createdAtFormat = new Date(comments?.createdAt);
+  const momentFormat = moment(createdAtFormat).format('YYYY-MM-DD HH:mm:ss');
+  let times = moment(momentFormat, 'YYYY-MM-DD HH:mm:ss').fromNow();
+  times = times.replace('a ', '1 ');
+  //End Format Times
   const handleDeleteComment = (commentId) => {
     handleDeleteItem(commentId);
   };
@@ -34,7 +39,7 @@ const CommentItem = ({ comments, infoUser, handleDeleteItem }) => {
             </span>
           )}
         </p>
-        <p className="comments-time">2 giờ trước</p>
+        <p className="comments-time">{times}</p>
       </div>
     </li>
   );

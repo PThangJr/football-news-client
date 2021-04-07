@@ -1,9 +1,10 @@
 @import '../../../assets/scss/generals/mixins';
+@import '../../../assets/scss/generals/variables';
 
 .update {
     width: 400px;
     padding: 40px 40px;
-    background: var(--color-page-background);
+    background: var(--color-white);
 
     &-password {}
 
@@ -25,6 +26,7 @@
         margin-bottom: 20px;
         font-size: 2.5rem;
         text-align: center;
+        color: var(--color-black);
     }
 
     .select-field--gender {

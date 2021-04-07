@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import infoUserReducer from '../../components/Header/components/infoUserSlice';
+import infoUserReducer from '../../components/InfoUser/infoUserSlice';
 import newsReducer from '../../components/News/newsSlice';
 import commentsReducer from '../../components/Comments/commentsSlice';
 import newDetailReducer from '../../components/News/pages/NewDetail/newDetailSlice';
@@ -13,7 +13,7 @@ const store = configureStore({
     dataNewsTrending: trendingReducer,
     dataNewDetail: newDetailReducer,
     dataTournaments: tournamentReducer,
-    infoUser: infoUserReducer,
+    dataInfoUser: infoUserReducer,
     dataAuth: authReducer,
     modal: modalReducer,
     dataComments: commentsReducer,

@@ -1,4 +1,5 @@
 @import "../../../../assets/scss/generals/mixins";
+@import "../../../../assets/scss/generals/variables";
 
 .account {
     @include flex(flex-start);
@@ -6,6 +7,33 @@
 
     .avatar {
         height: 100%;
+        width: 32px;
+        height: 32px;
+        object-fit: cover;
         border-radius: 50%;
+    }
+
+    @include flex(flex-start);
+    position: relative;
+
+    &__logo {
+        $length-accounts__logo: 30px;
+        width: $length-accounts__logo;
+        height: $length-accounts__logo;
+        border-radius: 50%;
+        @include flex(center);
+        background-color: $color-grey-2;
+        color: $color-white;
+        margin-right: 10px;
+
+        &--active {
+            background: rgb(6, 124, 192);
+        }
+    }
+
+    &:hover {
+        .account__setting-list {
+            display: block;
+        }
     }
 }

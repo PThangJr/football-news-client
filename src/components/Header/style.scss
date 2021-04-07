@@ -102,7 +102,7 @@
             border-radius: 20px;
             min-height: 35px;
             padding: 8px 10px;
-            width: 70%;
+            width: 68%;
             box-sizing: border-box;
             box-shadow: 2px 5px 5px var(--rgba-bsd);
             background: $color-white;
@@ -196,31 +196,7 @@
                 margin: 0;
             }
 
-            .account {
-                @include flex(flex-start);
-                position: relative;
 
-                &__logo {
-                    $length-accounts__logo: 30px;
-                    width: $length-accounts__logo;
-                    height: $length-accounts__logo;
-                    border-radius: 50%;
-                    @include flex(center);
-                    background-color: $color-grey-2;
-                    color: $color-white;
-                    margin-right: 10px;
-
-                    &--active {
-                        background: rgb(6, 124, 192);
-                    }
-                }
-
-                &:hover {
-                    .account__setting-list {
-                        display: block;
-                    }
-                }
-            }
 
             .sign-in {
                 font-weight: bold;

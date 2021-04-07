@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import fallbackAvatar from '../../assets/img/fallback_avatar.png';
-import { fetchLoginAuth } from '../../features/Auth/authSlice';
 import { displayModal, hideModal } from '../../pages/HomePage/modalSlice';
+import LoadingDotCircle from '../Loading/LoadingDotCircle';
+import { fetchInfoUser, fetchUpdateAvatarUser } from './infoUserSlice';
 import './style.scss';
 const InfoUser = ({ close }) => {
   const dispatch = useDispatch();
-  const infoUser = useSelector((state) => state.dataAuth).user;
+  const { infoUser, loading } = useSelector((state) => state.dataInfoUser);
+  // console.log(loading);
   const modal = useSelector((state) => state.modal);
   const fallbackImage = (e) => {
     if (e) {
       e.target.src = fallbackAvatar;
     }
   };
-
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+  const [file, setFile] = useState(null);
+  const [errors, setErrors] = useState(null);
   const handleKeyDown = (e) => {
     if (e.keyCode === 27) {
       if (modal.length === 1) {
@@ -47,7 +51,7 @@ const InfoUser = ({ close }) => {
       if (result.isConfirmed) {
         Swal.fire('Đăng xuất thành công', '', 'success');
         // dispatch(isLogout());
-        dispatch(fetchLoginAuth.rejected());
+        dispatch(fetchInfoUser.rejected());
         handleCloseInfoUser();
       }
     });
@@ -66,25 +70,94 @@ const InfoUser = ({ close }) => {
     // handleDisplayChangePassword(true);
     dispatch(displayModal('changePassword'));
   };
+  const handleChangeAvatar = (e) => {
+    e.preventDefault();
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+    const file = e.target.files[0];
+    if (file && allowedTypes.includes(file.type)) {
+      let reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreviewUrl(reader.result);
+        setFile(file);
+        setErrors(null);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setErrors('File is not supported');
+      setFile(null);
+      setImagePreviewUrl(null);
+    }
+  };
+  const handleSubmitUploadAvatar = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('avatar', file);
+    data.append('name', 'PThangJr');
+    dispatch(fetchUpdateAvatarUser(data));
+    // console.log(data);
+  };
+  const handleRemoveAvatar = () => {
+    setFile(null);
+    setErrors(null);
+    setImagePreviewUrl(null);
+  };
   return (
     <>
       <div className="info info--user">
         <h3 className="info__heading">Thông tin tài khoản</h3>
         <div className="info-avatar">
-          <img
-            src={infoUser?.avatar.secure_url || ''}
-            onError={fallbackImage}
-            alt="avatar"
-            className="info-avatar__img"
-          />
-          <form action="" className="form-upload">
-            <input type="file" name="avatar" id="avatar" className="form-upload__avatar" />
-            <label htmlFor="avatar" className="btn btn--sm btn--upload">
+          {errors && <span className="info-avatar__errors">(*) {errors}</span>}
+          <div className="info-avatar-box">
+            <img
+              src={imagePreviewUrl || infoUser?.avatar.secure_url || ''}
+              onError={fallbackImage}
+              alt="avatar"
+              className="info-avatar__img"
+            />
+            {loading && (
+              <div className="info-avatar-overlay">
+                <LoadingDotCircle type="medium" />
+              </div>
+            )}
+          </div>
+          <form action="" className="form-upload" onSubmit={handleSubmitUploadAvatar}>
+            <input
+              type="file"
+              name="avatar"
+              id="avatar"
+              className="form-upload__avatar"
+              onChange={handleChangeAvatar}
+              disabled={loading}
+            />
+            <label
+              disabled={loading}
+              htmlFor="avatar"
+              className={'btn btn--sm btn--choose-file ' + (loading ? ' disable' : '')}
+            >
               <span className="icon-box">
                 <i className="fas fa-upload"></i>
               </span>
               Choose a file
             </label>
+            {file && (
+              <div className="info-avatar__buttons">
+                <button
+                  disabled={loading}
+                  type="submit"
+                  className={'btn btn--sm btn--green btn--upload' + (loading ? ' btn--disabled' : '')}
+                >
+                  Upload
+                </button>
+                <button
+                  disabled={loading}
+                  type="default"
+                  className={'btn btn--sm  btn--danger' + (loading ? ' btn--disabled' : '')}
+                  onClick={handleRemoveAvatar}
+                >
+                  Hủy
+                </button>
+              </div>
+            )}
           </form>
         </div>
         <div className="info-content">

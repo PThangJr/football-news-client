@@ -2,8 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
+import moment from 'moment';
 const NewItem = ({ dataNews = {}, col = '' }) => {
-  const { topic, thumbnail, title, views, likes, slug, tournament } = dataNews;
+  const { topic, thumbnail, title, views, likes, slug, tournament, createdAt } = dataNews;
+  const createdAtFormat = new Date(createdAt);
+  const momentFormat = moment(createdAtFormat).format('YYYY-MM-DD HH:mm:ss');
+  let times = moment(momentFormat, 'YYYY-MM-DD HH:mm:ss').fromNow();
+  times = times.replace('a ', '1 ');
   const fallBackImage = (e) => {
     if (e) {
       e.target.src = 'http://placehold.it/285x125';
@@ -31,7 +36,7 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
             <div className="card__views">
               <span className="card__views-post">
                 <i className="icon-views fas fa-history" />
-                2h
+                {times}
               </span>
               <span className="card__views-numb">
                 <i className="icon-views fas fa-eye" />

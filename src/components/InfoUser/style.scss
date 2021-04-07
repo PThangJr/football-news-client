@@ -51,17 +51,52 @@
 
     &__heading {
         text-align: center;
-        font-size: 2.3rem;
-        padding: 20px 0;
+        font-size: 2.1rem;
+        padding: 10px 0;
         border-bottom: 1px solid $color-grey-3;
     }
 
     &-avatar {
+        &-box {
+            position: relative;
+        }
 
-        margin: 30px auto;
+        &-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(95, 66, 66, 0.4);
+
+            .loading-dot-circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%)
+            }
+        }
+
+
+        margin: 20px auto;
 
         @include flex(center);
         flex-direction: column;
+
+        &__errors {
+            font-size: 1.4rem;
+            color: red;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        &__buttons {
+            margin: 10px 0;
+
+            .btn {
+                margin: 0 8px;
+            }
+        }
 
         &__img {
             // border-radius: 50%;
@@ -75,13 +110,19 @@
         }
 
         .form-upload {
+            @include flex(center);
+            flex-direction: column;
 
             &__avatar {
                 display: none;
+
+
             }
 
             .btn {
-                &--upload {}
+                &--upload {
+                    margin-top: 10px;
+                }
             }
 
             label[for="avatar"] {

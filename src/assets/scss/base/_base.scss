@@ -6,6 +6,8 @@
     --bg-modal-exit: rgba(36, 35, 35, 0.2);
     --rgba-bsd: #{$rgba-bsd};
     --bg-skeleton: #ddd;
+    --color-white: #{$color-white};
+    --color-black: #{$color-black}
 }
 
 html {
@@ -15,13 +17,16 @@ html {
 html {
     scroll-behavior: smooth;
     font-size: 62.5%;
+
     @include mobile {
         font-size: 55%;
     }
 }
+
 body {
     font-size: 1.6rem;
 }
+
 ul li {
     list-style-type: none;
 }
@@ -29,6 +34,7 @@ ul li {
 a {
     text-decoration: none;
 }
+
 input,
 textarea,
 button,
@@ -46,6 +52,7 @@ a {
 
     background: var(--color-page-background);
     color: var(--color-text);
+
     &.dark-theme {
         --color-page-background: #{$color-black};
         --color-text: #{$color-white};
@@ -56,20 +63,25 @@ a {
         --bg-skeleton: #444;
     }
 }
+
 .swal2-container {
     div {
         font-size: 1.6rem !important;
     }
+
     #swal2-content {
         font-size: 2rem !important;
     }
+
     .swal2-confirm {
         min-width: 100px;
     }
+
     .swal2-icon-content {
         font-size: 1.6rem !important;
     }
 }
+
 .Toastify {
     font-size: 1.6rem !important;
 }
