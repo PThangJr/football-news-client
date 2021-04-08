@@ -61,11 +61,23 @@ const News = () => {
       return array.map((item, index) => {
         return (
           <div key={index} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
-            <SkeletonBox style={{}}>
-              <SkeletonElement style={{ height: '140px', width: '100%', marginBottom: '5px' }} />
-              <SkeletonElement style={{ height: '42px', marginBottom: '5px' }} />
-              <SkeletonElement style={{ width: '100px', height: '25px', marginBottom: '5px', float: 'right' }} />
-            </SkeletonBox>
+            <div className="card">
+              <div className="card-box">
+                <div className="card__top">
+                  <div className="card__image">
+                    <SkeletonElement className="card__img" />
+                  </div>
+                </div>
+                <div className="card__body">
+                  <div className="card__content">
+                    <SkeletonElement className="card__content-title" />
+                  </div>
+                  <div className="card__views">
+                    <SkeletonElement style={{ width: '140px', height: '20px' }} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         );
       });

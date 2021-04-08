@@ -22,14 +22,7 @@ const Body = () => {
     <main className="body">
       <div className="main-top">
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-xl-8 col-lg-8 col-12">
-              <Trending />
-            </div>
-            <div className="col-xl-4 col-lg-4 col-12">
-              <Results />
-            </div>
-          </div>
+          <Trending />
         </div>
       </div>
 
@@ -41,7 +34,8 @@ const Body = () => {
           })} */}
           {renderRoutes()}
           <Route path={`${match.url}new-detail`} component={NewDetail} />
-          <Route path={`${match.url}result`} component={Results} />
+          <Route path={`${match.url}results/:slug`} component={Results} />
+          <Route path={`${match.url}results`} component={Results} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

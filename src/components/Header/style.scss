@@ -97,21 +97,78 @@
         }
 
         .search {
-            @include flex(flex-start);
-            border: 1px solid rgb(185, 185, 185);
-            border-radius: 20px;
-            min-height: 35px;
-            padding: 8px 10px;
-            width: 68%;
-            box-sizing: border-box;
-            box-shadow: 2px 5px 5px var(--rgba-bsd);
-            background: $color-white;
+            // @include flex(flex-start);
+            // border: 1px solid rgb(185, 185, 185);
+            // border-radius: 20px;
+            // min-height: 35px;
+            // padding: 8px 10px;
+            // width: 68%;
+            // box-sizing: border-box;
+            // box-shadow: 2px 5px 5px var(--rgba-bsd);
+            // background: $color-white;
+
+            // @include mobile {
+            //     position: absolute;
+            //     // width: 100%;
+            //     top: 50%;
+            //     left: 60px;
+            //     z-index: 50;
+            //     display: none;
+            //     transition: all 0.5s;
+            // }
+
+            // &--show-on-mobile {
+            //     display: flex;
+            //     animation: animateSearch 0.5s ease-in-out forwards;
+            // }
+
+            // .icon--search {
+            //     color: $color-grey-1;
+            //     cursor: pointer;
+            // }
+
+            // .icon--delete {
+            //     color: $color-grey-1;
+            //     cursor: pointer;
+            //     padding: 0px 5px;
+            // }
+
+            // .form-search {
+            //     min-height: 25px;
+            //     width: 100%;
+            //     margin-left: 10px;
+            // }
+
+            // &__value {
+            //     // .search__value
+            //     width: 100%;
+            //     height: 100%;
+            //     border: none;
+            //     outline: none;
+            //     background: transparent;
+            //     font-size: 1.5rem;
+            //     color: $text-black;
+            // }
+
+            // &__history {
+            //     &-item {}
+
+            //     &-link {}
+            // }
+
+        }
+
+        .search {
+            width: 60%;
+            border: 0.5px solid $color-grey-2;
+            border-radius: 8px;
 
             @include mobile {
                 position: absolute;
-                // width: 100%;
+                width: 70%;
                 top: 50%;
-                left: 60px;
+                left: 50%;
+                transform: translateX(-50%);
                 z-index: 50;
                 display: none;
                 transition: all 0.5s;
@@ -122,38 +179,55 @@
                 animation: animateSearch 0.5s ease-in-out forwards;
             }
 
-            .icon--search {
-                color: $color-grey-1;
-                cursor: pointer;
-            }
-
-            .icon--delete {
-                color: $color-grey-1;
-                cursor: pointer;
-                padding: 0px 5px;
-            }
-
             .form-search {
-                min-height: 25px;
                 width: 100%;
-                margin-left: 10px;
-            }
+                height: 40px;
+                overflow: hidden;
+                border: 0.5px solid $color-grey-2;
+                border-radius: 8px;
+                // padding: 0 8px;
+                @include flex(flex-start);
 
-            &__value {
-                // .search__value
-                width: 100%;
-                height: 100%;
-                border: none;
-                outline: none;
-                background: transparent;
-                font-size: 1.5rem;
-                color: $text-black;
-            }
+                input {
+                    position: relative;
+                    display: inline-block;
+                    font-size: 1.6rem;
+                    transition: .5s;
+                    height: 100%;
+                }
 
-            &__history {
-                &-item {}
+                &__input {
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    padding: 5px 15px;
+                    // width: auto;
+                    min-width: 180px;
+                }
 
-                &-link {}
+                p.icon--delete {
+                    padding: 0 8px;
+                    cursor: pointer;
+                    font-size: 2rem;
+                    height: 100%;
+                    // display: inline-block;
+                    color: $color-grey-2;
+                    @include flex(center);
+                    background-color: $color-white;
+                }
+
+                input[type="submit"] {
+                    cursor: pointer;
+                    outline: none;
+                    border: none;
+                    background: $color-green;
+                    color: $color-white;
+                    width: 80px;
+
+                    &:hover {
+                        opacity: .8;
+                    }
+                }
             }
         }
 

@@ -6,7 +6,7 @@
 .card {
     // border: 1px solid;
     min-height: 190px;
-    height: 240px;
+    height: 230px;
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 4px 6px 8px var(--rgba-bsd);
@@ -57,6 +57,16 @@
             // opacity: 0.5;
             font-size: 1.6rem;
             border-radius: 5px;
+
+            @include mobile {
+                top: 2px;
+                font-size: 1rem;
+                left: 0;
+                right: 0;
+                background: rgba(255, 212, 36, 0.7);
+                height: 20px;
+                line-height: 20px;
+            }
         }
     }
 
@@ -73,7 +83,8 @@
     }
 
     &__content {
-        margin: 0 10px;
+        width: 100%;
+        padding: 0 10px;
         color: var(--color-text);
 
         &-title {
@@ -83,8 +94,10 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+            height: 40px;
 
             @include mobile {
+                height: 57px;
                 -webkit-line-clamp: 3;
             }
         }
@@ -103,7 +116,7 @@
     &__body {
         position: relative;
         flex: 1;
-        margin-top: 10px;
+        margin-top: 5px;
         @include flex(space-between);
         align-items: flex-start;
         flex-direction: column;
@@ -119,7 +132,8 @@
     &__views {
         color: var(--color-text);
         align-self: flex-end;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
+        margin-bottom: 12px;
         margin-right: 8px;
         font-size: 1.4rem;
 

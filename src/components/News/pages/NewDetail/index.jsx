@@ -28,11 +28,15 @@ const NewDetail = () => {
       })
     );
   }, [dispatch, slug]);
+  useEffect(() => {
+    const tag = document.querySelectorAll(' p * div');
+    console.log(tag);
+  });
   const { data, loading, errors } = useSelector((state) => state.dataNewDetail);
   const dataNews = useSelector((state) => state.dataNews);
   // console.log(dataNews);
 
-  const { title, description, content, created_at, views, likes, _id } = data;
+  const { title, description, content, views, likes, _id } = data;
   // console.log(data);
   const handleLikeNew = async () => {
     try {
@@ -49,14 +53,24 @@ const NewDetail = () => {
       }
       return arr.map((item) => {
         return (
-          <div key={item} className="skeleton-box">
-            <SkeletonElement cName="" type="rect" style={{ width: '100%', height: '100px', marginBottom: '8px' }} />
-            <SkeletonElement cName="" type="rect" style={{ width: '100%', height: '45px', marginBottom: '8px' }} />
-            <SkeletonElement
-              cName=""
-              type="rect"
-              style={{ width: '100px', height: '25px', marginBottom: '8px', float: 'right' }}
-            />
+          <div key={item} className="new-suggestion">
+            <div className="card">
+              <div className="card-box">
+                <div className="card__top">
+                  <div className="card__image">
+                    <SkeletonElement className="card__img" />
+                  </div>
+                </div>
+                <div className="card__body">
+                  <div className="card__content">
+                    <SkeletonElement className="card__content-title" />
+                  </div>
+                  <div className="card__views">
+                    <SkeletonElement style={{ width: '150px', height: '23px' }} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         );
       });
@@ -96,21 +110,25 @@ const NewDetail = () => {
           <div className="col-xl-9 col-lg-12 col-md-12 col-sm-12">
             <div className="detail-left">
               <div className="detail-header">
-                <div className="detail-header-info">
-                  <h3 className="detail__heading">{title}</h3>
-                  <p className="detail__created">{created_at}</p>
+                <h3 className="detail__heading">
+                  {title}
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptas ipsum, soluta ex debitis
+                  vitae sunt ratione dolore hic natus, dignissimos doloremque dolor blanditiis nobis cupiditate id
+                  eveniet itaque repellendus?
+                </h3>
+                <div className="detail-info">
                   <p className="detail-views">
                     <span>Views: </span>
                     <span>{views}</span>
                     <span>Likes: </span>
                     <span>{likes?.length}</span>
                   </p>
+                  <p className="detail-buttons">
+                    <span className={'icon-like icon-like--active'} onClick={handleLikeNew}>
+                      <i className="fas fa-thumbs-up"></i>
+                    </span>
+                  </p>
                 </div>
-                {/* <div className="detail-header-like" onClick={handleLikeNew}>
-                  <span className={'icon-like icon-like--active'}>
-                    <i className="fas fa-thumbs-up"></i>
-                  </span>
-                </div> */}
               </div>
               <div className="detail-body">
                 <h4 className="detail-description">{description}</h4>

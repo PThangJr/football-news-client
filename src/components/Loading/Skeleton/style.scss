@@ -1,9 +1,13 @@
+@import '../../../assets/scss/responsive/responsive';
+
 .skeleton {
     border-radius: 8px;
     background: var(--bg-skeleton);
     // animation: animateSkeleton 1s ease-in-out infinite;
     position: relative;
     overflow: hidden;
+
+
 
     &::before {
         content: '';
@@ -33,6 +37,7 @@
     box-shadow: 4px 6px 8px var(--rgba-bsd);
     position: relative;
     transition: transform 0.3s;
+
 }
 
 @keyframes animateSkeletonLoading {

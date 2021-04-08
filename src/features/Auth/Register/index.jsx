@@ -48,7 +48,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   });
   const { isSubmitting } = form.formState;
   const { errors } = form;
-  console.log(errors);
+  // console.log(errors);
   const handleSubmit = async (values) => {
     try {
       // console.log(values);
@@ -72,7 +72,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
         icon: 'success',
         title: 'Đăng ký tài khoản thành công',
       });
-      dispatch(handleChangeAuthForm(null));
+      dispatch(handleCloseAuthForm());
     } catch (error) {
       setMessage(error?.data?.error.message);
     }

@@ -24,15 +24,16 @@ const Header = () => {
             </a>
           </div>
           <div className="search">
-            <span className="icon--search">
+            {/* <span className="icon--search">
               <i className="icon-views fas fa-search" />
-            </span>
+            </span> */}
             <form className="form-search">
-              <input type="text" className="search__value" name="search" placeholder="Tìm kiếm ....." />
+              <input type="text" className="form-search__input" name="search" placeholder="Tìm kiếm....." />
+              {/* <p className="icon--delete">
+                <i className="icon-views fas fa-times" />
+              </p> */}
+              <input type="submit" value="Search" className="btn--green" />
             </form>
-            <span className="icon--delete">
-              <i className="icon-views fas fa-times" />
-            </span>
           </div>
         </div>
 

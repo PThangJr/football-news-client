@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import fallbackAvatar from '../../assets/img/fallback_avatar.png';
+import { fetchInfoAuth, fetchUpdateInfoUser } from '../../features/Auth/authSlice';
 import { displayModal, hideModal } from '../../pages/HomePage/modalSlice';
 import LoadingDotCircle from '../Loading/LoadingDotCircle';
-import { fetchInfoUser, fetchUpdateAvatarUser } from './infoUserSlice';
 import './style.scss';
-const InfoUser = ({ close }) => {
+const InfoUser = () => {
   const dispatch = useDispatch();
-  const { infoUser, loading } = useSelector((state) => state.dataInfoUser);
+  const { infoUser, loading } = useSelector((state) => state.dataAuth);
+
   // console.log(loading);
   const modal = useSelector((state) => state.modal);
   const fallbackImage = (e) => {
@@ -51,7 +52,7 @@ const InfoUser = ({ close }) => {
       if (result.isConfirmed) {
         Swal.fire('Đăng xuất thành công', '', 'success');
         // dispatch(isLogout());
-        dispatch(fetchInfoUser.rejected());
+        dispatch(fetchInfoAuth.rejected());
         handleCloseInfoUser();
       }
     });
@@ -93,7 +94,7 @@ const InfoUser = ({ close }) => {
     const data = new FormData();
     data.append('avatar', file);
     data.append('name', 'PThangJr');
-    dispatch(fetchUpdateAvatarUser(data));
+    dispatch(fetchUpdateInfoUser(data));
     // console.log(data);
   };
   const handleRemoveAvatar = () => {
@@ -178,6 +179,7 @@ const InfoUser = ({ close }) => {
               <i className="fas fa-calendar-alt"></i>
             </span>
             {infoUser?.age || '...'}
+            <span className="text">(age)</span>
           </p>
           <p className="info-content__gender">
             <span className="icon-box">{renderGenderIcon()}</span>

@@ -10,31 +10,28 @@
         border-right: 1px solid $color-grey-2;
     }
 
-    &-header {
-        margin-bottom: 20px;
-        @include flex(space-between);
+    &-info {
+        @include flex(flex-start);
+    }
 
-        &-like {
-            $length: 45px;
-            display: inline-block;
-            width: $length;
-            height: $length;
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-            @include flex(center);
+    &-buttons {
+        cursor: pointer;
+        margin-left: 20px;
 
-            .icon-like {
-                color: grey;
-                font-size: 3rem;
-                transition: all 0.5s;
+        .icon-like {
+            color: grey;
+            font-size: 3rem;
+            transition: all 0.5s;
 
-                &--active {
-                    color: rgb(36, 184, 204);
-                    animation: animateLikeBtn 0.5s ease-in-out;
-                }
+            &--active {
+                color: rgb(36, 184, 204);
+                animation: animateLikeBtn 0.5s ease-in-out;
             }
         }
+    }
+
+    &-header {
+        margin-bottom: 20px;
     }
 
     &-body {
@@ -53,6 +50,7 @@
 
     &-views {
         margin: 10px 0;
+        float: left;
 
         span {
             margin-right: 5px;
@@ -75,6 +73,11 @@
         .card {
             height: auto;
             margin-bottom: 15px;
+
+            &__views {
+                margin-top: 12px;
+                margin-bottom: 0;
+            }
 
             &__image {
                 &-topic {

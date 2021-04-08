@@ -13,7 +13,7 @@ const TextareaField = (props) => {
       placeholder={placeholder}
       name={name}
       id={id}
-      maxLength={maxLength || 700}
+      // maxLength={maxLength || 700}
       rows={rows || 5}
       max={max || 20}
       className={'textarea-field ' + cName}

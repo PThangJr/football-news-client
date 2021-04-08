@@ -29,14 +29,14 @@ const NewDetailComments = (props) => {
     dispatch(fetchCommentBySlugNew(config));
   }, [dispatch, slugNew, search.limit, search.page]);
   const dataComments = useSelector((state) => state.dataComments);
-  const { infoUser } = useSelector((state) => state.dataInfoUser);
+  const { infoUser } = useSelector((state) => state.dataAuth);
 
   const { comments, loading, pagination } = dataComments;
   // console.log(comments);
 
   const currentPage = search.page;
   const onHandleSubmit = async (values) => {
-    console.log('values Submit', values);
+    // console.log('values Submit', values);
     if (values.trim()) {
       console.log('Submit', values);
       try {

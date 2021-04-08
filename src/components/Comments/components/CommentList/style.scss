@@ -1,0 +1,13 @@
+.comments-list {
+    .comments__heading {
+        display: inline-block;
+        line-height: 1.8rem;
+    }
+
+    .comments__totals {
+        display: inline-block;
+        font-size: 1.4rem;
+        margin-left: 10px;
+        font-style: italic;
+    }
+}

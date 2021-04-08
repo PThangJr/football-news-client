@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SkeletonBox = (props) => {
   const { className, children, style } = props;
   return (
-    <div className={`${className} skeleton-box`} style={style}>
+    <div className={` skeleton-box skeleton-box--${className} `} style={style}>
       {children}
     </div>
   );

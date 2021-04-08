@@ -9,7 +9,7 @@ const CommentList = (props) => {
   // console.log('comments', comments);
 
   const renderCommentItem = () => {
-    if (!loading) {
+    if (loading) {
       if (comments?.length > 0) {
         return comments.map((item) => {
           return (
@@ -24,14 +24,16 @@ const CommentList = (props) => {
       }
       return arr.map((item) => {
         return (
-          <SkeletonBox key={item} className="comments-item">
+          <li key={item} className="comments-item">
             <SkeletonElement className="comments-avatar" />
-            <div className="comments-box" style={{ width: '100%' }}>
-              <SkeletonElement className="comments-username" style={{ width: '100px', height: '22px' }} />
-              <SkeletonElement className="comments-content" style={{ width: '100%', height: '70px' }} />
-              <SkeletonElement className="comments-time" style={{ width: '80px', height: '14px', marginTop: '8px' }} />
+            <div className="comments-box">
+              <SkeletonElement className="comments-username" style={{ width: '100px', height: '20px' }} />
+              <SkeletonElement className="comments-content" style={{ width: '90%', height: '50px' }} />
+              <div className="comments-time">
+                <SkeletonElement style={{ width: '90px', height: '16px' }} />
+              </div>
             </div>
-          </SkeletonBox>
+          </li>
         );
       });
     }
@@ -39,6 +41,7 @@ const CommentList = (props) => {
   return (
     <ul className="comments-list">
       <h3 className="comments__heading">Tất cả bình luận</h3>
+      <p className="comments__totals">( {comments?.length} lượt bình luận )</p>
       {renderCommentItem()}
       {/* <CommentItem /> */}
       {children}

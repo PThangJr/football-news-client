@@ -1,0 +1,51 @@
+@import "../../../../assets/scss/responsive/responsive";
+@import "../../../../assets/scss/generals/variables";
+@import "../../../../assets/scss/generals/mixins";
+
+.trending-results {
+
+    @include mobile {
+        height: 190px;
+        overflow-y: scroll;
+    }
+
+    &__heading {
+        margin: 10px 0;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        font-size: 2.1rem;
+    }
+
+    .results-list {
+        @include flex(center);
+        flex-direction: column;
+        color: $text-black;
+
+        @include mobile-tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    .results-item {
+        display: flex;
+        margin: 8px 0;
+        width: 260px;
+
+        .club-logo {
+            height: 25px;
+        }
+
+        @include laptop {
+            flex-direction: row;
+        }
+
+    }
+
+}

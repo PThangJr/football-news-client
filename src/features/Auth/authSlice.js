@@ -1,9 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import authAPI from '../../api/authAPI';
 
+const initInfoUser = {
+  avatar: {
+    public_id: '',
+    secure_url: '',
+  },
+  username: '',
+  email: '',
+  role: '',
+  gender: '',
+  age: '',
+  fullname: '',
+};
 const initialState = {
   loading: null,
-  user: null,
+  infoUser: initInfoUser,
   success: null,
 };
 
@@ -30,22 +42,37 @@ export const fetchRegisterAuth = createAsyncThunk('/registerAuth', async (payloa
     return rejectWithValue(error);
   }
 });
-const authoSlice = createSlice({
-  name: 'autho',
+export const fetchInfoAuth = createAsyncThunk('/information/auth', async (payload, thunkAPI) => {
+  try {
+    const response = await authAPI.getInfoUser();
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+export const fetchUpdateInfoUser = createAsyncThunk('/information/update', async (payload, thunkAPI) => {
+  try {
+    const response = await authAPI.updateInfoUser(payload);
+    console.log(response);
+    return response;
+  } catch (error) {
+    const { rejectWithValue } = thunkAPI;
+    return rejectWithValue(error);
+  }
+});
+const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {},
   extraReducers: {
+    // Login
     [fetchLoginAuth.pending](state, action) {
       state.loading = true;
     },
     [fetchLoginAuth.fulfilled](state, action) {
-      const access_token = localStorage.getItem('access_token');
-      if (access_token) {
-        const user = JSON.parse(localStorage.getItem('user'));
-        state.user = user;
-      } else {
-        state.user = action.payload?.user;
-      }
+      console.log(action);
+
+      state.infoUser = action.payload?.user;
       state.loading = false;
       // console.log(action);
     },
@@ -53,19 +80,18 @@ const authoSlice = createSlice({
       console.log(action);
       localStorage.clear();
       state.loading = false;
-      state.user = null;
+      state.infoUser = null;
     },
+
+    // End Login
+    //Register
     [fetchRegisterAuth.pending](state, action) {
       state.loading = true;
     },
     [fetchRegisterAuth.fulfilled](state, action) {
-      const access_token = localStorage.getItem('access_token');
-      if (access_token) {
-        const user = JSON.parse(localStorage.getItem('user'));
-        state.user = user;
-      } else {
-        state.user = action.payload?.user;
-      }
+      console.log(action);
+
+      state.infoUser = action.payload?.user;
       state.loading = false;
       // console.log(action);
     },
@@ -73,8 +99,39 @@ const authoSlice = createSlice({
       // console.log(action);
       localStorage.clear();
       state.loading = false;
-      state.user = null;
+      state.infoUser = initInfoUser;
+    },
+    // End Register
+
+    // Information User
+    [fetchInfoAuth.pending](state, action) {
+      state.loading = true;
+    },
+    [fetchInfoAuth.fulfilled](state, action) {
+      state.loading = false;
+      console.log(action);
+      state.infoUser = action.payload.infoUser;
+    },
+    [fetchInfoAuth.rejected](state, action) {
+      state.loading = false;
+      localStorage.clear();
+      state.infoUser = initInfoUser;
+    },
+    //End Information User
+    //Update InfoUser
+    [fetchUpdateInfoUser.pending](state, action) {
+      state.loading = true;
+    },
+    [fetchUpdateInfoUser.fulfilled](state, action) {
+      state.loading = false;
+      console.log('action');
+      state.infoUser = action.payload.userUpdated;
+    },
+    [fetchUpdateInfoUser.rejected](state, action) {
+      state.loading = false;
+      localStorage.clear();
+      state.infoUser = initInfoUser;
     },
   },
 });
-export default authoSlice.reducer;
+export default authSlice.reducer;

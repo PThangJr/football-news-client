@@ -1,0 +1,21 @@
+.results-club {
+    display: flex;
+    align-items: center;
+
+    .clubs {
+        display: flex;
+        align-items: center;
+
+        font-weight: bold;
+        color: var(--color-text);
+
+        span {
+            margin: 0 12px;
+        }
+    }
+
+    .clubs-logo {
+        height: 22px;
+        object-fit: cover;
+    }
+}

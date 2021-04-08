@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchInfoAuth } from '../../../../features/Auth/authSlice';
 import { displayModal } from '../../../../pages/HomePage/modalSlice';
-import { fetchInfoUser } from '../../../InfoUser/infoUserSlice';
 import LoadingDotCircle from '../../../Loading/LoadingDotCircle';
 import './style.scss';
 const Account = () => {
   const dispatch = useDispatch();
-  const dataInfoUser = useSelector((state) => state.dataInfoUser);
+  const dataAuth = useSelector((state) => state.dataAuth);
   // const [imageHash, setImageHash]
-  const { infoUser, loading } = dataInfoUser;
-  console.log(dataInfoUser);
-  const token = localStorage.getItem('access_token');
+  const { infoUser, loading } = dataAuth;
 
   useEffect(() => {
-    dispatch(fetchInfoUser());
+    dispatch(fetchInfoAuth());
   }, [dispatch]);
 
   const handleAuthForm = () => {

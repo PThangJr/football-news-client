@@ -4,9 +4,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import SkeletonElement from '../Loading/Skeleton/SkeletonElement';
+import TrendingItem from './components/TrendingItem';
+import Results from '../Results';
 import './style.scss';
-import TrendingItem from './TrendingItem';
 import { fetchNewsTrending } from './TrendingSlice';
+import TrendingResults from './components/TrendingResults';
 const Trending = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -54,8 +56,15 @@ const Trending = () => {
     }
   };
   return (
-    <div className="trending">
-      <ul className="trending-list">{displayTrending()}</ul>
+    <div className="row">
+      <div className="col-xl-8 col-lg-8 col-12">
+        <div className="trending">
+          <ul className="trending-list">{displayTrending()}</ul>
+        </div>
+      </div>
+      <div className="col-xl-4 col-lg-4 col-12">
+        <TrendingResults />
+      </div>
     </div>
   );
 };
