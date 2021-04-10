@@ -1,13 +1,15 @@
 :root {
-    --color-page-background: #{$color-white};
+    --color-page-background: rgba(245, 245, 245, 1);
     --color-sidebar: #f5f6fa;
     --color-text: #{$color-black};
+    --color-text-grey: #70757a;
     --color-text-reverse: #{$color-white};
     --bg-modal-exit: rgba(36, 35, 35, 0.2);
     --rgba-bsd: #{$rgba-bsd};
     --bg-skeleton: #ddd;
     --color-white: #{$color-white};
-    --color-black: #{$color-black}
+    --color-black: #{$color-black};
+    --color-tabs: #1976d2;
 }
 
 html {
@@ -33,6 +35,13 @@ ul li {
 
 a {
     text-decoration: none;
+    color: black;
+    font-size: inherit;
+}
+
+img {
+    user-select: none;
+    ;
 }
 
 input,
@@ -61,6 +70,8 @@ a {
         --bg-modal-exit: rgba(173, 173, 173, 0.5);
         --rgba-bsd: #{$rgba-bsd-white};
         --bg-skeleton: #444;
+        --color-tabs: #02101d;
+        // --color-text-grey: 
     }
 }
 

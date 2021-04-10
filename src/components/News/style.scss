@@ -1,6 +1,6 @@
 .news {
-    padding-top: 85px;
-    margin-top: -60px;
+    // padding-top: 85px;
+    // margin-top: -60px;
 
     &__heading {
         font-size: 2rem;
@@ -11,21 +11,26 @@
         color: var(--color-text);
         text-transform: uppercase;
     }
+
     .row {
         margin-top: -20px;
+
         [class^="col"] {
             margin-top: 20px;
         }
     }
+
     .skeleton.description {
         margin: 0 auto;
         margin-top: 10px;
     }
+
     .skeleton.views {
         float: right;
         margin-top: 8px;
         margin-right: 10px;
     }
+
     .box {
         height: 250px;
         overflow: hidden;
@@ -34,6 +39,7 @@
         position: relative;
         transition: transform 0.3s;
     }
+
     .news-pagination {
         margin: 50px 0;
     }

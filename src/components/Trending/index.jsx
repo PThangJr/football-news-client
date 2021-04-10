@@ -30,7 +30,7 @@ const Trending = () => {
   }, [dispatch]);
   const { data, loading } = useSelector((state) => state.dataNewsTrending);
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,

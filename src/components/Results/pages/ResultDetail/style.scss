@@ -1,0 +1,96 @@
+@import '../../../../assets/scss/generals/mixins';
+
+.result-detail {
+    // border: 1px solid;
+    width: 100%;
+
+    &-header {
+
+        .tournament {
+            font-weight: bold;
+            font-size: 2.2rem;
+        }
+
+        .end-time {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-left: 10px;
+        }
+
+    }
+
+    .scoreboard {
+        @include flex(center);
+        padding: 30px 0;
+        font-weight: bold;
+        color: var(--color-text);
+
+        .club {
+            @include flex(center);
+            font-size: 2rem;
+            width: 49%;
+
+            &__name {
+                @include flex(flex-start);
+
+                &-img {
+                    height: 40px;
+                    margin-right: 8px;
+                }
+            }
+
+            &__goals {
+                display: flex;
+
+                span {
+                    margin: 0 8px;
+                    font-size: 2.4rem;
+                }
+            }
+        }
+    }
+
+    .goals {
+        // @include flex(center);
+        display: flex;
+        color: var(--color-text-grey);
+
+        &__player {
+            margin-right: 8px;
+        }
+
+        &-list {
+            width: 49%;
+            @include flex(flex-start);
+            align-items: flex-start;
+            flex-direction: column;
+            margin: 0 40px;
+
+        }
+
+        &-item {
+            padding: 5px 0;
+
+            &--away {
+                align-self: flex-end;
+            }
+        }
+    }
+}
+
+.note {
+    font-size: 2.5rem;
+    margin: 20px 0;
+
+    .author-video {
+        margin-left: 10px;
+        color: red;
+        text-decoration: underline;
+    }
+}
+
+.video {
+    &-youtube {
+        width: 100%;
+    }
+}

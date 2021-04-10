@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ResultItem from '../../../Results/components/ResultItem';
 import { fetchResults } from '../../../Results/resultsSlice';
-import TrendingResultItem from '../TrendingResultItem';
 import './style.scss';
 const TrendingResults = () => {
   const dispatch = useDispatch();
   const dataResults = useSelector((state) => state.dataResults);
   const { results, loading } = dataResults;
-  console.log(dataResults);
+  // console.log(dataResults);
   useEffect(() => {
     dispatch(fetchResults());
   }, [dispatch]);
@@ -17,7 +17,7 @@ const TrendingResults = () => {
       <ul className=" results-list">
         {results.length > 0 &&
           results.map((result) => {
-            return <TrendingResultItem results={result} key={result._id} />;
+            return <ResultItem results={result} key={result._id} />;
           })}
       </ul>
     </div>

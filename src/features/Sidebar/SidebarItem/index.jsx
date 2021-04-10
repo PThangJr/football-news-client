@@ -8,10 +8,10 @@ const SidebarItem = ({ data }) => {
   if (logo) {
     var { secure_url } = logo;
   }
-
+  // console.log(name);
   return (
     <li className="sidebar__item">
-      <CustomLink to={`/news/${slug}`} cNameLink="sidebar__link">
+      <CustomLink to={`/${slug}`} cNameLink="sidebar__link">
         <img src={`${secure_url}`} alt="" className="sidebar__logo" />
         {name}
       </CustomLink>

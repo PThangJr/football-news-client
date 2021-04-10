@@ -52,29 +52,6 @@ const Sidebar = () => {
           </div>
           <ul className="sidebar__list-sub">{renderTournaments()}</ul>
         </li>
-
-        <li className="sidebar__item">
-          <CustomLink
-            to="/results"
-            activeOnlyWhenExact={true}
-            caretDown
-            cName="sidebar__item"
-            cNameLink="sidebar__link"
-          >
-            <span className="sidebar__logo">
-              <i className="fas fa-table"></i>
-            </span>
-            Kết quả trận đấu
-          </CustomLink>
-        </li>
-        <li className="sidebar__item">
-          <CustomLink to="/videos" activeOnlyWhenExact={true} caretDown cName="sidebar__item" cNameLink="sidebar__link">
-            <span className="sidebar__logo">
-              <i className="fas fa-video"></i>
-            </span>
-            Video
-          </CustomLink>
-        </li>
       </ul>
     </aside>
   );

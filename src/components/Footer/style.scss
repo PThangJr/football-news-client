@@ -54,6 +54,7 @@
                 display: inline-block;
                 animation: animateTextBounce 5s linear infinite;
                 transform: skewY(-35deg);
+                user-select: none;
 
                 @include mobile {
                     font-size: 2rem;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import NotFoundPage from '../../../../pages/NotFoundPage';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
-import NewItem from '../../component/NewItem';
+import NewSuggestion from '../../component/NewSuggestion';
 import { fetchNews } from '../../newsSlice';
 import NewDetailComments from '../NewDetailComments';
 import { fetchNewBySlug } from './newDetailSlice';
@@ -28,12 +28,8 @@ const NewDetail = () => {
       })
     );
   }, [dispatch, slug]);
-  useEffect(() => {
-    const tag = document.querySelectorAll(' p * div');
-    console.log(tag);
-  });
+
   const { data, loading, errors } = useSelector((state) => state.dataNewDetail);
-  const dataNews = useSelector((state) => state.dataNews);
   // console.log(dataNews);
 
   const { title, description, content, views, likes, _id } = data;
@@ -45,47 +41,7 @@ const NewDetail = () => {
       console.log(error);
     }
   };
-  const renderNewSuggestion = () => {
-    if (dataNews.loading) {
-      const arr = [];
-      for (let i = 0; i < 6; i++) {
-        arr.push(i);
-      }
-      return arr.map((item) => {
-        return (
-          <div key={item} className="new-suggestion">
-            <div className="card">
-              <div className="card-box">
-                <div className="card__top">
-                  <div className="card__image">
-                    <SkeletonElement className="card__img" />
-                  </div>
-                </div>
-                <div className="card__body">
-                  <div className="card__content">
-                    <SkeletonElement className="card__content-title" />
-                  </div>
-                  <div className="card__views">
-                    <SkeletonElement style={{ width: '150px', height: '23px' }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      });
-    } else {
-      if (dataNews.data.length > 0) {
-        return dataNews.data
-          .filter((item) => item._id !== _id)
-          .map((item) => {
-            return (
-              <NewItem key={item._id + Math.random()} col="col-xl-12 col-lg-4 col-md-4 col-sm-6" dataNews={item} />
-            );
-          });
-      }
-    }
-  };
+
   const renderNewDetail = () => {
     if (loading) {
       return (
@@ -96,11 +52,14 @@ const NewDetail = () => {
             <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '100px' }} />
             <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '300px' }} />
           </div>
-          <div className="col-xl-3 col-lg-12 col-md-12">
+          {/* <div className="col-xl-3 col-lg-12 col-md-12">
             <div className="new-suggestion">
               <h3 className="new-suggestion__heading">Bài viết khác</h3>
               <div className="row">{renderNewSuggestion()}</div>
             </div>
+          </div> */}
+          <div className="col-xl-3 col-lg-4 col-md-12">
+            <NewSuggestion maxItem={10} />
           </div>
         </div>
       );
@@ -135,15 +94,20 @@ const NewDetail = () => {
                 {parseHTML(content)}
               </div>
               <div className="detail-footer">
-                <NewDetailComments />
+                <div className="col-xl-12 col-lg-12 col-md-12">
+                  <NewDetailComments maxItem={10} />
+                </div>
               </div>
             </div>
           </div>
-          <div className="col-xl-3 col-lg-12 col-md-12">
+          {/* <div className="col-xl-3 col-lg-12 col-md-12">
             <div className="new-suggestion">
               <h3 className="new-suggestion__heading">Bài viết khác</h3>
               <div className="row">{renderNewSuggestion()}</div>
             </div>
+          </div> */}
+          <div className="col-xl-3 col-lg-12 col-md-12">
+            <NewSuggestion _id={_id} />
           </div>
         </div>
       );

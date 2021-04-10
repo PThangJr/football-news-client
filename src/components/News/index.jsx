@@ -1,12 +1,14 @@
 import queryString from 'query-string';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router';
+import { Route, Switch, useLocation } from 'react-router';
 import SkeletonBox from '../Loading/Skeleton/SkeletonBox';
 import SkeletonElement from '../Loading/Skeleton/SkeletonElement';
 import Pagination from '../Pagination';
+import Videos from '../Videos';
 import NewItem from './component/NewItem';
 import { fetchNews } from './newsSlice';
+import Results from './../Results';
 import './style.scss';
 const News = () => {
   // const dataNews = {};
@@ -100,6 +102,10 @@ const News = () => {
       <div className="news-pagination">
         <Pagination currentPage={currentPage} totalPage={pagination?.totalPage} pageRangeDisplay={5} />
       </div>
+      {/* <Switch>
+        <Route path="/news/premier-league/news" component={Results} />
+        <Route path="/news/premier-league/detail" component={Videos} />
+      </Switch> */}
     </div>
   );
 };

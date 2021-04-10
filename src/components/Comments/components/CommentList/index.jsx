@@ -9,7 +9,7 @@ const CommentList = (props) => {
   // console.log('comments', comments);
 
   const renderCommentItem = () => {
-    if (loading) {
+    if (!loading) {
       if (comments?.length > 0) {
         return comments.map((item) => {
           return (

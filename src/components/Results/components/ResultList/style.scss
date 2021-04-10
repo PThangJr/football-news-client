@@ -1,0 +1,21 @@
+@import "../../../../assets/scss/responsive/responsive";
+@import "../../../../assets/scss/generals/variables";
+@import "../../../../assets/scss/generals/mixins";
+
+
+
+.results-list {
+    // @include flex(center);
+    // flex-direction: column;
+    color: $text-black;
+
+    @include mobile-tablet {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    @include mobile {
+        justify-content: center;
+    }
+}

@@ -17,7 +17,7 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
   return (
     <div className={col}>
       <div className="card">
-        <NavLink to={`/new-detail/news/${tournament?.slug}/${slug}`} className="card-box">
+        <NavLink to={`/${tournament?.slug}/new-detail/${slug}`} className="card-box">
           <div className="card__top">
             <div className="card__image">
               <h3 className="card__image-topic">{topic}</h3>

@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, useRouteMatch } from 'react-router';
 import Body from '../../components/Body';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import InfoUser from '../../components/InfoUser';
-import Modal from '../../components/Modal';
-import Auth from '../../features/Auth';
-import ChangePassword from '../../features/Auth/ChangePassword';
-import Sidebar from '../../features/Sidebar';
+import News from '../../components/News';
+import Trending from '../../components/Trending';
 import { darkMode, toggleSidebar } from '../../js/script';
-import NotFoundPage from '../NotFoundPage';
 import './style.scss';
-
 const HomePage = () => {
   const modal = useSelector((state) => state.modal);
-
+  const match = useRouteMatch();
+  const dataTournaments = useSelector((state) => state.dataTournaments);
+  const renderRoutes = () => {
+    if (dataTournaments.data.length > 0) {
+      return dataTournaments.data.map((item) => {
+        return <Route key={item._id} path={`${match.url}${item.slug}`} component={Body} />;
+      });
+    }
+  };
   useEffect(() => {
     darkMode();
     toggleSidebar();
@@ -23,35 +24,20 @@ const HomePage = () => {
 
   // console.log(modal);
   return (
-    <div className="wrapper">
-      <Sidebar />
-      <aside className="sidebar-right">
-        <Header />
+    <>
+      <div className="main-top">
+        <div className="container-fluid">
+          <Trending />
+        </div>
+      </div>
+      <div className="main-body">
         <Switch>
-          <Route path="/" component={Body} />
-          <Route path="/not-found" component={NotFoundPage} />
-          <Route component={NotFoundPage} />
+          <Route path="/" exact component={News} />
+          {renderRoutes()}
         </Switch>
-        <Footer />
-      </aside>
-      <div className="modal-exit d-none"> </div>
-
-      {modal.includes('auth') && (
-        <Modal>
-          <Auth />
-        </Modal>
-      )}
-      {modal.includes('infoUser') && (
-        <Modal closeForm="infoUser" zIndex="100" position="right">
-          <InfoUser />
-        </Modal>
-      )}
-      {modal.includes('changePassword') && (
-        <Modal zIndex="200" type="rect">
-          <ChangePassword />
-        </Modal>
-      )}
-    </div>
+        {/* <News /> */}
+      </div>
+    </>
   );
 };
 

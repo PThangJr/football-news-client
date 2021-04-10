@@ -1,8 +1,9 @@
-@import "../../../../assets/scss/responsive/responsive";
-@import "../../../../assets/scss/generals/variables";
-@import "../../../../assets/scss/generals/mixins";
+@import '../../../../assets/scss/responsive/responsive';
+
 
 .trending-results {
+    max-height: 400px;
+    overflow-y: hidden;
 
     @include mobile {
         height: 190px;
@@ -17,35 +18,11 @@
         font-size: 2.1rem;
     }
 
-    .results-list {
-        @include flex(center);
-        flex-direction: column;
-        color: $text-black;
+    .results-list {}
 
-        @include mobile-tablet {
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        @include mobile {
-            justify-content: center;
-        }
+    .club-name {
+        min-width: 40px;
     }
 
-    .results-item {
-        display: flex;
-        margin: 8px 0;
-        width: 260px;
-
-        .club-logo {
-            height: 25px;
-        }
-
-        @include laptop {
-            flex-direction: row;
-        }
-
-    }
 
 }

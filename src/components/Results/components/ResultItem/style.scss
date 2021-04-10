@@ -1,0 +1,52 @@
+@import '../../../../assets/scss/responsive/responsive';
+@import '../../../../assets/scss/generals/mixins';
+
+.results-item {
+    // display: flex;
+    margin: 15px 0;
+    transition: all .3s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    @include laptop {
+        flex-direction: row;
+    }
+
+    .end-time {
+        font-size: 1.5rem;
+        font-style: italic;
+        text-decoration: underline;
+        margin-right: 12px;
+        font-weight: bold;
+    }
+
+    .results-club {
+        font-weight: bold;
+        @include flex(space-evenly);
+        color: var(--color-text);
+
+
+
+        .clubs {
+            width: 80px;
+            @include flex(flex-start);
+
+            // &-away {
+            //     justify-content: flex-end;
+            // }
+
+            &__goals {
+                width: 50px;
+                text-align: center;
+            }
+        }
+
+        .clubs-logo {
+            height: 22px;
+            object-fit: cover;
+            margin-right: 8px;
+        }
+    }
+}
