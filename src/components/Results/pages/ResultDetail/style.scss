@@ -1,3 +1,4 @@
+@import '../../../../assets/scss/responsive/responsive';
 @import '../../../../assets/scss/generals/mixins';
 
 .result-detail {
@@ -30,33 +31,67 @@
             font-size: 2rem;
             width: 49%;
 
+            @include mobile {
+                font-size: 1.6rem;
+            }
+
             &__name {
                 @include flex(flex-start);
 
                 &-img {
                     height: 40px;
                     margin-right: 8px;
+
+                    @include mobile {
+                        height: 20px;
+                        margin-right: 2px;
+                    }
                 }
             }
 
             &__goals {
                 display: flex;
 
+                @include mobile {}
+
                 span {
                     margin: 0 8px;
                     font-size: 2.4rem;
+
+                    @include mobile {
+                        font-size: 1.8rem;
+                        margin: 0 3px;
+                    }
                 }
             }
         }
     }
 
-    .goals {
+    .red-card {
+        margin-top: 10px;
+    }
+
+    .goals,
+    .red-card {
         // @include flex(center);
         display: flex;
         color: var(--color-text-grey);
 
+        &__image {
+            width: 12px;
+            height: 18px;
+            border-radius: 3px;
+            transform: skewY(10deg);
+            background: red;
+            display: inline-block;
+        }
+
         &__player {
-            margin-right: 8px;
+            margin: 8px;
+
+            i {
+                margin-right: 5px;
+            }
         }
 
         &-list {
@@ -66,6 +101,9 @@
             flex-direction: column;
             margin: 0 40px;
 
+            @include mobile {
+                margin: 0;
+            }
         }
 
         &-item {
@@ -90,7 +128,12 @@
 }
 
 .video {
+    // margin-top: 40px;
+
     &-youtube {
         width: 100%;
     }
+
+    padding-bottom: 20px;
+
 }

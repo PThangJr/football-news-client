@@ -2,12 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import resultsAPI from '../../api/resultsAPI';
 
 const initialState = {
-  results: [],
+  tournamentResults: [],
   loading: false,
   errors: null,
 };
 
-export const fetchResults = createAsyncThunk('/results/', async (payload, thunkAPI) => {
+export const fetchTournamentResults = createAsyncThunk('/results/tournament', async (payload, thunkAPI) => {
   try {
     const response = await resultsAPI.getAll(payload);
     return response;
@@ -16,24 +16,23 @@ export const fetchResults = createAsyncThunk('/results/', async (payload, thunkA
   }
 });
 
-const resultsSlice = createSlice({
-  name: 'results',
+const tournamentResults = createSlice({
+  name: 'tournament-results',
   initialState,
   extraReducers: {
-    [fetchResults.pending](state, action) {
+    [fetchTournamentResults.pending](state, action) {
       state.loading = true;
     },
-    [fetchResults.fulfilled](state, action) {
+    [fetchTournamentResults.fulfilled](state, action) {
       // state.results= action.payloads
       state.loading = false;
-      console.log(action);
-      state.results = action.payload.allResults;
+      state.tournamentResults = action.payload.tournamentResults;
     },
-    [fetchResults.rejected](state, action) {
+    [fetchTournamentResults.rejected](state, action) {
       state.loading = false;
       console.log('Result Error: ', action);
     },
   },
 });
 
-export default resultsSlice.reducer;
+export default tournamentResults.reducer;

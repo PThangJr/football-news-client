@@ -7,6 +7,7 @@ import authReducer from '../../features/Auth/authSlice';
 import tournamentReducer from '../../features/Sidebar/tournamentSlice';
 import modalReducer from '../../pages/HomePage/modalSlice';
 import resultsReducer from '../../components/Results/resultsSlice';
+import tournamentResultsReducer from '../../components/Results/tournamentResultsSlice';
 const store = configureStore({
   reducer: {
     dataNews: newsReducer,
@@ -17,6 +18,7 @@ const store = configureStore({
     modal: modalReducer,
     dataComments: commentsReducer,
     dataResults: resultsReducer,
+    dataTournamentResults: tournamentResultsReducer,
   },
 });
 export default store;

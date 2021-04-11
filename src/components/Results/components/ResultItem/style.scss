@@ -2,51 +2,96 @@
 @import '../../../../assets/scss/generals/mixins';
 
 .results-item {
-    // display: flex;
-    margin: 15px 0;
-    transition: all .3s;
+    margin: 12px 0;
 
-    &:hover {
-        opacity: 0.8;
-    }
-
-    @include laptop {
-        flex-direction: row;
-    }
 
     .end-time {
         font-size: 1.5rem;
         font-style: italic;
         text-decoration: underline;
-        margin-right: 12px;
         font-weight: bold;
+
+        @include mobile {
+            padding: 10px 0;
+        }
     }
 
-    .results-club {
-        font-weight: bold;
-        @include flex(space-evenly);
+    .results-link {
+        @include flex(flex-start);
         color: var(--color-text);
 
-
-
-        .clubs {
-            width: 80px;
-            @include flex(flex-start);
-
-            // &-away {
-            //     justify-content: flex-end;
-            // }
-
-            &__goals {
-                width: 50px;
-                text-align: center;
-            }
+        @include mobile {
+            flex-direction: column;
         }
 
-        .clubs-logo {
-            height: 22px;
-            object-fit: cover;
-            margin-right: 8px;
+        div,
+        p,
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .results-content {
+            font-size: 1.8rem;
+            // align-self: flex-start;
+            width: 100%;
+
+            .scores {
+                padding: 0 8px;
+                // font-size: inherit;
+                font-size: 1.8rem;
+                font-weight: bold;
+
+                @include mobile {
+                    padding: 0;
+                }
+
+                span {
+                    margin: 0 2px;
+
+                    @include mobile {
+                        margin: 0;
+                    }
+                }
+            }
+
+        }
+
+        .clubs {
+            width: 210px;
+
+            // white-space: nowrap;
+            font-weight: bold;
+
+            @include mobile {
+
+                width: 140px;
+            }
+
+            &--home {
+                text-align: right;
+            }
+
+            &__logo {
+                height: 30px;
+                vertical-align: middle;
+                padding: 0 5px;
+
+                @include mobile {
+                    height: 20px;
+                }
+            }
+
+            &__name {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                @include mobile {
+                    max-width: 109px;
+                }
+            }
+
         }
     }
 }

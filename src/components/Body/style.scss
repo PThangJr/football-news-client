@@ -1,3 +1,4 @@
+@import "../../assets/scss/responsive/responsive";
 @import "../../assets/scss/generals/mixins";
 @import "../../assets/scss/generals/variables";
 
@@ -25,6 +26,9 @@
         padding: 15px;
         background: var(--color-page-background);
 
+        @include mobile {
+            padding: 0;
+        }
     }
 
     .tabs {

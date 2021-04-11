@@ -34,11 +34,14 @@ const ResultDetail = () => {
   const awayClubName = result?.away?.clubId?.name;
   const homeGoals = result?.home?.goals;
   const awayGoals = result?.away?.goals;
+  const homeRedCards = result?.home?.redCards;
+  const awayRedCards = result?.away?.redCards;
   const homeScores = result?.home?.scores;
   const awayScores = result?.away?.scores;
   const logoHomeClub = result?.home?.clubId?.logo?.secure_url;
   const logoAwayClub = result?.away?.clubId?.logo?.secure_url;
   const linkYoutube = result?.video?.linkYoutube;
+  const videoId = result?.video?.videoId;
   let endTime = result?.endTime;
   endTime = endTime && moment(endTime).format('DD/MM/YYYY');
   return (
@@ -115,8 +118,13 @@ const ResultDetail = () => {
                     homeScores.map((score) => {
                       return (
                         <li key={score._id} className="goals-item goals-item--home">
-                          <span className="goals__player">{score.player}</span>
-                          <span className="goals__time">{score.goalAt}'</span>
+                          <span className="goals__player">
+                            <i className="fas fa-futbol"></i>
+                            {score.player}
+                          </span>
+                          <span className="goals__time">{score.goalAt}</span>
+                          <span className="goals__penalty">{score.penalty && '(P)'}</span>
+                          <span className="goals__OG">{score.ownGoal && '(OG)'}</span>
                         </li>
                       );
                     })}
@@ -126,8 +134,39 @@ const ResultDetail = () => {
                     awayScores.map((score) => {
                       return (
                         <li key={score._id} className="goals-item goals-item--away">
-                          <span className="goals__player">{score.player}</span>
-                          <span className="goals__time">{score.goalAt}'</span>
+                          <span className="goals__player">
+                            <i className="fas fa-futbol"></i>
+                            {score.player}
+                          </span>
+                          <span className="goals__time">{score.goalAt}</span>
+                          <span className="goals__penalty">{score.penalty && '(P)'}</span>
+                          <span className="goals__OG">{score.ownGoal && '(OG)'}</span>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </div>
+              <div className="red-card">
+                <ul className="red-card-list">
+                  {homeRedCards &&
+                    homeRedCards.map((redCard) => {
+                      return (
+                        <li key={redCard._id + 1} className="red-card-item red-card-item--home">
+                          <span className="red-card__image"></span>
+                          <span className="red-card__player ">{redCard.player}</span>
+                          <span className="red-card__time">{redCard.time}</span>
+                        </li>
+                      );
+                    })}
+                </ul>
+                <ul className="red-card-list">
+                  {awayRedCards &&
+                    awayRedCards.map((redCard) => {
+                      return (
+                        <li key={redCard._id} className="red-card-item red-card-item--away">
+                          <span className="red-card__image"></span>
+                          <span className="red-card__player ">{redCard.player}</span>
+                          <span className="red-card__time">{redCard.time}</span>
                         </li>
                       );
                     })}
@@ -153,9 +192,9 @@ const ResultDetail = () => {
               <SkeletonElement style={{ height: '400px' }} className="video-youtube" />
             </div>
           )}
-          {result && (
+          {result && videoId && (
             <div className="video">
-              <Youtube videoId={result?.video?.videoId} className="video-youtube" />
+              <Youtube videoId={videoId} className="video-youtube" />
             </div>
           )}
         </div>

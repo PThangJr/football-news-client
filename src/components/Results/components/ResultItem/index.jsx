@@ -5,14 +5,14 @@ import './style.scss';
 import moment from 'moment';
 const ResultItem = (props) => {
   const { results, fullname, date } = props;
-  console.log(results);
+  // console.log(results);
   const tournament = results?.tournament?.slug;
   const homeClubName = fullname ? results?.home?.clubId?.name : results?.home?.clubId?.shortname;
   const awayClubName = fullname ? results?.away?.clubId?.name : results?.away?.clubId?.shortname;
   const homeGoals = results?.home?.goals;
   const awayGoals = results?.away?.goals;
-  const logoHomeClub = results?.home?.clubId?.logo?.secure_url;
-  const logoAwayClub = results?.away?.clubId?.logo?.secure_url;
+  const homeLogoClub = results?.home?.clubId?.logo?.secure_url;
+  const awayLogoClub = results?.away?.clubId?.logo?.secure_url;
   const linkYoutube = results?.video?.linkYoutube;
   let endTime = results?.endTime;
   endTime = endTime && moment(endTime).format('DD/MM/YYYY');
@@ -22,24 +22,26 @@ const ResultItem = (props) => {
   // let awayClub = '';
   //   let homeGoals = '';
   //   let awayGoals = '';
-  //   let logoHomeClub = '';
+  //   let homeLogoClub = '';
   //   let awayHomeClub = '';
   return (
     <li className=" results-item">
-      <Link href={linkYoutube} to={`/${tournament}/results/${slug}`} className=" results-club">
-        {/* {date && <span className="end-time">{endTime}</span>} */}
-        <div className=" clubs clubs-home">
-          <img src={logoHomeClub} alt="" className="clubs-logo logo-home" />
-          <span className="clubs-name">{homeClubName}</span>
-        </div>
-        <div className="clubs__goals">
-          <span className="home-goals">{homeGoals}</span>
-          <span>-</span>
-          <span className="away-goals">{awayGoals}</span>
-        </div>
-        <div className=" clubs clubs-away">
-          <img src={logoAwayClub} alt="" className="clubs-logo logo-home" />
-          <span className="clubs-name">{awayClubName}</span>
+      <Link href={linkYoutube} to={`/${tournament}/results/${slug}`} className=" results-link">
+        <div className="end-time">{endTime}</div>
+        <div className="results-content">
+          <p className="clubs clubs--home">
+            <span className="clubs__name">{homeClubName}</span>
+            <img src={homeLogoClub} alt="" className="clubs__logo" />
+          </p>
+          <p className="scores">
+            <span className="scores__home">{homeGoals}</span>
+            <span className="scores__home">-</span>
+            <span className="scores__away">{awayGoals}</span>
+          </p>
+          <p className="clubs clubs--away">
+            <img src={awayLogoClub} alt="" className="clubs__logo" />
+            <span className="clubs__name">{awayClubName}</span>
+          </p>
         </div>
       </Link>
     </li>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ResultItem from '../../../Results/components/ResultItem';
 import { fetchResults } from '../../../Results/resultsSlice';
+import TrendingResultItem from '../TrendingResultItem';
 import './style.scss';
 const TrendingResults = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const TrendingResults = () => {
       <ul className=" results-list">
         {results.length > 0 &&
           results.map((result) => {
-            return <ResultItem results={result} key={result._id} />;
+            return <TrendingResultItem results={result} key={result._id + Date.now()} />;
           })}
       </ul>
     </div>

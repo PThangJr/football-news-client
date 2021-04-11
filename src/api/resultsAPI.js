@@ -1,8 +1,9 @@
 import axiosClient from './axiosClient';
 
 const resultsAPI = {
-  getAll() {
-    const url = '/results';
+  getAll(payload) {
+    const tournament = payload?.tournament;
+    const url = tournament ? `/results/tournament/${tournament}` : '/results';
     return axiosClient.get(url);
   },
   getResultBySlug(slug) {

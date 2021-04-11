@@ -56,8 +56,11 @@
                 transform: skewY(-35deg);
                 user-select: none;
 
+
                 @include mobile {
                     font-size: 2rem;
+                    margin: 6px;
+
                 }
             }
 
@@ -81,6 +84,11 @@
         padding: 0 80px;
         font-weight: bold;
         line-height: 2.1rem;
+
+        @include mobile {
+            margin-top: 20px;
+            padding: 0;
+        }
     }
 
     &__social {

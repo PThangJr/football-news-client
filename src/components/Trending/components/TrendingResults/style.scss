@@ -5,6 +5,30 @@
     max-height: 400px;
     overflow-y: hidden;
 
+    .results-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .results-item {
+            margin: 6px 0;
+
+        }
+
+        @include tablet-laptop {
+            flex-wrap: wrap;
+            max-height: 280px;
+        }
+
+        @include tablet {
+            flex-wrap: wrap;
+            max-height: 280px;
+        }
+
+
+    }
+
     @include mobile {
         height: 190px;
         overflow-y: scroll;
@@ -19,10 +43,6 @@
     }
 
     .results-list {}
-
-    .club-name {
-        min-width: 40px;
-    }
 
 
 }
