@@ -22,7 +22,8 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
       .required('Username không được để trống!')
       .trim()
       .min(3, 'Username không được ngắn hơn 3 ký tự')
-      .max(12, 'Username không được dài quá 12 ký tự'),
+      .max(12, 'Username không được dài quá 12 ký tự')
+      .matches(/^[a-zA-Z][a-zA-Z0-9]{4,12}\S$/i, 'Username không có ký tự đặc biệt, khoảng trắng'),
     password: yup
       .string()
       .required('Password không được để trống!')

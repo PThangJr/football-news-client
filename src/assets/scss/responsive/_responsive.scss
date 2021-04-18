@@ -20,6 +20,7 @@ $xl: 1200px;
         @content;
     }
 }
+
 @mixin mobile-tablet {
     @media (max-width: #{$lg - 1px}) {
         @content;
@@ -44,8 +45,51 @@ $xl: 1200px;
     }
 }
 
+@mixin desktop-sm {
+    @media (min-width: #{$sm}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+
 @mixin desktop {
     @media (min-width: #{$desktop-width}) {
         @content;
+    }
+}
+
+.hide-on-mobile {
+
+    @include mobile {
+        display: none !important;
+    }
+}
+
+.show-on-mobile {
+    @include mobile {
+        display: flex !important;
+    }
+}
+
+.hide-on-tablet {
+    @include tablet {
+        display: none !important;
+    }
+}
+
+.hide-on-laptop {
+    @include laptop {
+        display: none !important;
+    }
+}
+
+.hide-on-desktop-sm {
+    @include desktop-sm {
+        display: none !important;
+    }
+}
+
+.hide-on-desktop {
+    @include desktop {
+        display: none !important;
     }
 }

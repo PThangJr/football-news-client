@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import './assets/scss/main.scss';
+import ButtonToTop from './components/Button/ButtonToTop';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import InfoUser from './components/InfoUser';
@@ -11,10 +12,9 @@ import ChangePassword from './features/Auth/ChangePassword';
 import Sidebar from './features/Sidebar';
 import HomePage from './pages/HomePage/index';
 import NotFoundPage from './pages/NotFoundPage';
+
 const App = () => {
   const modal = useSelector((state) => state.modal);
-
-  useEffect(() => {}, []);
   return (
     <div className="wrapper">
       <Sidebar />
@@ -28,8 +28,8 @@ const App = () => {
           </Switch>
         </main>
         <Footer />
+        <div className="modal-exit d-none"> </div>
       </aside>
-      <div className="modal-exit d-none"> </div>
 
       {modal.includes('auth') && (
         <Modal>
@@ -46,6 +46,7 @@ const App = () => {
           <ChangePassword />
         </Modal>
       )}
+      <ButtonToTop />
     </div>
   );
 };

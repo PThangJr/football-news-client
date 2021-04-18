@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import './style.scss';
 
 const TextareaField = (props) => {
@@ -7,7 +7,7 @@ const TextareaField = (props) => {
     handleGetValues(e.target.value);
   };
 
-  const { placeholder, id, name, maxLength, rows, max, cName, disabled, value, handleGetValues } = props;
+  const { placeholder, id, name, rows, max, cName, disabled, value, handleGetValues } = props;
   return (
     <textarea
       placeholder={placeholder}

@@ -1,10 +1,10 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import './style.scss';
-import moment from 'moment';
 const NewItem = ({ dataNews = {}, col = '' }) => {
-  const { topic, thumbnail, title, views, likes, slug, tournament, createdAt } = dataNews;
+  const { topic, thumbnail, title, views, likes, slug, tournaments, createdAt } = dataNews;
   const createdAtFormat = new Date(createdAt);
   const momentFormat = moment(createdAtFormat).format('YYYY-MM-DD HH:mm:ss');
   let times = moment(momentFormat, 'YYYY-MM-DD HH:mm:ss').fromNow();
@@ -14,10 +14,14 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
       e.target.src = 'http://placehold.it/285x125';
     }
   };
+  const params = useParams();
+  // console.log(pathname);
+  // console.log
+  const tournament = tournaments.filter((tournament) => tournament.slug === params.tournament || tournament.slug);
   return (
     <div className={col}>
       <div className="card">
-        <NavLink to={`/${tournament?.slug}/new-detail/${slug}`} className="card-box">
+        <NavLink to={`/${tournament[0]?.slug}/new-detail/${slug}`} className="card-box">
           <div className="card__top">
             <div className="card__image">
               <h3 className="card__image-topic">{topic}</h3>

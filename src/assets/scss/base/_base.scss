@@ -20,6 +20,10 @@ html {
     scroll-behavior: smooth;
     font-size: 62.5%;
 
+    @include tablet {
+        font-size: 55%;
+    }
+
     @include mobile {
         font-size: 45%;
     }

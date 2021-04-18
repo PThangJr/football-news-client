@@ -9,14 +9,15 @@ const NewSuggestion = ({ _id = '', maxItem = 1 }) => {
   useEffect(() => {
     dispatch(
       fetchNews({
-        pagination: {
+        params: {
           limit: maxItem,
           page: 1,
         },
       })
     );
-  }, []);
+  }, [dispatch, maxItem]);
   const dataNews = useSelector((state) => state.dataNews);
+
   const renderNewSuggestion = () => {
     if (dataNews.loading) {
       const arr = [];

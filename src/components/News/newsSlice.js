@@ -21,6 +21,7 @@ export const fetchNews = createAsyncThunk('/news', async (payload, thunkAPI) => 
     return rejectWithValue(error);
   }
 });
+
 const newsSlice = createSlice({
   name: 'news',
   initialState,
@@ -29,6 +30,7 @@ const newsSlice = createSlice({
     [fetchNews.pending](state, action) {
       // state.data = action.payload;
       state.loading = true;
+      state.errors = null;
     },
     [fetchNews.fulfilled](state, action) {
       // console.log(action);

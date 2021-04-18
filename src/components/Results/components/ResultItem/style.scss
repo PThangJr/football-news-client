@@ -58,14 +58,19 @@
         }
 
         .clubs {
-            width: 210px;
+            width: 214px;
 
             // white-space: nowrap;
             font-weight: bold;
 
+            @include tablet {
+
+                width: 200px;
+            }
+
             @include mobile {
 
-                width: 140px;
+                width: 143px;
             }
 
             &--home {
@@ -73,9 +78,11 @@
             }
 
             &__logo {
+                width: 30px;
                 height: 30px;
+                object-fit: fill;
                 vertical-align: middle;
-                padding: 0 5px;
+                padding: 0 3px;
 
                 @include mobile {
                     height: 20px;

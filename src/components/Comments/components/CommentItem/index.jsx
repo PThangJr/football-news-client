@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import avatar from '../../../../assets/img/fallback_avatar.png';
 import './style.scss';
+import htmlParser from 'react-html-parser';
+
 const CommentItem = ({ comments, infoUser, handleDeleteItem }) => {
   const fallbackImage = (e) => {
     if (e) {
@@ -29,7 +31,7 @@ const CommentItem = ({ comments, infoUser, handleDeleteItem }) => {
       <div className="comments-box">
         <span className="comments-username">{comments?.userId?.username}</span>
         <p className="comments-content">
-          {comments?.content}
+          {htmlParser(comments?.content)}
           {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo consequatur enim adipisci aliquid pariatur!
           Repudiandae sapiente in quibusdam illum vitae veritatis cumque voluptatum sed, consequuntur provident quos
           facilis aliquam eius? */}

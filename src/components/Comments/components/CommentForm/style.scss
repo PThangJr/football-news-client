@@ -1,3 +1,4 @@
+@import '../../../../assets/scss/responsive/responsive';
 @import '../../../../assets/scss/generals/mixins';
 @import '../../../../assets/scss/generals/variables';
 
@@ -8,4 +9,8 @@
     padding: 20px 0;
     margin-bottom: 20px;
     margin-right: 40px;
+
+    @include mobile {
+        margin-right: 10px;
+    }
 }

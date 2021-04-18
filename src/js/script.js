@@ -6,10 +6,10 @@ const darkMode = () => {
   btnDarkMode.addEventListener('click', (e) => {
     darkModeBox.classList.toggle('dark-mode__box--active');
     wrapper.classList.toggle('dark-theme');
-    if (darkModeName.innerText === 'Dark Mode') {
-      darkModeName.innerText = 'Light Mode';
+    if (darkModeName.innerText === 'Dark') {
+      darkModeName.innerText = 'Light';
     } else {
-      darkModeName.innerText = 'Dark Mode';
+      darkModeName.innerText = 'Dark';
     }
   });
 };

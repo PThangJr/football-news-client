@@ -1,28 +1,18 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Route, Switch, useRouteMatch } from 'react-router';
+import React, { useEffect, useRef } from 'react';
+import { Route, Switch } from 'react-router';
 import Body from '../../components/Body';
 import News from '../../components/News';
+import ScrollToTop from '../../components/ScrollToTop';
 import Trending from '../../components/Trending';
 import { darkMode, toggleSidebar } from '../../js/script';
+import SearchPage from '../SearchPage';
 import './style.scss';
 const HomePage = () => {
-  const modal = useSelector((state) => state.modal);
-  const match = useRouteMatch();
-  const dataTournaments = useSelector((state) => state.dataTournaments);
-  const renderRoutes = () => {
-    if (dataTournaments.data.length > 0) {
-      return dataTournaments.data.map((item) => {
-        return <Route key={item._id} path={`${match.url}${item.slug}`} component={Body} />;
-      });
-    }
-  };
   useEffect(() => {
     darkMode();
     toggleSidebar();
   }, []);
-
-  // console.log(modal);
+  const fieldRef = useRef();
   return (
     <>
       <div className="main-top">
@@ -30,10 +20,14 @@ const HomePage = () => {
           <Trending />
         </div>
       </div>
-      <div className="main-body">
+
+      <div className="main-body" ref={fieldRef}>
+        <ScrollToTop fieldRef={fieldRef} />
         <Switch>
+          <Route path="/news" component={SearchPage} />
           <Route path="/" exact component={News} />
-          {renderRoutes()}
+          <Route path="/:tournament" component={Body} />
+          {/* {renderRoutes()} */}
         </Switch>
         {/* <News /> */}
       </div>

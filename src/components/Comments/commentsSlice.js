@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import commentsAPI from '../../api/commentsAPI';
+import { displayModal } from '../../pages/HomePage/modalSlice';
 
 const initialState = {
   loading: null,
@@ -25,6 +26,9 @@ export const fetchPostComment = createAsyncThunk('/comments/post', async (payloa
 
     return response;
   } catch (error) {
+    if (error?.status === 401) {
+      thunkAPI.dispatch(displayModal('auth'));
+    }
     return thunkAPI.rejectWithValue(error);
   }
 });
@@ -34,6 +38,7 @@ export const fetchDeleteCommentById = createAsyncThunk('/comments/delete', async
 
     return response;
   } catch (error) {
+    // console.log(error);
     return thunkAPI.rejectWithValue(error);
   }
 });
@@ -54,15 +59,17 @@ const commentsSlice = createSlice({
     [fetchCommentBySlugNew.rejected](state, action) {
       state.loading = true;
     },
+    // [fetchPostComment.pending](state, action) {
+    //   state.loading = true;
+    // },
     [fetchPostComment.fulfilled](state, action) {
       state.comments.unshift(action.payload.newComment);
     },
     [fetchPostComment.rejected](state, action) {
       console.log(action);
-      state.loading = false;
     },
     [fetchDeleteCommentById.fulfilled](state, action) {
-      console.log(state, action);
+      // console.log(state, action);
 
       const newState = { ...state };
       newState.comments = newState.comments.filter((item) => item._id !== action.payload.commentDeleted._id);

@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, useRouteMatch } from 'react-router-dom';
-import './style.scss';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
 const ResultItem = (props) => {
-  const { results, fullname, date } = props;
+  const { results, fullname } = props;
   // console.log(results);
   const tournament = results?.tournament?.slug;
   const homeClubName = fullname ? results?.home?.clubId?.name : results?.home?.clubId?.shortname;
@@ -17,7 +17,6 @@ const ResultItem = (props) => {
   let endTime = results?.endTime;
   endTime = endTime && moment(endTime).format('DD/MM/YYYY');
   const slug = results?.slug;
-  const match = useRouteMatch();
   // let homeClub = '';
   // let awayClub = '';
   //   let homeGoals = '';

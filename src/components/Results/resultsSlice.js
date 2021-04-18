@@ -26,7 +26,7 @@ const resultsSlice = createSlice({
     [fetchResults.fulfilled](state, action) {
       // state.results= action.payloads
       state.loading = false;
-      console.log(action);
+      // console.log(action);
       state.results = action.payload.allResults;
     },
     [fetchResults.rejected](state, action) {

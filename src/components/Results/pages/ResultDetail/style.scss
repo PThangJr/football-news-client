@@ -62,6 +62,7 @@
                         font-size: 1.8rem;
                         margin: 0 3px;
                     }
+
                 }
             }
         }
@@ -104,6 +105,10 @@
             @include mobile {
                 margin: 0;
             }
+
+            @include tablet {
+                margin: 0;
+            }
         }
 
         &-item {
@@ -111,6 +116,7 @@
 
             &--away {
                 align-self: flex-end;
+                white-space: nowrap;
             }
         }
     }

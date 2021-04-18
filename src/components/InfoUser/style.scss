@@ -5,7 +5,11 @@
     &--user {
         position: relative;
         width: 300px;
-        height: 100vh;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: auto;
         background: var(--color-page-background); // background: #8d8c8c
         // animation: animateInfoUser .15s linear;
     }
@@ -31,11 +35,6 @@
 
 
     &-buttons {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-
         .btn {
             margin-bottom: 15px;
 
@@ -54,6 +53,22 @@
         font-size: 2.1rem;
         padding: 10px 0;
         border-bottom: 1px solid $color-grey-3;
+        position: relative;
+
+        span {
+            @include flex(center);
+            position: absolute;
+            right: 0px;
+            padding: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: all .5s;
+
+            &:hover {
+                opacity: .8;
+            }
+        }
     }
 
     &-avatar {

@@ -1,3 +1,4 @@
+import { unwrapResult } from '@reduxjs/toolkit';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -89,13 +90,18 @@ const InfoUser = () => {
       setImagePreviewUrl(null);
     }
   };
-  const handleSubmitUploadAvatar = (e) => {
+  const handleSubmitUploadAvatar = async (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append('avatar', file);
     data.append('name', 'PThangJr');
-    dispatch(fetchUpdateInfoUser(data));
+    const action = await dispatch(fetchUpdateInfoUser(data));
+    const result = unwrapResult(action);
+    if (result) {
+      dispatch(hideModal('infoUser'));
+    }
     // console.log(data);
+    setFile(null);
   };
   const handleRemoveAvatar = () => {
     setFile(null);
@@ -105,7 +111,12 @@ const InfoUser = () => {
   return (
     <>
       <div className="info info--user">
-        <h3 className="info__heading">Thông tin tài khoản</h3>
+        <h3 className="info__heading">
+          Thông tin tài khoản
+          <span onClick={handleCloseInfoUser}>
+            <i className="fas fa-times"></i>
+          </span>
+        </h3>
         <div className="info-avatar">
           {errors && <span className="info-avatar__errors">(*) {errors}</span>}
           <div className="info-avatar-box">
@@ -179,7 +190,7 @@ const InfoUser = () => {
               <i className="fas fa-calendar-alt"></i>
             </span>
             {infoUser?.age || '...'}
-            <span className="text">(age)</span>
+            <span className="text"></span>
           </p>
           <p className="info-content__gender">
             <span className="icon-box">{renderGenderIcon()}</span>

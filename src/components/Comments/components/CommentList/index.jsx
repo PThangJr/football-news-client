@@ -1,5 +1,4 @@
 import React from 'react';
-import SkeletonBox from '../../../Loading/Skeleton/SkeletonBox';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
 import CommentItem from '../CommentItem';
 import './style.scss';

@@ -5,10 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import SkeletonElement from '../Loading/Skeleton/SkeletonElement';
 import TrendingItem from './components/TrendingItem';
-import Results from '../Results';
+import TrendingResults from './components/TrendingResults';
 import './style.scss';
 import { fetchNewsTrending } from './TrendingSlice';
-import TrendingResults from './components/TrendingResults';
 const Trending = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,7 +42,7 @@ const Trending = () => {
   };
   const displayTrending = () => {
     if (loading) {
-      return <SkeletonElement style={{ width: '100%', height: '400px' }} />;
+      return <SkeletonElement className="trending-item" style={{ width: '100%' }} />;
     } else {
       return (
         <Slider {...settings}>

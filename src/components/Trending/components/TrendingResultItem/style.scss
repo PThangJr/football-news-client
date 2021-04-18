@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/responsive/responsive';
+
 .results-item--trending {
 
     .results-link {
@@ -13,6 +15,9 @@
 
                 width: 78px;
 
+                @include mobile {
+                    width: 120px;
+                }
             }
         }
     }

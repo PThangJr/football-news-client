@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import CustomLink from '../../../components/CustomLink';
 import './style.scss';
 const SidebarItem = ({ data }) => {
@@ -9,6 +8,7 @@ const SidebarItem = ({ data }) => {
     var { secure_url } = logo;
   }
   // console.log(name);
+
   return (
     <li className="sidebar__item">
       <CustomLink to={`/${slug}`} cNameLink="sidebar__link">
@@ -26,14 +26,12 @@ const SidebarItem = ({ data }) => {
   //     {/* <i className="fas fa-caret-down"></i> */}
   //   </li>
   // );
+  /* <CustomLink to={`/news/${slug}`} cName="sidebar__item" cNameLink="sidebar__link">
+          <img src={`${secure_url}`} alt="" className="sidebar__logo" />
+          {name}
+        </CustomLink> */
 };
 
-{
-  /* <CustomLink to={`/news/${slug}`} cName="sidebar__item" cNameLink="sidebar__link">
-        <img src={`${secure_url}`} alt="" className="sidebar__logo" />
-        {name}
-      </CustomLink> */
-}
 SidebarItem.propTypes = {
   data: PropTypes.object,
 };

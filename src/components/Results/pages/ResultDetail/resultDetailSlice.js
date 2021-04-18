@@ -31,3 +31,4 @@ const resultDetailSlice = createSlice({
     },
   },
 });
+export default resultDetailSlice.reducer;

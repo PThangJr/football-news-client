@@ -29,7 +29,6 @@ const authAPI = {
   },
   updateInfoUser(data) {
     const url = `/auth/information`;
-    console.log(data);
     return axiosClient.put(url, data, {
       headers: {
         'Content-Type': 'multipart/form-data',

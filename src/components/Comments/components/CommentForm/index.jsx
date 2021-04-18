@@ -4,9 +4,11 @@ import TextareaField from '../../../Form/form-fields/TextareaField';
 import fallbackAvatar from '../../../../assets/img/fallback_avatar.png';
 import './style.scss';
 import LoadingDotCircle from '../../../Loading/LoadingDotCircle';
+
 const CommentForm = (props) => {
   const { avatarUser, disabled } = props;
-  const [values, setValues] = useState('');
+  // console.log(disabled);
+  let [values, setValues] = useState('');
   const fallbackImage = (e) => {
     if (e) {
       e.target.src = fallbackAvatar;
@@ -17,6 +19,8 @@ const CommentForm = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    values = values.replace(/\r?\n/g, '<br />');
+    console.log(values);
     props.onHandleSubmit(values);
     setValues('');
   };
@@ -47,6 +51,9 @@ const CommentForm = (props) => {
   );
 };
 
-CommentForm.propTypes = {};
+CommentForm.propTypes = {
+  avatarUser: PropTypes.string,
+  disabled: PropTypes.bool,
+};
 
 export default CommentForm;

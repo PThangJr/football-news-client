@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { displayModal } from '../../../../pages/HomePage/modalSlice';
 import Comments from '../../../Comments';
 import { fetchCommentBySlugNew, fetchDeleteCommentById, fetchPostComment } from '../../../Comments/commentsSlice';
 import CommentForm from '../../../Comments/components/CommentForm';
@@ -38,7 +37,7 @@ const NewDetailComments = (props) => {
   const onHandleSubmit = async (values) => {
     // console.log('values Submit', values);
     if (values.trim()) {
-      console.log('Submit', values);
+      // console.log('Submit', values);
       try {
         const data = { content: values };
         const config = {
@@ -55,18 +54,15 @@ const NewDetailComments = (props) => {
         if (result) {
           setIsSubmitting(false);
         }
-        console.log(result);
+        // console.log(result);
       } catch (error) {
-        console.log(error);
         setIsSubmitting(null);
-        dispatch(displayModal('auth'));
-        localStorage.clear();
       }
     }
   };
   const disabled = isSubmitting ? true : isSubmitting === false ? false : false;
   const handleDeleteItem = async (commentId) => {
-    console.log(commentId);
+    // console.log(commentId);
     try {
       const click = await Swal.fire({
         title: 'Are you sure?',
@@ -82,11 +78,17 @@ const NewDetailComments = (props) => {
         const result = unwrapResult(action);
         if (result) {
           // console.log(result);
-          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Xóa bình luận thành công!',
+            showConfirmButton: false,
+            timer: 1000,
+          });
         }
       }
     } catch (error) {
-      console.log(error);
+      console.log('Delete comment has Error: ', error);
     }
   };
   return (

@@ -1,51 +1,51 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import News from '../News';
 import NewDetail from '../News/pages/NewDetail';
 import Results from '../Results';
-import Schedule from '../Schedule';
-import TrendingResults from '../Trending/components/TrendingResults';
+import ResultDetail from '../Results/pages/ResultDetail';
 import Videos from '../Videos';
 import './style.scss';
 const Body = () => {
-  const match = useRouteMatch();
-  // console.log(match);
-  // console.log(Object.keys(tournaments));
-  // const dataTournaments = useSelector((state) => state.dataTournaments);
-  let url = match.url;
-  // console.log(url);
+  const { url, path } = useRouteMatch();
+  const fieldRef = useRef(null);
+
   return (
-    <div className="tournaments">
+    <div className="tournaments" ref={fieldRef}>
       <ul className="tabs">
         <li className="tabs-item">
-          <NavLink className="tabs-item__link" exact activeClassName="tabs-item__link--active" to={`${match.url}`}>
-            News
+          <NavLink className="tabs-item__link" exact activeClassName="tabs-item__link--active" to={`${url}`}>
+            <i className="fas fa-star"></i> News
           </NavLink>
         </li>
         <li className="tabs-item">
-          <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${match.url}/results`}>
+          <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${url}/results`}>
+            <i className="fas fa-star"></i>
             Kết quả
           </NavLink>
         </li>
-        <li className="tabs-item">
-          <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${match.url}/schedule`}>
+        {/* <li className="tabs-item">
+          <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${url}/schedule`}>
             Lịch thi đấu
           </NavLink>
-        </li>
+        </li> */}
         <li className="tabs-item">
-          <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${match.url}/videos`}>
+          <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${url}/videos`}>
+            <i className="fas fa-star"></i>
             Videos
           </NavLink>
         </li>
       </ul>
+
       <div className="tabs-panel">
         <Switch>
-          <Route path={`${url}`} exact component={News} />
-          <Route path={`${url}/new-detail`} component={NewDetail} />
-          <Route path={`${url}/results`} component={Results} />
-          <Route path={`${url}/schedule`} component={Schedule} />
-          <Route path={`${url}/videos`} component={Videos} />
+          <Route path={`${path}`} exact component={News} />
+          <Route path={`${path}/new-detail/:slug`} component={NewDetail} />
+          <Route path={`${path}/results`} exact component={Results} />
+          <Route path={`${path}/results/:slug`} component={ResultDetail} />
+          {/* <Route path={`${path}/schedule`} component={Schedule} /> */}
+          <Route path={`${path}/videos`} component={Videos} />
         </Switch>
       </div>
     </div>

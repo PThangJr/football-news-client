@@ -1,6 +1,6 @@
 import { unwrapResult } from '@reduxjs/toolkit';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
 import { fetchResultDetail } from './resultDetailSlice';
@@ -8,27 +8,37 @@ import './style.scss';
 import Youtube from 'react-youtube';
 import NewSuggestion from '../../../News/component/NewSuggestion';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
+import NotFoundPage from '../../../../pages/NotFoundPage';
 const ResultDetail = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log(location);
   const pathnameSplit = location.pathname.split('/');
   const params = pathnameSplit[pathnameSplit.length - 1];
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState(null);
   useEffect(() => {
     (async () => {
       try {
+        setLoading(true);
         const action = await dispatch(fetchResultDetail(params));
         const data = unwrapResult(action);
-        console.log(data);
+        if (data) setLoading(false);
         setResult(data.result);
       } catch (error) {
         console.log('New Detail has errors : ', error);
+        setErrors(error);
       }
     })();
     // dispatch(fetchResultDetail('manchester-united-vs-brighton'));
   }, [dispatch, params]);
-  console.log(result);
+  useEffect(() => {
+    return () => {
+      setResult(null);
+      setLoading(false);
+    };
+  }, []);
+  // console.log(result);
   const tournament = result?.tournament?.name;
   const homeClubName = result?.home?.clubId?.name;
   const awayClubName = result?.away?.clubId?.name;
@@ -40,15 +50,18 @@ const ResultDetail = () => {
   const awayScores = result?.away?.scores;
   const logoHomeClub = result?.home?.clubId?.logo?.secure_url;
   const logoAwayClub = result?.away?.clubId?.logo?.secure_url;
-  const linkYoutube = result?.video?.linkYoutube;
   const videoId = result?.video?.videoId;
   let endTime = result?.endTime;
   endTime = endTime && moment(endTime).format('DD/MM/YYYY');
+  const refResultDetail = useRef(null);
+  if (errors?.status === 404) {
+    return <NotFoundPage message={errors?.data?.error?.message} />;
+  }
   return (
-    <div className="container">
+    <div className="container-fluid" ref={refResultDetail}>
       <div className="row">
-        <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-          {!result && (
+        <div className="col-xl-9 col-lg-12 col-md-12 col-sm-12">
+          {loading && (
             <div className="result-detail">
               <SkeletonElement className="result-detail-header" style={{ width: '200px', height: '30px' }} />
               <div className="scoreboard">
@@ -87,7 +100,7 @@ const ResultDetail = () => {
               </div>
             </div>
           )}
-          {result && (
+          {!loading && (
             <div className="result-detail">
               <div className="result-detail-header">
                 <span className="tournament">{tournament}</span>
@@ -151,7 +164,7 @@ const ResultDetail = () => {
                   {homeRedCards &&
                     homeRedCards.map((redCard) => {
                       return (
-                        <li key={redCard._id + 1} className="red-card-item red-card-item--home">
+                        <li key={redCard._id} className="red-card-item red-card-item--home">
                           <span className="red-card__image"></span>
                           <span className="red-card__player ">{redCard.player}</span>
                           <span className="red-card__time">{redCard.time}</span>
@@ -174,25 +187,26 @@ const ResultDetail = () => {
               </div>
             </div>
           )}
-          {!result && <SkeletonElement className="note" style={{ height: '30px', width: '80%' }} />}
-          {result && (
+          {loading && <SkeletonElement className="note" style={{ height: '30px', width: '80%' }} />}
+          {!loading && (
             <div className="note">
               Note: Bản quyền video thuộc
               <a
                 className="author-video"
                 href={`https://www.youtube.com/channel/${result?.video?.channelId}`}
                 target={'_blank'}
+                rel="noreferrer"
               >
                 {result?.video?.author}
               </a>
             </div>
           )}
-          {!result && (
+          {loading && (
             <div className="video">
               <SkeletonElement style={{ height: '400px' }} className="video-youtube" />
             </div>
           )}
-          {result && videoId && (
+          {!loading && videoId && (
             <div className="video">
               <Youtube videoId={videoId} className="video-youtube" />
             </div>

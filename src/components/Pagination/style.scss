@@ -17,6 +17,7 @@
         @include flex(center);
         color: $color-white;
         margin: 0 10px;
+        cursor: pointer;
 
         &--active {
             background: #48dbfb;
