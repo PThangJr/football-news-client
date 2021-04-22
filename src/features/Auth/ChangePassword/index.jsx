@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import InputControl from '../../../components/Form/form-controls/InputControl';
 import LoadingLinear from '../../../components/Loading/LoadingLinear';
 import { hideModal } from '../../../pages/HomePage/modalSlice';
-import { fetchChangePassword } from '../updateAuthSlice';
+import { fetchChangePassword } from '../authSlice';
 import './style.scss';
 
 const ChangePassword = () => {
@@ -49,8 +49,6 @@ const ChangePassword = () => {
     try {
       const action = await dispatch(fetchChangePassword(values));
       const result = unwrapResult(action);
-
-      console.log(result);
       if (result) {
         Swal.fire({
           position: 'center',
@@ -63,7 +61,7 @@ const ChangePassword = () => {
       } else {
       }
     } catch (error) {
-      setMessage(error.data.error.message);
+      setMessage(error?.data?.error?.message);
     }
   };
   const { isSubmitting } = form.formState;

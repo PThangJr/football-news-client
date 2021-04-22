@@ -3,12 +3,12 @@ import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
+import Youtube from 'react-youtube';
+import NotFoundPage from '../../../../pages/NotFoundPage';
+import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
+import NewSuggestion from '../../../News/component/NewSuggestion';
 import { fetchResultDetail } from './resultDetailSlice';
 import './style.scss';
-import Youtube from 'react-youtube';
-import NewSuggestion from '../../../News/component/NewSuggestion';
-import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
-import NotFoundPage from '../../../../pages/NotFoundPage';
 const ResultDetail = () => {
   const dispatch = useDispatch();
   const location = useLocation();

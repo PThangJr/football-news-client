@@ -15,12 +15,7 @@ const TrendingItem = ({ trendingData }) => {
         <img onError={fallBackImage} className="trending-item__img" src={thumbnail?.secure_url} alt="" />
         <div className="trending-item__description">
           <h3 className="trending-item__title">{topic}</h3>
-          <span className="trending-item__content">
-            {title}
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit earum atque modi laborum ut ad
-            architecto ab minima totam. Deserunt iste veritatis laborum accusantium autem nihil vel voluptatum ullam!
-            Sunt.
-          </span>
+          <span className="trending-item__content">{title}</span>
         </div>
       </NavLink>
     </li>

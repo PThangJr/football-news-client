@@ -28,6 +28,7 @@ const tournamentResults = createSlice({
   extraReducers: {
     [fetchTournamentResults.pending](state, action) {
       state.loading = true;
+      state.errors = null;
     },
     [fetchTournamentResults.fulfilled](state, action) {
       // state.results= action.payloads
@@ -37,6 +38,7 @@ const tournamentResults = createSlice({
     },
     [fetchTournamentResults.rejected](state, action) {
       state.loading = false;
+      state.errors = action.payload;
       console.log('Result Error: ', action);
     },
   },

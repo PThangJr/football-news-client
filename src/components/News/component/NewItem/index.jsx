@@ -17,7 +17,8 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
   const params = useParams();
   // console.log(pathname);
   // console.log
-  const tournament = tournaments.filter((tournament) => tournament.slug === params.tournament || tournament.slug);
+  let tournament = tournaments.filter((tour) => tour.slug === params.tournament);
+  tournament = tournament.length > 0 ? tournament : tournaments;
   return (
     <div className={col}>
       <div className="card">
@@ -30,12 +31,7 @@ const NewItem = ({ dataNews = {}, col = '' }) => {
           </div>
           <div className="card__body">
             <div className="card__content">
-              <p className="card__content-title">
-                {title}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero asperiores nesciunt eos delectus, ipsam
-                corporis commodi? Maxime magni, delectus officiis expedita laboriosam distinctio itaque magnam error
-                possimus quis provident recusandae.
-              </p>
+              <p className="card__content-title">{title}</p>
             </div>
             <div className="card__views">
               <span className="card__views-post">

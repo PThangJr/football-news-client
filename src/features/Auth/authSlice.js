@@ -60,6 +60,15 @@ export const fetchUpdateInfoUser = createAsyncThunk('/information/update', async
     return rejectWithValue(error);
   }
 });
+export const fetchChangePassword = createAsyncThunk('/password', async (payload, thunkAPI) => {
+  try {
+    const response = await authAPI.changePassword(payload);
+    return response;
+  } catch (error) {
+    const { rejectWithValue } = thunkAPI;
+    return rejectWithValue(error);
+  }
+});
 const authSlice = createSlice({
   name: 'auth',
   initialState,

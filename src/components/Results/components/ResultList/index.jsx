@@ -1,12 +1,13 @@
+import queryString from 'query-string';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router';
+import NotFoundPage from '../../../../pages/NotFoundPage';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
+import Pagination from '../../../Pagination';
 import { fetchTournamentResults } from '../../tournamentResultsSlice';
 import ResultItem from '../ResultItem';
-import queryString from 'query-string';
 import './style.scss';
-import Pagination from '../../../Pagination';
 const ResultList = () => {
   const dispatch = useDispatch();
   const { tournament } = useParams();
@@ -14,8 +15,7 @@ const ResultList = () => {
   const { page, limit } = queryString.parse(location.search, { parseNumbers: true });
 
   const dataTournamentResults = useSelector((state) => state.dataTournamentResults);
-  const { tournamentResults, loading, pagination } = dataTournamentResults;
-
+  const { tournamentResults, loading, pagination, errors } = dataTournamentResults;
   // console.log(tournament);
   useEffect(() => {
     const config = {
@@ -61,6 +61,9 @@ const ResultList = () => {
       });
     }
   };
+  if (errors?.status === 404) {
+    return <NotFoundPage message={errors?.data?.error?.message} />;
+  }
   return (
     <ul className=" results-list">
       {renderResultItem()}

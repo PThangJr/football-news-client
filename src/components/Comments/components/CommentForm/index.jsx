@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import TextareaField from '../../../Form/form-fields/TextareaField';
+import React, { useState } from 'react';
 import fallbackAvatar from '../../../../assets/img/fallback_avatar.png';
-import './style.scss';
+import TextareaField from '../../../Form/form-fields/TextareaField';
 import LoadingDotCircle from '../../../Loading/LoadingDotCircle';
+import './style.scss';
 
 const CommentForm = (props) => {
   const { avatarUser, disabled } = props;

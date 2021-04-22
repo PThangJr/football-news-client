@@ -23,11 +23,13 @@ const NewDetail = () => {
   const { data, loading, errors } = useSelector((state) => state.dataNewDetail);
   // console.log(dataNews);
 
-  const { title, description, content, views, likes, _id } = data;
-  // console.log(data);
+  let { title, description, content, views, likes, _id } = data;
+  // Replace attribute 'contenteditable="false"' to empty
+  content = content.replaceAll('contenteditable="false"', '');
+
   const handleLikeNew = async () => {
     try {
-      console.log('click');
+      // console.log('click');
       dispatch(fetchLike(slug));
     } catch (error) {
       console.log(error);
@@ -42,18 +44,16 @@ const NewDetail = () => {
           <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '30px' }} />
           <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '100px' }} />
           <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '300px' }} />
+          <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '300px' }} />
+          <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '100px' }} />
+          <SkeletonElement style={{ marginBottom: '15px', width: '100%', height: '300px' }} />
         </>
       );
     } else {
       return (
         <div className="detail-left">
           <div className="detail-header">
-            <h3 className="detail__heading">
-              {title}
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptas ipsum, soluta ex debitis vitae
-              sunt ratione dolore hic natus, dignissimos doloremque dolor blanditiis nobis cupiditate id eveniet itaque
-              repellendus?
-            </h3>
+            <h3 className="detail__heading">{title}</h3>
             <div className="detail-info">
               <p className="detail-views">
                 <span>Views: </span>
@@ -73,7 +73,10 @@ const NewDetail = () => {
           </div>
           <div className="detail-body">
             <h4 className="detail-description">{description}</h4>
-            {parseHTML(content)}
+            <div className="detail-content">{parseHTML(content)}</div>
+            <a href={data?.originalLink} target={'_blank'} rel="noreferrer" className="detail-link-source">
+              Nguồn:<span className="detail-link-source__name">{data?.source}</span>
+            </a>
           </div>
           <div className="detail-footer">
             <NewDetailComments maxItem={10} />

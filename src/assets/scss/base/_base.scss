@@ -37,6 +37,20 @@ ul li {
     list-style-type: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    // -webkit-text-fill-color: white;
+    // -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -72,7 +86,7 @@ a {
         --color-text-reverse: #{$color-black};
         --color-sidebar: #{$color-black};
         --bg-modal-exit: rgba(173, 173, 173, 0.5);
-        --rgba-bsd: #{$rgba-bsd-white};
+        --rgba-bsd: rgba(51, 50, 50, 0.5);
         --bg-skeleton: #444;
         --color-tabs: #02101d;
         // --color-text-grey: 

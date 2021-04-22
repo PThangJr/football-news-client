@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useLocation, useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import NotFoundPage from '../../../../pages/NotFoundPage';
 import CardItemSkeleton from '../../../Card/CardSkeleton';
 import Pagination from '../../../Pagination';
