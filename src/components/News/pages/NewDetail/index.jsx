@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import parseHTML from 'react-html-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import Youtube from 'react-youtube';
 import NotFoundPage from '../../../../pages/NotFoundPage';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
 import NewSuggestion from '../../component/NewSuggestion';
@@ -23,7 +24,7 @@ const NewDetail = () => {
   const { data, loading, errors } = useSelector((state) => state.dataNewDetail);
   // console.log(dataNews);
 
-  let { title, description, content, views, likes, _id } = data;
+  let { title, description, content, views, likes, _id, video } = data;
   // Replace attribute 'contenteditable="false"' to empty
   content = content.replaceAll('contenteditable="false"', '');
 
@@ -73,6 +74,12 @@ const NewDetail = () => {
           </div>
           <div className="detail-body">
             <h4 className="detail-description">{description}</h4>
+            {video && (
+              <div className="detail-video">
+                <Youtube videoId={video?.videoId} className="detail-video__player" />
+                <p className="detail-video__title">{video?.title}</p>
+              </div>
+            )}
             <div className="detail-content">{parseHTML(content)}</div>
             <a href={data?.originalLink} target={'_blank'} rel="noreferrer" className="detail-link-source">
               Nguồn:<span className="detail-link-source__name">{data?.source}</span>

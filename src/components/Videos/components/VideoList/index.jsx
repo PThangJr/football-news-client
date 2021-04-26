@@ -3,12 +3,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router';
 import NotFoundPage from '../../../../pages/NotFoundPage';
-import CardItemSkeleton from '../../../Card/CardSkeleton';
+import CardItemSkeleton from '../../../Card/CardItemSkeleton';
 import Pagination from '../../../Pagination';
 import { fetchVideos } from '../../videosSlice';
 import VideoItem from '../VideoItem';
 const VideoList = () => {
-  const { tournament } = useParams();
+  const params = useParams();
+  const { tournament } = params;
   const location = useLocation();
   const search = queryString.parse(location.search, { parseNumbers: true });
   let { page, limit } = search;
@@ -16,6 +17,7 @@ const VideoList = () => {
   const dispatch = useDispatch();
   const dataVideos = useSelector((state) => state.dataVideos);
   const { loading, videos, pagination, errors } = dataVideos;
+  console.log(pagination);
 
   useEffect(() => {
     // if (page > pagination.totalPage) {
@@ -24,7 +26,7 @@ const VideoList = () => {
     const config = {
       tournament,
       params: {
-        limit: limit || 10,
+        limit: limit || 12,
         page: page,
       },
     };
@@ -32,10 +34,22 @@ const VideoList = () => {
   }, [dispatch, tournament, page, limit]);
   const renderVideoItem = () => {
     if (loading) {
-      return <CardItemSkeleton totalItem={8} videos />;
+      const arr = [];
+      for (let i = 0; i < 12; i++) {
+        arr.push(i);
+      }
+      return arr.map((item) => (
+        <div key={item} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+          <CardItemSkeleton />
+        </div>
+      ));
     } else {
       return videos.map((video) => {
-        return <VideoItem key={video._id} video={video} />;
+        return (
+          <div key={video._id} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+            <VideoItem video={video} />
+          </div>
+        );
       });
     }
   };

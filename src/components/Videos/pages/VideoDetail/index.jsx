@@ -4,8 +4,8 @@ import { useParams } from 'react-router';
 import Youtube from 'react-youtube';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
 import VideosSuggestion from '../../components/VideosSuggestion';
-import './style.scss';
 import { fetchVideoDetail } from './videoDetailSlice';
+import './style.scss';
 const VideoDetail = () => {
   const dispatch = useDispatch();
   const dataVideoDetail = useSelector((state) => state.dataVideoDetail);
@@ -27,6 +27,7 @@ const VideoDetail = () => {
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
           {loading && <SkeletonElement className="video-youtube" />}
           {!loading && <Youtube videoId={video?.videoId} opts={opts} className="video-youtube" />}
+          <h3 className="video-title">{video?.title}</h3>
         </div>
       </div>
       <h3 className="suggestion__heading">Video khác</h3>

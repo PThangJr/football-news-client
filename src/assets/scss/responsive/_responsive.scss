@@ -93,3 +93,33 @@ $xl: 1200px;
         display: none !important;
     }
 }
+
+.container-fluid {
+    @include mobile {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+}
+
+.row {
+    @include mobile-tablet {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    @include desktop-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    @include tablet-laptop {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+}
+
+[class*="col-md-"],
+[class*="col-sm-"] {
+    padding-left: 8px;
+    padding-right: 8px;
+}

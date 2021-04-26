@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router';
 import NotFoundPage from '../../pages/NotFoundPage';
-import CardItemSkeleton from '../Card/CardSkeleton';
+import CardItemSkeleton from '../Card/CardItemSkeleton';
 import Pagination from '../Pagination';
 import NewItem from './component/NewItem';
 import { fetchNews } from './newsSlice';
@@ -13,6 +13,7 @@ const News = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { tournament } = useParams();
+  const params = useParams();
   const dataTournaments = useSelector((state) => state.dataTournaments);
   const dataNews = useSelector((state) => state.dataNews);
 
@@ -52,11 +53,23 @@ const News = () => {
 
   const renderNewItem = () => {
     if (loading) {
-      return <CardItemSkeleton totalItem={8} />;
+      const arr = [];
+      for (let i = 0; i < 8; i++) {
+        arr.push(i);
+      }
+      return arr.map((item) => (
+        <div key={item} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+          <CardItemSkeleton />
+        </div>
+      ));
     } else {
       if (data.length > 0) {
-        return data.map((item) => {
-          return <NewItem key={item._id} col="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12" dataNews={item} />;
+        return data.map((newItem) => {
+          return (
+            <div key={newItem._id} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+              <NewItem dataNew={newItem} />
+            </div>
+          );
         });
       }
     }

@@ -53,6 +53,19 @@
         }
     }
 
+    &-video {
+        &__title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        &__player {
+            width: 100%;
+        }
+    }
+
     &-description {
         margin-bottom: 20px;
         font-size: 1.6rem;

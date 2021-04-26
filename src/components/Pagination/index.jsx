@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import './style.scss';
-const Pagination = ({ currentPage, totalPage, pageRangeDisplay }) => {
+const Pagination = ({ currentPage, totalPage, pageRangeDisplay, formatPage = 'page' }) => {
   // console.log(currentPage, pageRangeDisplay, totalPage);
   const history = useHistory();
   const location = useLocation();
@@ -40,7 +40,7 @@ const Pagination = ({ currentPage, totalPage, pageRangeDisplay }) => {
   // console.log(startPage, endPage);
   const queryObject = queryString.parse(location.search);
   const handlePagination = (page) => {
-    queryObject.page = page;
+    queryObject[formatPage] = page;
     history.push({
       pathname: history.location.pathname,
       // search: `page=${item}`,

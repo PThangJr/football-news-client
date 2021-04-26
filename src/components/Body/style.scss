@@ -50,12 +50,15 @@
                 padding: 15px 0;
                 min-width: 100px;
                 width: 130px;
-                display: inline-block;
                 text-transform: uppercase;
                 font-weight: bold;
                 font-size: 1.4rem;
                 text-align: center;
                 @include flex(center);
+
+                @include mobile {
+                    width: 100%;
+                }
 
                 i {
                     transition: all .5s;

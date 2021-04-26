@@ -1,8 +1,11 @@
 import axiosClient from './axiosClient';
 const videosAPI = {
   getVideos(payload) {
-    let { params, tournament = '' } = payload;
+    if (payload) {
+      var { params, tournament = '' } = payload;
+    }
     if (tournament === '/') tournament = '';
+    if (!tournament) tournament = '';
     const url = `/videos/${tournament}`;
     return axiosClient.get(url, {
       params,

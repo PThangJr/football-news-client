@@ -5,7 +5,7 @@ import newDetailReducer from '../../components/News/pages/NewDetail/newDetailSli
 import resultsReducer from '../../components/Results/resultsSlice';
 import tournamentResultsReducer from '../../components/Results/tournamentResultsSlice';
 import trendingReducer from '../../components/Trending/TrendingSlice';
-import videoDetailReducer from '../../components/Videos/pages/VideoPlayer/videoDetailSlice';
+import videoDetailReducer from '../../components/Videos/pages/VideoDetail/videoDetailSlice';
 import videosReducer from '../../components/Videos/videosSlice';
 import authReducer from '../../features/Auth/authSlice';
 import tournamentReducer from '../../features/Sidebar/tournamentSlice';

@@ -41,7 +41,7 @@ const videosSlice = createSlice({
     [fetchVideos.rejected](state, action) {
       console.log(action);
       state.loading = true;
-      state.errors = action.payload;
+      state.errors = action.payload?.data?.error;
     },
   },
 });

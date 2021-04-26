@@ -25,11 +25,7 @@ const Body = () => {
             Kết quả
           </NavLink>
         </li>
-        {/* <li className="tabs-item">
-          <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${url}/schedule`}>
-            Lịch thi đấu
-          </NavLink>
-        </li> */}
+
         <li className="tabs-item">
           <NavLink className="tabs-item__link" activeClassName="tabs-item__link--active" to={`${url}/videos`}>
             <i className="fas fa-star"></i>

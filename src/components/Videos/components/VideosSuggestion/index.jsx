@@ -21,13 +21,16 @@ const VideosSuggestion = (props) => {
   }, [dispatch, tournament, maxItem]);
   const dataVideos = useSelector((state) => state.dataVideos);
 
-  // console.log(dataVideos);
   return (
     <>
       {dataVideos?.videos
         .filter((video) => video._id !== _id)
         .map((video) => {
-          return <VideoItem key={video._id} video={video} videos />;
+          return (
+            <div key={video._id} className="col-xl-3 col-lg-4 col-md-6 col-xs-12">
+              <VideoItem video={video} type="video" />
+            </div>
+          );
         })}
     </>
   );
