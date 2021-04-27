@@ -44,11 +44,11 @@ const CardItem = (props) => {
                 {times}
               </span>
               <span className="card__views-numb">
-                <i className="icon-views fas fa-eye" />
+                {!type && <i className="icon-views fas fa-eye" />}
                 {views}
               </span>
               <span className="card__views-liked">
-                <i className="icon-views fas fa-thumbs-up" />
+                {!type && <i className="icon-views fas fa-thumbs-up" />}
                 {likes?.length}
               </span>
             </div>
@@ -83,7 +83,7 @@ const CardItem = (props) => {
                 {views}
               </span>
               <span className="card__views-liked">
-                {likes && <i className="icon-views fas fa-thumbs-up" />}
+                {likes.length > 0 && <i className="icon-views fas fa-thumbs-up" />}
                 {likes?.length}
               </span>
             </div>

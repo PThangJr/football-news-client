@@ -17,7 +17,7 @@ const VideoList = () => {
   const dispatch = useDispatch();
   const dataVideos = useSelector((state) => state.dataVideos);
   const { loading, videos, pagination, errors } = dataVideos;
-  console.log(pagination);
+  // console.log(pagination);
 
   useEffect(() => {
     // if (page > pagination.totalPage) {

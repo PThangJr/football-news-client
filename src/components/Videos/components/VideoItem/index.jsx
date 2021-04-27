@@ -10,6 +10,7 @@ const VideoItem = (props) => {
   if (params.hasOwnProperty('tournament')) {
     tournaments = tournaments.filter((tour) => tour.slug === params?.tournament);
   }
+  // console.log(tournaments);
   return (
     <CardItem
       {...video}

@@ -52,7 +52,7 @@ const Tables = () => {
                     <CardItem
                       type="video"
                       {...video}
-                      linkTo={`/${video.tournaments[0].slug}/videos/${video.slug}`}
+                      linkTo={`/${video?.tournaments[0]?.slug}/videos/${video?.slug}`}
                       linkImage={video?.linkThumbnail}
                       topic={videoMain?.author}
                     />

@@ -19,13 +19,14 @@ import HomePage from './pages/HomePage/index';
 import NotFoundPage from './pages/NotFoundPage';
 const App = () => {
   const modal = useSelector((state) => state.modal);
-  const fieldRef = useRef();
+  const bodyRef = useRef();
   useEffect(() => {
     darkMode();
     toggleSidebar();
   }, []);
   return (
     <div className="wrapper">
+      <ScrollToTop />
       <Sidebar />
       <aside className="sidebar-right">
         <Header />
@@ -35,8 +36,8 @@ const App = () => {
               <Trending />
             </div>
           </div>
-          <div className="main-body" ref={fieldRef}>
-            <ScrollToTop fieldRef={fieldRef} />
+          <div className="main-body" ref={bodyRef}>
+            <ScrollToTop fieldRef={bodyRef} />
             <Switch>
               <Route path="/not-found" component={NotFoundPage} />
               <Route path="/" exact component={HomePage} />

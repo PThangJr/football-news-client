@@ -10,7 +10,6 @@ import './style.scss';
 const Body = () => {
   const { url, path } = useRouteMatch();
   const fieldRef = useRef(null);
-
   return (
     <div className="tournaments" ref={fieldRef}>
       <ul className="tabs">

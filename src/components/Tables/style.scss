@@ -53,13 +53,19 @@
             &-topic {
                 font-size: 2rem;
             }
+
+            .icon-play {
+                i {
+                    font-size: 6rem;
+                }
+            }
         }
 
         &__content {
             &-title {
                 font-size: 2.2rem;
                 -webkit-line-clamp: 3;
-                height: 83px;
+                height: 85px;
                 margin-top: 12px;
             }
         }

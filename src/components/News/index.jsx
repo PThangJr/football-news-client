@@ -54,7 +54,7 @@ const News = () => {
   const renderNewItem = () => {
     if (loading) {
       const arr = [];
-      for (let i = 0; i < 8; i++) {
+      for (let i = 10; i < 18; i++) {
         arr.push(i);
       }
       return arr.map((item) => (
@@ -66,7 +66,7 @@ const News = () => {
       if (data.length > 0) {
         return data.map((newItem) => {
           return (
-            <div key={newItem._id} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+            <div key={newItem._id + '-newItem'} className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
               <NewItem dataNew={newItem} />
             </div>
           );

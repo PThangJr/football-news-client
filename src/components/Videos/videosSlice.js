@@ -2,7 +2,19 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import videosAPI from '../../api/videosAPI';
 const initialState = {
   loading: null,
-  videos: [],
+  videos: [
+    {
+      tournaments: [],
+      author: '',
+      title: '',
+      videoId: '',
+      linkYoutube: '',
+      linkThumbnail: '',
+      slug: '',
+      createdAt: '',
+      updatedAt: '',
+    },
+  ],
   errors: null,
   pagination: {
     limit: 1,

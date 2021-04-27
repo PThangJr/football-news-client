@@ -15,9 +15,8 @@ const Trending = () => {
       try {
         await dispatch(
           fetchNewsTrending({
-            pagination: {
+            params: {
               limit: 6,
-              page: 1,
             },
           })
         );
@@ -31,11 +30,11 @@ const Trending = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 4500,
     // adaptiveHeight: true,
     // variableWidth: true,
     // cssEase: 'linear',
