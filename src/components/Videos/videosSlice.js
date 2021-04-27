@@ -32,7 +32,7 @@ const videosSlice = createSlice({
       state.errors = null;
     },
     [fetchVideos.fulfilled](state, action) {
-      console.log(action);
+      // console.log(action);
       state.videos = action.payload.videos;
       state.pagination = action.payload.pagination;
       state.loading = false;

@@ -8,6 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import * as yup from 'yup';
 import InputControl from '../../../components/Form/form-controls/InputControl';
+import LoadingDotCircle from '../../../components/Loading/LoadingDotCircle';
 import LoadingLinear from '../../../components/Loading/LoadingLinear';
 import { hideModal } from '../../../pages/HomePage/modalSlice';
 import { fetchLoginAuth } from '../authSlice';
@@ -47,7 +48,7 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
       if (result) {
         const Toast = Swal.mixin({
           toast: true,
-          position: 'top-end',
+          position: 'bottom-start',
           showConfirmButton: false,
           timer: 2500,
           timerProgressBar: true,
@@ -78,8 +79,6 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   };
   return (
     <form className="auth__box-login" onSubmit={form.handleSubmit(handleSubmit)}>
-      {isSubmitting && <LoadingLinear />}
-
       <div className="auth__header">
         <h3 className="auth__heading">Đăng nhập</h3>
         <button
@@ -119,9 +118,12 @@ const Login = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
           type="submit"
           className={`btn btn--green btn--submit btn--full-wd ${isSubmitting && 'btn--disabled'}`}
         >
+          {isSubmitting && <LoadingDotCircle />}
           Đăng nhập
         </button>
       </div>
+      {/* {isSubmitting && <LoadingLinear className="loading-auth" />} */}
+
       <span className="icon-close" onClick={handleCloseAuthForm}>
         <i className="fas fa-times"></i>
       </span>

@@ -32,7 +32,11 @@ const Account = () => {
       );
     } else {
       if (loading) {
-        return <LoadingDotCircle style={{ marginRight: '50px' }} />;
+        return (
+          <div className="account">
+            <LoadingDotCircle style={{ marginRight: '50px' }} />;
+          </div>
+        );
       } else {
         return (
           <div className="account" onClick={handleInfoUser}>

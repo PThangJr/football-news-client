@@ -9,7 +9,7 @@ import 'sweetalert2/src/sweetalert2.scss';
 import * as yup from 'yup';
 import CheckboxControl from '../../../components/Form/form-controls/CheckboxControl';
 import InputControl from '../../../components/Form/form-controls/InputControl';
-import LoadingLinear from '../../../components/Loading/LoadingLinear';
+import LoadingDotCircle from '../../../components/Loading/LoadingDotCircle';
 import { fetchRegisterAuth } from '../authSlice';
 import './style.scss';
 const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
@@ -84,7 +84,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
   };
   return (
     <form className="auth__box-register rotate-y-180" onSubmit={form.handleSubmit(handleSubmit)}>
-      {isSubmitting && <LoadingLinear />}
+      {/* {isSubmitting && <LoadingLinear />} */}
 
       <div className="auth__header">
         <h3 className="auth__heading">Đăng ký</h3>
@@ -146,6 +146,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
           type="submit"
           className={`btn btn--orange btn--submit btn--full-wd ${isSubmitting && 'btn--disabled'}`}
         >
+          {isSubmitting && <LoadingDotCircle />}
           Đăng ký
         </button>
       </div>

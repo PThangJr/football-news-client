@@ -12,8 +12,8 @@ const News = () => {
   // const dataNews = {};
   const dispatch = useDispatch();
   const location = useLocation();
-  const { tournament } = useParams();
   const params = useParams();
+  const { tournament } = params;
   const dataTournaments = useSelector((state) => state.dataTournaments);
   const dataNews = useSelector((state) => state.dataNews);
 

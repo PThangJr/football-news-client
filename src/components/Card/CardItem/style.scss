@@ -33,7 +33,7 @@
 
                         i {
                             animation: animatePlay .3s ease-in-out;
-
+                            animation-delay: 0.2s
                         }
                     }
                 }
@@ -286,11 +286,13 @@
 @keyframes animateTopic {
     0% {
         // transform: scale(0);
+        opacity: 0;
         right: -200%;
     }
 
     100% {
         // transform: scale(1);
+        opacity: 1;
         right: 5px;
     }
 }
@@ -298,10 +300,13 @@
 @keyframes animatePlay {
     0% {
         top: 120%;
+        opacity: 0;
+
     }
 
     100% {
         top: 50%;
+        opacity: 1;
 
     }
 }

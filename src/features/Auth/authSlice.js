@@ -53,7 +53,6 @@ export const fetchInfoAuth = createAsyncThunk('/information/auth', async (payloa
 export const fetchUpdateInfoUser = createAsyncThunk('/information/update', async (payload, thunkAPI) => {
   try {
     const response = await authAPI.updateInfoUser(payload);
-    console.log(response);
     return response;
   } catch (error) {
     const { rejectWithValue } = thunkAPI;
@@ -79,14 +78,14 @@ const authSlice = createSlice({
       state.loading = true;
     },
     [fetchLoginAuth.fulfilled](state, action) {
-      console.log(action);
+      // console.log(action);
 
       state.infoUser = action.payload?.user;
       state.loading = false;
       // console.log(action);
     },
     [fetchLoginAuth.rejected](state, action) {
-      console.log(action);
+      // console.log(action);
       localStorage.clear();
       state.loading = false;
       state.infoUser = null;
@@ -98,7 +97,7 @@ const authSlice = createSlice({
       state.loading = true;
     },
     [fetchRegisterAuth.fulfilled](state, action) {
-      console.log(action);
+      // console.log(action);
 
       state.infoUser = action.payload?.user;
       state.loading = false;
@@ -118,7 +117,7 @@ const authSlice = createSlice({
     },
     [fetchInfoAuth.fulfilled](state, action) {
       state.loading = false;
-      console.log(action);
+      // console.log(action);
       state.infoUser = action.payload.infoUser;
     },
     [fetchInfoAuth.rejected](state, action) {
@@ -133,7 +132,7 @@ const authSlice = createSlice({
     },
     [fetchUpdateInfoUser.fulfilled](state, action) {
       state.loading = false;
-      console.log('action');
+      // console.log('action');
       state.infoUser = action.payload.userUpdated;
     },
     [fetchUpdateInfoUser.rejected](state, action) {

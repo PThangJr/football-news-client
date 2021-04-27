@@ -16,7 +16,7 @@ const NewDetail = () => {
   // const tournament = urlSplit[urlSplit.length - 2];
   // console.log(slug);
   const dataAuth = useSelector((state) => state.dataAuth);
-  const userId = dataAuth.infoUser._id;
+  const userId = dataAuth?.infoUser?._id;
   useEffect(() => {
     dispatch(fetchNewBySlug(slug));
   }, [dispatch, slug]);
