@@ -9,7 +9,6 @@ import 'sweetalert2/src/sweetalert2.scss';
 import * as yup from 'yup';
 import InputControl from '../../../components/Form/form-controls/InputControl';
 import LoadingDotCircle from '../../../components/Loading/LoadingDotCircle';
-import LoadingLinear from '../../../components/Loading/LoadingLinear';
 import { hideModal } from '../../../pages/HomePage/modalSlice';
 import { fetchLoginAuth } from '../authSlice';
 import './style.scss';

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchResults } from '../../../Results/resultsSlice';
 import TrendingResultItem from '../TrendingResultItem';
-import TrendingItemSkeleton from '../TrendingResultItem/TrendingResultItemSkeleton';
+import TrendingResultItemSkeleton from '../TrendingResultItem/TrendingResultItemSkeleton';
 import './style.scss';
 const TrendingResults = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const TrendingResults = () => {
           })}
         {loading &&
           [1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => {
-            return <TrendingItemSkeleton key={item} />;
+            return <TrendingResultItemSkeleton key={item} />;
           })}
       </ul>
     </div>

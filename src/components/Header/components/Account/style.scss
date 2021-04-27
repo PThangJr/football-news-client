@@ -1,10 +1,15 @@
 @import "../../../../assets/scss/generals/mixins";
+@import "../../../../assets/scss/responsive/responsive";
 @import "../../../../assets/scss/generals/variables";
 
 .account {
     @include flex(flex-start);
     position: relative;
     min-width: 135px;
+
+    @include mobile-tablet {
+        min-width: 0;
+    }
 
     .avatar {
         height: 100%;
