@@ -9,6 +9,7 @@ const CardItem = (props) => {
   const momentFormat = moment(createdAtFormat).format('YYYY-MM-DD HH:mm:ss');
   let times = moment(momentFormat, 'YYYY-MM-DD HH:mm:ss').fromNow();
   times = times.replace('a ', '1 ');
+  times = times.replace('an ', '1 ');
   const fallBackImage = (e) => {
     if (e) {
       e.target.src = 'http://placehold.it/285x125';

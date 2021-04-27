@@ -26,7 +26,9 @@ const NewDetail = () => {
 
   let { title, description, content, views, likes, _id, video } = data;
   // Replace attribute 'contenteditable="false"' to empty
-  content = content.replaceAll('contenteditable="false"', '');
+  if (content) {
+    content = content?.replaceAll('contenteditable="false"', '');
+  }
 
   const handleLikeNew = async () => {
     try {
