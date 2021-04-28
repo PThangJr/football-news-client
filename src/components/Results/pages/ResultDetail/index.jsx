@@ -3,10 +3,10 @@ import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
-import Youtube from 'react-youtube';
 import NotFoundPage from '../../../../pages/NotFoundPage';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
 import NewSuggestion from '../../../News/component/NewSuggestion';
+import VideoPlayer from '../../../Videos/components/VideoPlayer';
 import { fetchResultDetail } from './resultDetailSlice';
 import './style.scss';
 const ResultDetail = () => {
@@ -51,6 +51,7 @@ const ResultDetail = () => {
   const logoHomeClub = result?.home?.clubId?.logo?.secure_url;
   const logoAwayClub = result?.away?.clubId?.logo?.secure_url;
   const videoId = result?.video?.videoId;
+  const videoTitle = result?.video?.title;
   let endTime = result?.endTime;
   endTime = endTime && moment(endTime).format('DD/MM/YYYY');
   const refResultDetail = useRef(null);
@@ -206,11 +207,7 @@ const ResultDetail = () => {
               <SkeletonElement style={{ height: '400px' }} className="video-youtube" />
             </div>
           )}
-          {!loading && videoId && (
-            <div className="video">
-              <Youtube videoId={videoId} className="video-youtube" />
-            </div>
-          )}
+          {!loading && videoId && <VideoPlayer videoId={videoId} title={videoTitle} />}
         </div>
         <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12">
           <NewSuggestion maxItem={5} />

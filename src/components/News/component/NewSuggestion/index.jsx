@@ -35,7 +35,7 @@ const NewSuggestion = ({ _id = '', maxItem = 1 }) => {
           .filter((item) => item._id !== _id)
           .map((item) => {
             return (
-              <div key={item._id} className="col-xl-12 col-lg-4 col-md-4 col-sm-6">
+              <div key={item._id + '-new-suggestion'} className="col-xl-12 col-lg-4 col-md-4 col-sm-6">
                 <NewItem key={item._id} dataNew={item} />
               </div>
               // <NewItem key={item._id + Math.random()} col="col-xl-12 col-lg-4 col-md-4 col-sm-6" dataNews={item} />

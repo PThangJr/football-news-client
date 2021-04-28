@@ -49,14 +49,18 @@
             display: none;
 
             @include mobile-tablet {
-                display: block;
+                display: flex;
+                width: 100px;
+                align-items: center;
+                justify-content: flex-start;
             }
 
             &-icon {
-                padding: 3px;
-                margin: 0 5px;
+                padding: 12px;
+                // margin: 0 5px;
 
                 &:last-child {
+
                     @include tablet-laptop {
                         display: none;
                     }
@@ -212,6 +216,7 @@
 
             @include mobile {
                 margin: 0;
+                width: 100px;
             }
 
 

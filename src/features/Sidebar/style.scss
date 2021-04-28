@@ -14,7 +14,7 @@
     transition: transform 0.5s;
 
     @include mobile {
-        width: 200px;
+        width: 65%;
     }
 
     //Responsive
@@ -25,6 +25,10 @@
         left: 0;
         // position: absolute;
         transform: translateX(-100%);
+    }
+
+    @include tablet {
+        width: 300px;
     }
 
     &__list {

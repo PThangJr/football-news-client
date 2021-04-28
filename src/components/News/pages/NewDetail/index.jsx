@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import parseHTML from 'react-html-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import Youtube from 'react-youtube';
 import NotFoundPage from '../../../../pages/NotFoundPage';
 import SkeletonElement from '../../../Loading/Skeleton/SkeletonElement';
+import VideoPlayer from '../../../Videos/components/VideoPlayer';
 import NewSuggestion from '../../component/NewSuggestion';
 import NewDetailComments from '../NewDetailComments';
 import { fetchLike, fetchNewBySlug } from './newDetailSlice';
@@ -26,9 +26,9 @@ const NewDetail = () => {
 
   let { title, description, content, views, likes, _id, video } = data;
   // Replace attribute 'contenteditable="false"' to empty
-  if (content) {
-    if (content.includes('contenteditable="false')) content = content?.replaceAll('contenteditable="false"', ' ');
-  }
+  // if (content) {
+  //   if (content.includes('contenteditable="false"')) content = content?.replaceAll('contenteditable="false"', ' ');
+  // }
 
   const handleLikeNew = async () => {
     try {
@@ -76,12 +76,7 @@ const NewDetail = () => {
           </div>
           <div className="detail-body">
             <h4 className="detail-description">{description}</h4>
-            {video && (
-              <div className="detail-video">
-                <Youtube videoId={video?.videoId} className="detail-video__player" />
-                <p className="detail-video__title">{video?.title}</p>
-              </div>
-            )}
+            {video && <VideoPlayer title={video?.title} videoId={video?.videoId} />}
             <div className="detail-content">{parseHTML(content)}</div>
             <a href={data?.originalLink} target={'_blank'} rel="noreferrer" className="detail-link-source">
               Nguồn:<span className="detail-link-source__name">{data?.source}</span>
