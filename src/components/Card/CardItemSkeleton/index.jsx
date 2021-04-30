@@ -16,6 +16,9 @@ const CardItemSkeleton = (props) => {
         </div>
         <div className="card__body">
           <div className="card__content">
+            <SkeletonElement className="card__content-topic show-on-mobile" style={{ width: '120px', height: '15px' }}>
+              <i className="fas fa-star-half-alt"></i>
+            </SkeletonElement>
             <SkeletonElement className="card__content-title" />
           </div>
           <div className="card__views">

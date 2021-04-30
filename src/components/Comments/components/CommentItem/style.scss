@@ -58,7 +58,7 @@
 
         .icon--delete {
             color: $color-grey-2;
-            font-size: 2.3rem;
+            font-size: var(--font-size-hg);
             cursor: pointer;
             padding: 0 12px;
             transition: all .3s;
@@ -72,6 +72,6 @@
 
     &-time {
         font-style: italic;
-        font-size: 1.4rem;
+        font-size: var(--font-size-sm);
     }
 }

@@ -16,6 +16,7 @@ const darkMode = () => {
 
 const toggleSidebar = () => {
   const menuNavbar = document.querySelectorAll('.navbar__menu-icon')[0];
+  const menuNavbarBottom = document.querySelector('#menubar');
   const iconSearch = document.querySelectorAll('.navbar__menu-icon')[1];
   const sidebar = document.querySelector('.sidebar');
   const modalExit = document.querySelector('.modal-exit');
@@ -25,6 +26,10 @@ const toggleSidebar = () => {
   menuNavbar.addEventListener('click', () => {
     sidebar.classList.add('sidebar--show');
     modalExit.classList.remove('d-none');
+  });
+  menuNavbarBottom.addEventListener('click', () => {
+    sidebar.classList.toggle('sidebar--show');
+    modalExit.classList.toggle('d-none');
   });
   iconSearch.addEventListener('click', () => {
     const search = document.querySelector('.search');

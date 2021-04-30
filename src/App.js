@@ -27,12 +27,13 @@ const App = () => {
   return (
     <div className="wrapper">
       <ScrollToTop />
+
       <Sidebar />
       <aside className="sidebar-right">
         <Header />
         <main className="body">
           <div className="main-top">
-            <div className="container-fluid">
+            <div className="container-fluid no-gutters">
               <Trending />
             </div>
           </div>
@@ -66,7 +67,9 @@ const App = () => {
           <ChangePassword />
         </Modal>
       )}
-
+      <span id="menubar" className="menu hide-on-pc">
+        <i className="fas fa-bars"></i>
+      </span>
       <ButtonToTop />
     </div>
   );

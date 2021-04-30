@@ -49,6 +49,7 @@ const TrendingResultItem = (props) => {
         className="results-link hide-on-laptop hide-on-desktop hide-on-desktop-sm"
       >
         {/* <div className="end-time">{endTime}</div> */}
+
         <div className="results-content">
           <p className="clubs clubs--home">
             <span className="clubs__name">{homeClubShortname}</span>

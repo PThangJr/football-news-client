@@ -6,8 +6,7 @@
 
         .results-content {
             .clubs {
-                font-size: 1.5rem;
-                font-size: 1.5rem;
+                font-size: var(--font-size-md);
 
                 &__logo {
                     height: 25px;
@@ -16,7 +15,8 @@
                 width: 78px;
 
                 @include mobile {
-                    width: 120px;
+                    width: 130px;
+                    text-overflow: ellipsis;
                 }
             }
         }

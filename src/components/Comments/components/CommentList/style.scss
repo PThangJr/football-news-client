@@ -6,7 +6,7 @@
 
     .comments__totals {
         display: inline-block;
-        font-size: 1.4rem;
+        font-size: var(--font-size-sm);
         margin-left: 10px;
         font-style: italic;
     }

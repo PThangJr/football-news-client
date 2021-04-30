@@ -31,6 +31,7 @@
                     .icon-play {
                         display: block;
 
+
                         i {
                             animation: animatePlay .3s ease-in-out;
                             animation-delay: 0.2s
@@ -44,7 +45,7 @@
         @include mobile {
             min-height: auto;
             height: auto;
-            height: 90px;
+            // height: 100px !important;
         }
 
         .card__content {
@@ -75,6 +76,8 @@
                 top: 0;
                 left: 0;
                 overflow: hidden;
+                font-size: var(--font-size-hg);
+
                 // display: none;
 
                 @include mobile-tablet {
@@ -86,7 +89,7 @@
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    font-size: 3.5rem;
+                    font-size: var(--font-size-icon-hg);
                     color: white;
                     // animation: animatePlay .3s ease-in-out;
                 }
@@ -103,7 +106,7 @@
         min-height: 0;
         box-shadow: 1px 1.5px 2px var(--rgba-bsd), inset 0px 0px 3px var(--rgba-bsd);
         margin: 5px 0;
-        height: 85px;
+        height: 100px;
     }
 
     &:hover {
@@ -154,14 +157,13 @@
             padding: 0px 8px;
             text-align: center;
             background: rgba(255, 212, 36, 0.9);
-            font-size: 1.6rem;
             border-radius: 5px;
             text-overflow: ellipsis;
             overflow: hidden;
 
             @include mobile {
                 top: 2px;
-                font-size: 1.4rem;
+                font-size: var(--font-size-sm);
                 left: 0;
                 right: 0;
                 background: rgba(226, 183, 9, 0.8);
@@ -222,7 +224,7 @@
 
             @include mobile {
                 -webkit-line-clamp: 2;
-                height: 30px;
+                height: 40px;
             }
         }
 
@@ -261,7 +263,7 @@
         // margin-bottom: 10px;
         margin-bottom: 12px;
         margin-right: 8px;
-        font-size: 1.4rem;
+        font-size: var(--font-size-sm);
 
         .icon-views {
             margin: 0 5px;

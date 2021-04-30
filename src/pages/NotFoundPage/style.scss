@@ -8,13 +8,13 @@
     height: 500px;
 
     &__heading {
-        font-size: 2.5rem;
+        font-size: var(--font-size-hg);
         text-transform: uppercase;
         margin-bottom: 20px;
     }
 
     &__status {
-        font-size: 6.5rem;
+        font-size: calc(var(--font-size-xl) * 3);
         font-weight: bold;
         text-transform: uppercase;
         margin-bottom: 20px;

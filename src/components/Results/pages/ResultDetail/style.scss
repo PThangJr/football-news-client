@@ -9,11 +9,11 @@
 
         .tournament {
             font-weight: bold;
-            font-size: 2.2rem;
+            font-size: var(--font-size-hg);
         }
 
         .end-time {
-            font-size: 1.4rem;
+            font-size: var(--font-size-md);
             font-style: italic;
             margin-left: 10px;
         }
@@ -28,11 +28,11 @@
 
         .club {
             @include flex(center);
-            font-size: 2rem;
+            font-size: var(--font-size-xl);
             width: 49%;
 
             @include mobile {
-                font-size: 1.6rem;
+                font-size: var(--font-size-md);
             }
 
             &__name {
@@ -56,10 +56,10 @@
 
                 span {
                     margin: 0 8px;
-                    font-size: 2.4rem;
+                    font-size: var(--font-size-hg);
 
                     @include mobile {
-                        font-size: 1.8rem;
+                        font-size: var(--font-size-lg);
                         margin: 0 3px;
                     }
 
@@ -123,7 +123,7 @@
 }
 
 .note {
-    font-size: 2.5rem;
+    font-size: var(--font-size-hg);
     margin: 20px 0;
 
     .author-video {

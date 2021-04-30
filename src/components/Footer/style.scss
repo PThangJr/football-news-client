@@ -67,7 +67,7 @@
 
 
                 @include mobile {
-                    font-size: 2.2rem;
+                    font-size: var(--font-size-xl);
                     margin: 6px;
 
                 }
@@ -89,7 +89,7 @@
 
     .copy-right {
         text-align: center;
-        font-size: 1.3rem;
+        font-size: var(--font-size-sm);
         padding: 0 80px;
         font-weight: bold;
         line-height: 2.1rem;

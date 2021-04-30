@@ -15,6 +15,9 @@ export default function ScrollToTop({ fieldRef }) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       } else if (pathname.includes('new-detail')) {
+        if (!search) {
+          window.scrollTo({ top: fieldRef.current.offsetTop - 80, behavior: 'smooth' });
+        }
       } else {
         window.scrollTo({ top: fieldRef.current.offsetTop - 80, behavior: 'smooth' });
       }

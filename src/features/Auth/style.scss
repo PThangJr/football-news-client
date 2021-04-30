@@ -45,7 +45,7 @@
 
     &__header {
         @include flex(space-between);
-        font-size: 2.2rem;
+        font-size: var(--font-size-xl);
         margin-top: 30px;
         margin-bottom: 20px;
         color: $color-black;
@@ -67,7 +67,7 @@
         @include flex(flex-end);
         margin: 15px 0 25px 0;
         color: $color-black;
-        font-size: 1.5rem;
+        font-size: var(--font-size-md);
 
         span {
             margin-right: 10px;
@@ -82,7 +82,7 @@
         width: 20px;
         height: 20px;
         padding: 12px;
-        font-size: 1.8rem;
+        font-size: var(--font-size-lg);
         cursor: pointer;
         border: 1px solid $color-grey-2;
         @include flex(center);

@@ -39,7 +39,7 @@ const News = () => {
         fetchNews({
           tournament,
           params: {
-            limit: limit || 8,
+            limit: limit || 12,
             page: page || 1,
             search,
           },

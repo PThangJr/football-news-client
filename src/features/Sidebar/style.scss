@@ -12,10 +12,13 @@
     width: 240px;
     height: 100vh;
     transition: transform 0.5s;
+    overflow-y: auto;
 
     @include mobile {
         width: 65%;
     }
+
+
 
     //Responsive
     @include mobile-tablet {
@@ -27,8 +30,16 @@
         transform: translateX(-100%);
     }
 
+    @include mobile {
+        width: 75%;
+    }
+
     @include tablet {
-        width: 300px;
+        width: 65%;
+    }
+
+    @include tablet-laptop {
+        width: 50%;
     }
 
     &__list {
@@ -58,11 +69,11 @@
     }
 
     &__menu {
-        font-size: 3.5rem;
+        font-size: var(--font-size-hg);
     }
 
     &__heading {
-        font-size: 2rem;
+        font-size: var(--font-size-hg);
         margin: 20px 0;
         margin-left: $left;
         text-transform: uppercase;
@@ -70,7 +81,7 @@
         @include flex(space-between);
 
         .icon-close {
-            font-size: 3rem;
+            font-size: var(--font-size-hg);
             padding: 10px;
             padding-right: 15px;
             cursor: pointer;

@@ -54,7 +54,7 @@ const Trending = () => {
     }
   };
   return (
-    <div className="row">
+    <div className="row no-gutters">
       <div className="col-xl-8 col-lg-8 col-12">
         <div className="trending">
           <ul className="trending-list">{displayTrending()}</ul>

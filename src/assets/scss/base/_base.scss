@@ -10,6 +10,15 @@
     --color-white: #{$color-white};
     --color-black: #{$color-black};
     --color-tabs: #1976d2;
+    --font-size-sm: 1.4rem;
+    --font-size-md: 1.6rem;
+    --font-size-lg: 1.8rem;
+    --font-size-xl: 2.1rem;
+    --font-size-hg: 2.5rem;
+    --font-size-icon-sm: 2rem;
+    --font-size-icon-md: 2.5rem;
+    --font-size-icon-lg: 3rem;
+    --font-size-icon-xl: 3.5rem;
 }
 
 html {
@@ -20,12 +29,9 @@ html {
     scroll-behavior: smooth;
     font-size: 62.5%;
 
-    @include tablet {
-        font-size: 55%;
-    }
 
     @include mobile {
-        font-size: 45%;
+        font-size: 60%;
     }
 }
 

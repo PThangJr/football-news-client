@@ -21,7 +21,7 @@
 
 .auth__rules {
     margin: 12px 0;
-    font-size: 1.5rem;
+    font-size: var(--font-size-md);
     color: $color-black;
 
     .form-check {

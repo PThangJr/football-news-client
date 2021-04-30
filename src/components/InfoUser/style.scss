@@ -15,7 +15,7 @@
     }
 
     &-content {
-        font-size: 1.8rem;
+        font-size: var(--font-size-lg);
         // font-weight: 400;
         margin-left: 30px;
 
@@ -26,7 +26,7 @@
             margin-bottom: 20px;
 
             .icon-box {
-                font-size: 2rem;
+                font-size: var(--font-size-xl);
                 margin-right: 12px;
                 color: var(--color-text);
             }
@@ -41,7 +41,7 @@
         }
 
         .icon-box {
-            font-size: 1.7rem;
+            font-size: var(--font-size-md);
             margin-right: 10px;
             color: var(--color-text-reverse);
         }
@@ -50,7 +50,7 @@
 
     &__heading {
         text-align: center;
-        font-size: 2.1rem;
+        font-size: var(--font-size-xl);
         padding: 10px 0;
         border-bottom: 1px solid $color-grey-3;
         position: relative;
@@ -99,7 +99,7 @@
         flex-direction: column;
 
         &__errors {
-            font-size: 1.4rem;
+            font-size: var(--font-size-sm);
             color: red;
             font-style: italic;
             margin-bottom: 8px;
@@ -143,7 +143,7 @@
             label[for="avatar"] {
                 margin-top: 15px;
                 border: 1px solid;
-                font-size: 1.3rem;
+                font-size: var(--font-size-sm);
                 font-weight: bold;
                 @include flex(space-evenly);
                 cursor: pointer;

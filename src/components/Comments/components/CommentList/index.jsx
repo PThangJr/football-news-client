@@ -18,7 +18,7 @@ const CommentList = (props) => {
       }
     } else {
       const arr = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 4; i++) {
         arr.push(i);
       }
       return arr.map((item) => {

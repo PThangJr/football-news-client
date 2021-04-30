@@ -20,7 +20,7 @@ const NewDetailComments = (props) => {
   useEffect(() => {
     const config = {
       pagination: {
-        limit: search.limit || 5,
+        limit: search.limit || 8,
         page: search.page || 1,
       },
       slugNew,
