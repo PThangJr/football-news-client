@@ -58,8 +58,8 @@
 
 
                 @include mobile {
-                    -webkit-line-clamp: 5;
-                    height: 100%;
+                    -webkit-line-clamp: 2;
+                    height: 42px;
                 }
             }
         }
@@ -224,7 +224,7 @@
 
             @include mobile {
                 -webkit-line-clamp: 2;
-                height: 40px;
+                height: 43px;
             }
         }
 
