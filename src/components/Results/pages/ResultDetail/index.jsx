@@ -69,7 +69,7 @@ const ResultDetail = () => {
                 <div className="club">
                   <div className="club__name">
                     <SkeletonElement className="club__name-img" type="circle" style={{ width: '40px' }} />
-                    <SkeletonElement className="club__name-text" style={{ width: '150px', height: '25px' }} />
+                    <SkeletonElement className="club__name-text" style={{ width: '100px', height: '25px' }} />
                   </div>
                 </div>
                 <div className="club__goals">
@@ -79,7 +79,7 @@ const ResultDetail = () => {
                 <div className="club">
                   <div className="club__name">
                     <SkeletonElement className="club__name-img" type="circle" style={{ width: '40px' }} />
-                    <SkeletonElement className="club__name-text" style={{ width: '150px', height: '25px' }} />
+                    <SkeletonElement className="club__name-text" style={{ width: '100px', height: '25px' }} />
                   </div>
                 </div>
               </div>

@@ -10,7 +10,13 @@ const TrendingResults = () => {
   const { results, loading } = dataResults;
   // console.log(dataResults);
   useEffect(() => {
-    dispatch(fetchResults());
+    const config = {
+      params: {
+        limit: 18,
+        page: 1,
+      },
+    };
+    dispatch(fetchResults(config));
   }, [dispatch]);
   return (
     <div className=" trending-results">
@@ -22,7 +28,7 @@ const TrendingResults = () => {
             return <TrendingResultItem results={result} key={result._id + Date.now()} />;
           })}
         {loading &&
-          [1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => {
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map((item) => {
             return <TrendingResultItemSkeleton key={item} />;
           })}
       </ul>

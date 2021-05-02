@@ -22,7 +22,7 @@ const Register = ({ handleChangeAuthForm, handleCloseAuthForm }) => {
       .required('Username không được để trống!')
       .min(3, 'Username ít nhất có 3 ký tự!')
       .max(12, 'Username không quá 12 ký tự')
-      .matches(/^[a-zA-Z][a-zA-Z0-9]{4,12}\S$/i, 'Username không có ký tự đặc biệt, khoảng trắng'),
+      .matches(/^[a-zA-Z][a-zA-Z0-9]+\S$/i, 'Username không có ký tự đặc biệt, khoảng trắng'),
 
     email: yup.string().trim().required('Email không được để trống!'),
     password: yup

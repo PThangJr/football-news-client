@@ -10,28 +10,39 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
 
         .results-item {
-            margin: 6px 0;
+            margin: 8px 10px;
 
+            @include tablet {
+                margin: 8px 15px;
+            }
         }
 
         @include tablet-laptop {
             flex-wrap: wrap;
             max-height: 280px;
+            margin: 0 auto;
+            // width: 700px;
+
+
         }
 
         @include tablet {
             flex-wrap: wrap;
             max-height: 280px;
+            width: 450px;
+            overflow: hidden;
         }
 
 
     }
 
     @include mobile {
-        height: 190px;
+        height: 200px;
         overflow-y: scroll;
+        margin: 6px 0;
     }
 
     &__heading {

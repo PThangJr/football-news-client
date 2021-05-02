@@ -1,6 +1,11 @@
 @import '../../../../assets/scss/responsive/responsive';
 
 .results-item--trending {
+    transition: opacity .3s;
+
+    &:hover {
+        opacity: 0.8;
+    }
 
     .results-link {
 

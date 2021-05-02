@@ -22,7 +22,7 @@ const CardItemSkeleton = (props) => {
             <SkeletonElement className="card__content-title" />
           </div>
           <div className="card__views">
-            <SkeletonElement style={{ width: '140px', height: '20px' }} />
+            <SkeletonElement style={{ width: '140px', height: '20px', marginTop: '5px' }} />
           </div>
         </div>
       </div>

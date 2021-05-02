@@ -12,7 +12,11 @@
     .main-top {
         padding: 10px 0;
         box-shadow: 2px 8px 12px var(--rgba-bsd), inset 0 0 10px var(--rgba-bsd);
+
         // position: relative;
+        @include mobile {
+            padding-bottom: 0;
+        }
 
         &__box {}
     }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_LINK_HEROKU_API,
+  baseURL: process.env.REACT_APP_LINK_API,
   headers: {
     'Content-Type': 'application/json',
   },
