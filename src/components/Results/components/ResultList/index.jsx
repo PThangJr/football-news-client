@@ -22,7 +22,7 @@ const ResultList = () => {
       tournament,
       params: {
         page,
-        limit: limit || 8,
+        limit: limit || 10,
       },
     };
     dispatch(fetchTournamentResults(config));
@@ -30,7 +30,7 @@ const ResultList = () => {
   const renderResultItem = () => {
     if (loading) {
       const arr = [];
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 9; i++) {
         arr.push(i);
       }
       return arr.map((item) => (

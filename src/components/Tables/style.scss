@@ -1,7 +1,8 @@
 @import '../../assets/scss/responsive/responsive';
 
 .tables {
-    padding: 30px 0;
+    // padding: 30px 0;
+    margin-bottom: 10px;
 
     &__heading {
         font-size: var(--font-size-hg);
@@ -9,6 +10,8 @@
         letter-spacing: .3rem;
         margin-bottom: 20px;
     }
+
+
 }
 
 .table-video {

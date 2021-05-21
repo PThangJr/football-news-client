@@ -221,10 +221,11 @@
             text-overflow: ellipsis;
             height: 47px;
             text-transform: inherit;
+            font-weight: 400;
 
             @include mobile {
                 -webkit-line-clamp: 2;
-                height: 43px;
+                height: 42px;
             }
         }
 

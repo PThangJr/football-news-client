@@ -42,7 +42,7 @@ const Sidebar = () => {
       <ul className="sidebar__list ">
         <li className="sidebar__item">
           <div className="dropdown-menu open">
-            <CustomLink to="/" activeOnlyWhenExact={true} caretDown cNameLink="sidebar__link">
+            <CustomLink to="/" activeOnlyWhenExact={true} cNameLink="sidebar__link">
               <span className="sidebar__logo">
                 <i className="fas fa-house-user"></i>
               </span>

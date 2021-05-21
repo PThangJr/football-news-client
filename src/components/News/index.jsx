@@ -39,7 +39,7 @@ const News = () => {
         fetchNews({
           tournament,
           params: {
-            limit: limit || 12,
+            limit: limit || 16,
             page: page || 1,
             search,
           },
@@ -54,7 +54,7 @@ const News = () => {
   const renderNewItem = () => {
     if (loading) {
       const arr = [];
-      for (let i = 10; i < 18; i++) {
+      for (let i = 10; i < 22; i++) {
         arr.push(i);
       }
       return arr.map((item) => (

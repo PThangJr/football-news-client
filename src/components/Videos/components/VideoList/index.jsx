@@ -26,7 +26,7 @@ const VideoList = () => {
     const config = {
       tournament,
       params: {
-        limit: limit || 12,
+        limit: limit || 16,
         page: page,
       },
     };

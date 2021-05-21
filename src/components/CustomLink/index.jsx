@@ -10,7 +10,7 @@ const CustomLink = ({ to, activeOnlyWhenExact, children, cName, cNameLink, caret
   });
 
   return (
-    <div className={(match ? 'active ' : '') + (caretDown ? 'caret-down' : '')}>
+    <div className={(match ? 'active ' : '') + (caretDown ? 'caret-down' : '')} style={{ width: '100%' }}>
       <Link to={to} className={cNameLink}>
         {children}
       </Link>
