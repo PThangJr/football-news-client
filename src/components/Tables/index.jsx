@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
 import { fetchVideos } from '../Videos/videosSlice';
 import CardItemSkeleton from '../Card/CardItemSkeleton';
+import SkeletonElement from '../Loading/Skeleton/SkeletonElement';
 const Tables = () => {
   const dispatch = useDispatch();
   const dataVideos = useSelector((state) => state.dataVideos);
@@ -67,22 +68,27 @@ const Tables = () => {
       </div>
       <div className="tables">
         <div className="row">
-          {!loading &&
-            videoSub.map((video, index) => {
-              if (index >= 4) {
-                return (
-                  <div key={video._id} className="col-xl-3 col-lg-3 col-md-3 col-sm-6">
-                    <CardItem
-                      type="video"
-                      {...video}
-                      linkTo={`/${video?.tournaments[0]?.slug}/videos/${video?.slug}`}
-                      linkImage={video?.linkThumbnail}
-                      topic={videoMain?.author}
-                    />
-                  </div>
-                );
-              }
-            })}
+          {loading
+            ? [1, 2, 3, 4].map((item) => (
+                <div key={item} className="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                  <CardItemSkeleton />
+                </div>
+              ))
+            : videoSub.map((video, index) => {
+                if (index >= 4) {
+                  return (
+                    <div key={video._id} className="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                      <CardItem
+                        type="video"
+                        {...video}
+                        linkTo={`/${video?.tournaments[0]?.slug}/videos/${video?.slug}`}
+                        linkImage={video?.linkThumbnail}
+                        topic={videoMain?.author}
+                      />
+                    </div>
+                  );
+                }
+              })}
         </div>
       </div>
     </>

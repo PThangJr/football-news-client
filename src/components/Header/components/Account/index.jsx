@@ -34,7 +34,7 @@ const Account = () => {
       if (loading) {
         return (
           <div className="account">
-            <LoadingDotCircle style={{ marginRight: '50px' }} />;
+            <LoadingDotCircle style={{ marginRight: '50px' }} />
           </div>
         );
       } else {
