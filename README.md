@@ -4,8 +4,6 @@
 
 This is my project about a football newspaper website
 
-# Link my website
-https://footballnewsworldpro.vercel.app/
 
 ## Description
 
@@ -14,6 +12,9 @@ This is a website about football news, results, videos around the world
 ## Packages
 
 (*) create react app, react-router-dom, redux, react-redux, redux-thunk, redux-toolkit, axios,...
+
+## Link my website
+https://footballnewsworldpro.vercel.app/
 
 ## Preview
 
